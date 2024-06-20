@@ -1,0 +1,68 @@
+package com.jobcategoryservice.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.jobcategoryservice.exception.JobCategoryIdAlreadyExistsException;
+import com.jobcategoryservice.exception.JobCategoryNotFoundException;
+import com.jobcategoryservice.model.JobCategory;
+import com.jobcategoryservice.service.JobCategoryService;
+
+@RestController
+@RequestMapping("/jobcategory")
+public class JobCategoryController {
+	
+	@Autowired
+	private JobCategoryService service;
+	
+	@PostMapping("/add")
+	public ResponseEntity<JobCategory> addJobCategory(@RequestBody JobCategory job) throws JobCategoryIdAlreadyExistsException{
+		JobCategory addedJob=service.addJobCategory(job);
+		return new ResponseEntity<JobCategory>(addedJob,HttpStatus.CREATED);
+	}
+	
+	@GetMapping("/getall")
+	public ResponseEntity<List<JobCategory>> getAllJobCategory()throws JobCategoryNotFoundException{
+		List<JobCategory> allJob = service.getAllJobCategory();
+		return new ResponseEntity<List<JobCategory>>(allJob,HttpStatus.OK);
+				
+	}
+	
+	@GetMapping("/getbycategory/{category}")
+	public ResponseEntity<List<JobCategory>> getByJobCategory(@PathVariable String category)throws JobCategoryNotFoundException{
+		List<JobCategory> jobByCategory = service.getByJobCategory(category);
+		return new ResponseEntity<List<JobCategory>>(jobByCategory,HttpStatus.OK);
+				
+	}
+	
+	@GetMapping("/getbydescription/{description}")
+	public ResponseEntity<List<JobCategory>> getByJobDescription(@PathVariable String description)throws JobCategoryNotFoundException{
+		List<JobCategory> jobByDescription = service.getByJobDescription(description);
+		return new ResponseEntity<List<JobCategory>>(jobByDescription,HttpStatus.OK);
+				
+	}
+	
+	@PutMapping("/update")
+	public ResponseEntity<JobCategory> updateCategory(@RequestBody JobCategory job) throws JobCategoryNotFoundException{
+		JobCategory updatedJob = service.updateJobCategory(job);
+		return new ResponseEntity<JobCategory>(updatedJob,HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/delete")
+	public ResponseEntity<String> deleteJobCategory(@PathVariable long jobId) throws JobCategoryNotFoundException{
+		String result = service.deleteJobCategory(jobId);
+		return new ResponseEntity<String>(result,HttpStatus.OK);
+	}
+
+}

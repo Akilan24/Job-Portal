@@ -1,0 +1,5 @@
+package com.jobservice.exception;
+
+public class userNotFoundException extends Exception {
+
+}

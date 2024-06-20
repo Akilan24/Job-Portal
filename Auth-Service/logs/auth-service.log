@@ -1,0 +1,372 @@
+2024-06-19 00:04:55 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 00:06:22 [http-nio-8888-exec-1] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:06:23 [http-nio-8888-exec-1] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles,t1_0.username,t1_0.traveller_id,t1_0.address,t1_0.age,t1_0.gender,t1_0.mobile,t1_0.name from users r1_0 left join traveller t1_0 on r1_0.username=t1_0.username where r1_0.username=?
+2024-06-19 00:06:24 [http-nio-8888-exec-1] DEBUG org.hibernate.SQL - insert into users (address,email,gender,marital_status,mobile,name,password,roles,username) values (?,?,?,?,?,?,?,?,?)
+2024-06-19 00:08:09 [http-nio-8888-exec-3] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:09 [http-nio-8888-exec-3] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:10 [http-nio-8888-exec-3] DEBUG org.hibernate.SQL - select t1_0.username,t1_0.traveller_id,t1_0.address,t1_0.age,t1_0.gender,t1_0.mobile,t1_0.name from traveller t1_0 where t1_0.username=?
+2024-06-19 00:08:10 [http-nio-8888-exec-3] DEBUG org.hibernate.SQL - select rt1_0.id,rt1_0.expiry_date,rt1_0.refresh_token,rt1_0.username from refresh_token rt1_0 where rt1_0.username=?
+2024-06-19 00:08:10 [http-nio-8888-exec-3] DEBUG org.hibernate.SQL - select rt1_0.id,rt1_0.expiry_date,rt1_0.refresh_token,rt1_0.username from refresh_token rt1_0
+2024-06-19 00:08:10 [http-nio-8888-exec-3] DEBUG org.hibernate.SQL - insert into refresh_token (expiry_date,refresh_token,username) values (?,?,?)
+2024-06-19 00:08:12 [http-nio-8888-exec-4] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:13 [http-nio-8888-exec-4] INFO  c.a.e.ResponseEntityExceptionHandlerImpl - Connection refused: no further information executing GET http://localhost:8082/Hotel/getallhotelcitynames
+2024-06-19 00:08:13 [http-nio-8888-exec-5] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:13 [http-nio-8888-exec-5] INFO  c.a.e.ResponseEntityExceptionHandlerImpl - Connection refused: no further information executing GET http://localhost:8082/Hotel/getallhotelcitynames
+2024-06-19 00:08:15 [http-nio-8888-exec-6] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:15 [http-nio-8888-exec-7] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:28 [http-nio-8888-exec-8] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:31 [http-nio-8888-exec-9] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:31 [http-nio-8888-exec-10] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:31 [http-nio-8888-exec-1] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:42 [http-nio-8888-exec-2] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:42 [http-nio-8888-exec-3] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:42 [http-nio-8888-exec-4] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:53 [http-nio-8888-exec-5] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:56 [http-nio-8888-exec-6] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:58 [http-nio-8888-exec-7] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:58 [http-nio-8888-exec-8] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:58 [http-nio-8888-exec-9] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:08:59 [http-nio-8888-exec-1] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:09:07 [http-nio-8888-exec-10] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:09:08 [http-nio-8888-exec-2] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:09:08 [http-nio-8888-exec-3] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:09:23 [http-nio-8888-exec-4] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:09:23 [http-nio-8888-exec-5] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:10:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 00:10:19 [http-nio-8888-exec-6] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:10:19 [http-nio-8888-exec-7] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:12:30 [http-nio-8888-exec-1] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:12:30 [http-nio-8888-exec-10] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:12:35 [http-nio-8888-exec-2] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:13:12 [http-nio-8888-exec-3] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:15:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 00:20:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 00:25:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 00:30:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 00:31:17 [http-nio-8888-exec-5] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:31:20 [http-nio-8888-exec-6] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:31:30 [http-nio-8888-exec-7] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:31:34 [http-nio-8888-exec-9] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:31:35 [http-nio-8888-exec-8] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:31:35 [http-nio-8888-exec-1] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:31:37 [http-nio-8888-exec-10] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:31:46 [http-nio-8888-exec-2] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:33:45 [http-nio-8888-exec-5] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:33:45 [http-nio-8888-exec-6] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:33:54 [http-nio-8888-exec-7] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:33:56 [http-nio-8888-exec-9] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:33:56 [http-nio-8888-exec-1] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:33:56 [http-nio-8888-exec-8] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:33:56 [http-nio-8888-exec-10] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:34:08 [http-nio-8888-exec-2] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:35:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 00:40:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 00:41:38 [http-nio-8888-exec-5] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:45:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 00:46:07 [http-nio-8888-exec-7] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:46:08 [http-nio-8888-exec-9] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:46:11 [http-nio-8888-exec-1] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:47:18 [http-nio-8888-exec-1] INFO  c.a.e.ResponseEntityExceptionHandlerImpl - Read timed out executing GET http://localhost:8084/Payment/doPayment/flight-100002
+2024-06-19 00:47:58 [http-nio-8888-exec-10] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:47:59 [http-nio-8888-exec-8] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:48:43 [http-nio-8888-exec-2] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:48:49 [http-nio-8888-exec-3] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:48:49 [http-nio-8888-exec-4] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:48:51 [http-nio-8888-exec-5] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:48:59 [http-nio-8888-exec-6] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:49:03 [http-nio-8888-exec-7] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:49:14 [http-nio-8888-exec-9] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:49:24 [http-nio-8888-exec-1] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:49:25 [http-nio-8888-exec-10] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:50:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 00:54:55 [http-nio-8888-exec-2] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:54:58 [http-nio-8888-exec-3] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:54:58 [http-nio-8888-exec-4] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:54:59 [http-nio-8888-exec-5] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 00:55:05 [http-nio-8888-exec-6] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:06 [http-nio-8888-exec-7] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:06 [http-nio-8888-exec-9] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:06 [http-nio-8888-exec-7] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:09 [http-nio-8888-exec-1] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:11 [http-nio-8888-exec-10] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:14 [http-nio-8888-exec-9] INFO  c.a.e.ResponseEntityExceptionHandlerImpl - ServletOutputStream failed to flush: java.io.IOException: An established connection was aborted by the software in your host machine
+2024-06-19 00:55:19 [http-nio-8888-exec-8] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:24 [http-nio-8888-exec-2] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:24 [http-nio-8888-exec-5] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:25 [http-nio-8888-exec-6] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:25 [http-nio-8888-exec-7] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:31 [http-nio-8888-exec-4] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:35 [http-nio-8888-exec-1] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:40 [http-nio-8888-exec-10] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:40 [http-nio-8888-exec-9] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:42 [http-nio-8888-exec-3] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 00:55:48 [http-nio-8888-exec-8] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 01:00:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 01:03:00 [http-nio-8888-exec-6] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 01:03:02 [http-nio-8888-exec-4] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 01:03:06 [http-nio-8888-exec-1] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 01:03:07 [http-nio-8888-exec-10] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 01:03:13 [http-nio-8888-exec-9] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 01:03:26 [http-nio-8888-exec-3] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 01:03:27 [http-nio-8888-exec-8] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 01:03:50 [http-nio-8888-exec-2] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 01:05:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 01:07:53 [http-nio-8888-exec-6] DEBUG org.hibernate.SQL - select r1_0.username,r1_0.address,r1_0.email,r1_0.gender,r1_0.marital_status,r1_0.mobile,r1_0.name,r1_0.password,r1_0.roles from users r1_0 where r1_0.username=?
+2024-06-19 01:10:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 01:15:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 01:20:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 01:25:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 01:30:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 01:35:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 01:40:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 01:45:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 01:50:04 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 01:55:05 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 01:57:40 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-1] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@154ca57c: tags=[[amq.ctag-xO6OHNHU5RHvvG0khJMfPA]], channel=Cached Rabbit Channel: AMQChannel(amqp://rabbitmq@127.0.0.1:5672/,1), conn: Proxy@310bf0ed Shared Rabbit Connection: SimpleConnection@20309fde [delegate=amqp://rabbitmq@127.0.0.1:5672/, localPort=57498], acknowledgeMode=AUTO local queue size=0
+2024-06-19 01:58:41 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-2] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 01:59:03 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-2] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 01:59:03 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@49962e43: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 01:59:03 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-3] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 01:59:08 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-3] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 01:59:08 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-3] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@551836ae: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 01:59:08 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-4] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 01:59:13 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-4] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 01:59:13 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-4] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@41ef9312: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 01:59:13 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-5] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 01:59:18 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-5] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 01:59:18 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-5] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@407d3897: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 01:59:19 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-6] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 01:59:24 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-6] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 01:59:24 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-6] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@72d46e4f: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 01:59:24 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-7] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 01:59:29 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-7] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 01:59:29 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-7] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2e2e0caf: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 01:59:29 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-8] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 01:59:34 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-8] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 01:59:34 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-8] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7c40f42: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 01:59:34 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-9] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 01:59:39 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-9] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 01:59:39 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-9] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1ebc80f1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 01:59:39 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-10] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 01:59:44 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-10] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 01:59:44 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-10] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@f5e068e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 01:59:44 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-11] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 01:59:49 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-11] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 01:59:49 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-11] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@1509b3a9: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 01:59:49 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-12] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 01:59:54 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-12] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 01:59:54 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-12] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@3303c15: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 01:59:54 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-13] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 02:00:00 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-13] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 02:00:00 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-13] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@20908191: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 02:00:00 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-14] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 02:00:05 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2024-06-19 02:00:05 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-14] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 02:00:05 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-14] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@4803922e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 02:00:05 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-15] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 02:00:10 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-15] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 02:00:10 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-15] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@7d11534a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 02:00:10 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-16] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 02:00:15 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-16] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 02:00:15 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-16] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@129d1bee: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 02:00:15 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-17] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 02:00:20 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-17] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 02:00:20 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-17] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@2b310197: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 02:00:20 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-18] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 02:00:24 [RMI TCP Connection(195)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:24 [RMI TCP Connection(194)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:24 [RMI TCP Connection(198)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:24 [RMI TCP Connection(203)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:24 [RMI TCP Connection(199)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:24 [RMI TCP Connection(197)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:24 [RMI TCP Connection(201)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:24 [RMI TCP Connection(202)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:25 [RMI TCP Connection(196)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:25 [RMI TCP Connection(193)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:25 [RMI TCP Connection(200)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:25 [RMI TCP Connection(204)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:25 [RMI TCP Connection(205)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:25 [RMI TCP Connection(206)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:25 [RMI TCP Connection(207)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:25 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-18] WARN  o.s.a.r.l.SimpleMessageListenerContainer - Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2024-06-19 02:00:25 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-18] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Restarting Consumer@5dc7f90d: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2024-06-19 02:00:25 [springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw-19] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5672]
+2024-06-19 02:00:25 [RMI TCP Connection(208)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:26 [RMI TCP Connection(209)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:26 [RMI TCP Connection(210)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:26 [RMI TCP Connection(212)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:26 [RMI TCP Connection(211)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:26 [RMI TCP Connection(198)-127.0.0.1] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application AUTH-SERVICE with eureka with status DOWN
+2024-06-19 02:00:26 [RMI TCP Connection(198)-127.0.0.1] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1718742626915, current=DOWN, previous=UP]
+2024-06-19 02:00:26 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_AUTH-SERVICE/Akilan:AUTH-SERVICE:8888: registering service...
+2024-06-19 02:00:27 [RMI TCP Connection(213)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:27 [RMI TCP Connection(214)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:27 [RMI TCP Connection(215)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:27 [RMI TCP Connection(216)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:28 [RMI TCP Connection(217)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:28 [RMI TCP Connection(218)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:28 [RMI TCP Connection(219)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:28 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_AUTH-SERVICE/Akilan:AUTH-SERVICE:8888 - registration status: 204
+2024-06-19 02:00:28 [RMI TCP Connection(220)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:28 [RMI TCP Connection(221)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:29 [RMI TCP Connection(222)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:29 [RMI TCP Connection(223)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:29 [RMI TCP Connection(224)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:29 [RMI TCP Connection(198)-127.0.0.1] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+2024-06-19 02:00:29 [RMI TCP Connection(198)-127.0.0.1] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+2024-06-19 02:00:29 [RMI TCP Connection(225)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:29 [RMI TCP Connection(198)-127.0.0.1] INFO  o.s.i.a.i.AmqpInboundChannelAdapter - stopped bean 'inbound.springCloudBus.anonymous.vI5zQSKQTB2RBR5p5Nbwpw'
+2024-06-19 02:00:30 [RMI TCP Connection(226)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:30 [RMI TCP Connection(227)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:30 [RMI TCP Connection(228)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:30 [RMI TCP Connection(229)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:30 [RMI TCP Connection(230)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:31 [RMI TCP Connection(231)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:31 [RMI TCP Connection(232)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:31 [RMI TCP Connection(233)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:31 [RMI TCP Connection(234)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:32 [RMI TCP Connection(235)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:32 [RMI TCP Connection(236)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:32 [RMI TCP Connection(237)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:32 [RMI TCP Connection(238)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:33 [RMI TCP Connection(239)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:33 [RMI TCP Connection(240)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:33 [RMI TCP Connection(241)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:33 [RMI TCP Connection(242)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:34 [RMI TCP Connection(243)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:34 [RMI TCP Connection(198)-127.0.0.1] INFO  o.s.c.s.binder.BinderErrorChannel - Channel 'AUTH-SERVICE.rabbit-766585947.springCloudBusInput.errors' has 1 subscriber(s).
+2024-06-19 02:00:34 [RMI TCP Connection(244)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:34 [RMI TCP Connection(245)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:34 [RMI TCP Connection(246)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:35 [RMI TCP Connection(247)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:35 [RMI TCP Connection(248)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:35 [RMI TCP Connection(249)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:35 [RMI TCP Connection(250)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:35 [RMI TCP Connection(251)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:36 [RMI TCP Connection(252)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:36 [RMI TCP Connection(253)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:36 [RMI TCP Connection(254)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:36 [RMI TCP Connection(255)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:37 [RMI TCP Connection(256)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:37 [RMI TCP Connection(257)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:37 [RMI TCP Connection(258)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-06-19 02:00:38 [RMI TCP Connection(198)-127.0.0.1] INFO  o.s.i.endpoint.EventDrivenConsumer - Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2024-06-19 02:00:38 [RMI TCP Connection(198)-127.0.0.1] INFO  o.s.i.c.PublishSubscribeChannel - Channel 'AUTH-SERVICE.errorChannel' has 0 subscriber(s).
+2024-06-19 02:00:38 [RMI TCP Connection(198)-127.0.0.1] INFO  o.s.i.endpoint.EventDrivenConsumer - stopped bean '_org.springframework.integration.errorLogger'
+2024-06-19 02:00:39 [DiscoveryClient-HeartbeatExecutor-0] INFO  c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/} exception=Connection pool shut down stacktrace=java.lang.IllegalStateException: Connection pool shut down
+	at org.apache.hc.core5.util.Asserts.check(Asserts.java:38)
+	at org.apache.hc.core5.pool.StrictConnPool.lease(StrictConnPool.java:176)
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.lease(PoolingHttpClientConnectionManager.java:298)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.acquireEndpoint(InternalExecRuntime.java:103)
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:125)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:96)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:152)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:115)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:170)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183)
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:95)
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:70)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66)
+	at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:112)
+	at org.springframework.cloud.netflix.eureka.http.RestTemplateTransportClientFactory.lambda$restTemplate$0(RestTemplateTransportClientFactory.java:143)
+	at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:88)
+	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:72)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:889)
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:790)
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:672)
+	at org.springframework.cloud.netflix.eureka.http.RestTemplateEurekaHttpClient.sendHeartBeat(RestTemplateEurekaHttpClient.java:99)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:91)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:837)
+	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1401)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+
+2024-06-19 02:00:39 [DiscoveryClient-HeartbeatExecutor-0] WARN  c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: Connection pool shut down
+2024-06-19 02:00:39 [DiscoveryClient-HeartbeatExecutor-0] INFO  c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}, exception=Connection pool shut down stacktrace=java.lang.IllegalStateException: Connection pool shut down
+	at org.apache.hc.core5.util.Asserts.check(Asserts.java:38)
+	at org.apache.hc.core5.pool.StrictConnPool.lease(StrictConnPool.java:176)
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.lease(PoolingHttpClientConnectionManager.java:298)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.acquireEndpoint(InternalExecRuntime.java:103)
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:125)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:96)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:152)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:115)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:170)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183)
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:95)
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:70)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66)
+	at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:112)
+	at org.springframework.cloud.netflix.eureka.http.RestTemplateTransportClientFactory.lambda$restTemplate$0(RestTemplateTransportClientFactory.java:143)
+	at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:88)
+	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:72)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:889)
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:790)
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:672)
+	at org.springframework.cloud.netflix.eureka.http.RestTemplateEurekaHttpClient.sendHeartBeat(RestTemplateEurekaHttpClient.java:99)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:121)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:80)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:837)
+	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1401)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+
+2024-06-19 02:00:39 [DiscoveryClient-HeartbeatExecutor-0] WARN  c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: Connection pool shut down
+2024-06-19 02:00:39 [DiscoveryClient-HeartbeatExecutor-0] ERROR c.netflix.discovery.DiscoveryClient - DiscoveryClient_AUTH-SERVICE/Akilan:AUTH-SERVICE:8888 - was unable to send heartbeat!
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89)
+	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:837)
+	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1401)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2024-06-19 02:00:40 [RMI TCP Connection(198)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'

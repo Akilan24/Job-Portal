@@ -1,0 +1,5 @@
+package com.jobcategoryservice.repository;
+
+public class JobCategoryRepository {
+
+}

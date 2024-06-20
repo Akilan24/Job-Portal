@@ -1,0 +1,18 @@
+package com.jobcategoryservice.service;
+
+import java.util.List;
+
+import com.jobcategoryservice.exception.JobCategoryNotFoundException;
+import com.jobcategoryservice.model.JobCategory;
+
+public interface JobCategoryService {
+	
+	JobCategory addJobCategory(JobCategory job);
+	
+	List<JobCategory> getAllJobCategory();
+	
+	JobCategory updateJobCategory(JobCategory job);
+	
+	String deleteJobCategory(int jobId) throws JobCategoryNotFoundException;
+
+}

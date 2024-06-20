@@ -1,0 +1,5 @@
+package com.jobcategoryservice.service;
+
+public class JobCategoryService {
+
+}

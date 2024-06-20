@@ -1,0 +1,62 @@
+package com.userservice.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.userservice.model.Applicant;
+import com.userservice.repository.ApplicantRepository;
+
+@Service
+public class ApplicantServiceImpl implements ApplicantService {
+
+    @Autowired
+    private ApplicantRepository applicantRepository;
+
+    @Override
+    public Applicant addApplicant(Applicant applicant) {
+        return applicantRepository.save(applicant);
+    }
+
+    @Override
+    public List<Applicant> getAllApplicants() {
+        return applicantRepository.findAll();
+    }
+
+    @Override
+    public Applicant getApplicantById(long id) {
+        return applicantRepository.findById(id).orElseThrow(() -> new RuntimeException("Applicant not found with id " + id));
+    }
+
+    @Override
+    public Applicant updateApplicant(Applicant applicant) {
+        Optional<Applicant> existingApplicant = applicantRepository.findById(applicant.getApplicantId());
+        if (existingApplicant.isPresent()) {
+            Applicant updatedApplicant = existingApplicant.get();
+            updatedApplicant.setFirstName(applicant.getFirstName());
+            updatedApplicant.setLastName(applicant.getLastName());
+            updatedApplicant.setEmailId(applicant.getEmailId());
+            updatedApplicant.setCity(applicant.getCity());
+            updatedApplicant.setState(applicant.getState());
+            updatedApplicant.setCountry(applicant.getCountry());
+            updatedApplicant.setPincode(applicant.getPincode());
+            updatedApplicant.setSkills(applicant.getSkills());
+            updatedApplicant.setExperience(applicant.getExperience());
+            updatedApplicant.setEducation(applicant.getEducation());
+            return applicantRepository.save(updatedApplicant);
+        } else {
+            throw new RuntimeException("Applicant not found with id " + applicant.getApplicantId());
+        }
+    }
+
+    @Override
+    public void deleteApplicant(long id) {
+        if (applicantRepository.existsById(id)) {
+            applicantRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Applicant not found with id " + id);
+        }
+    }
+}

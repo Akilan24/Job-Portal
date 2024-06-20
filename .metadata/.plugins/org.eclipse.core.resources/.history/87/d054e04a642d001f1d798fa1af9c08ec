@@ -1,0 +1,49 @@
+package com.userservice.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.userservice.model.User;
+import com.userservice.service.UserService;
+
+@RestController
+@RequestMapping("/users")
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/add")
+    public ResponseEntity<User> addUser(@RequestBody User user) {
+        User addedUser = userService.addUser(user);
+        return new ResponseEntity<>(addedUser, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/getall")
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> allUsers = userService.getAllUsers();
+        return new ResponseEntity<>(allUsers, HttpStatus.OK);
+    }
+
+    @GetMapping("/get/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable long id) {
+        User user = userService.getUserById(id);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
+        User updatedUser = userService.updateUser(user);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable long id) {
+        userService.deleteUser(id);
+        return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
+    }
+}

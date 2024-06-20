@@ -1,0 +1,5 @@
+package com.jobservice.model;
+
+public class Job {
+
+}

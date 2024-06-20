@@ -1,0 +1,5 @@
+package com.jobapplicationservice.controller;
+
+public class JobApplicationController {
+
+}

@@ -1,0 +1,106 @@
+package com.jobservice.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.jobservice.controller.JobCategoryProxy;
+import com.jobservice.exception.JobCategoryNotFoundException;
+import com.jobservice.exception.JobNotFoundException;
+import com.jobservice.model.Job;
+import com.jobservice.model.JobCategory;
+import com.jobservice.repository.JobRepository;
+
+@Service
+public class JobServiceImpl implements JobService {
+	
+	@Autowired
+	private JobRepository repo;
+	
+	@Autowired
+	private JobCategoryProxy jcproxy;
+
+	@Override
+	public List<Job> getAllJob() throws JobNotFoundException {
+		List<Job> findAll = repo.findAll();
+		if(findAll.isEmpty()) {
+			throw new JobNotFoundException("Job not found");
+		}
+		return findAll;
+	}
+
+	@Override
+	public String deleteJob(long jobId) throws JobNotFoundException {
+		if(repo.existsById(jobId)) {
+			repo.deleteById(jobId);
+			return "Job deleted with id :"+jobId;
+		}
+		throw new JobNotFoundException("Job not found");
+	}
+
+	@Override
+	public Job updateJob(Job job) throws JobCategoryNotFoundException {
+		Optional<Job> existing = repo.findById(job.getJobId());
+		if(existing.isPresent()) {
+			Job newJob = existing.get();
+			newJob.setJobTitle(job.getJobTitle());
+			newJob.setJobDescription(job.getJobDescription());
+			newJob.setCompany(job.getCompany());
+			newJob.setSalary(job.getSalary());
+			newJob.setExperience(job.getExperience());
+			newJob.setJobType(job.getJobType());
+			ResponseEntity<List<JobCategory>> byJobCategory = jcproxy.getByJobCategory(job.getJobCategory());
+			if(byJobCategory.getBody().isEmpty()) {
+				throw new JobCategoryNotFoundException("Job category not found");
+			}
+			newJob.setJobCategory(job.getJobCategory());
+			newJob.setCity(job.getCity());
+			newJob.setState(job.getState());
+			newJob.setCountry(job.getCountry());
+			newJob.setPincode(job.getPincode());
+			newJob.setPostedDate(job.getPostedDate());
+			newJob.setLogo(job.getLogo());
+		}
+		return null;
+	}
+
+	@Override
+	public List<Job> getByJobCategory(String jobCategory) throws JobNotFoundException {
+		List<Job> byJobCategory = repo.findbyJobCategory(jobCategory);
+		if(byJobCategory.isEmpty()) {
+			throw new JobNotFoundException("Job not found for the job category :"+jobCategory);
+		}
+		return byJobCategory;
+	}
+
+	@Override
+	public List<Job> getByJobType(String jobType) throws JobNotFoundException {
+		List<Job> byJobType = repo.findbyJobType(jobType);
+		if(byJobType.isEmpty()) {
+			throw new JobNotFoundException("Job not found for the job type :"+jobType);
+		}
+		return byJobType;
+	}
+
+	@Override
+	public List<Job> getBySalary(double salary) {
+		List<Job> bySalary = repo.findBySalary(salary);
+		if(bySalary.isEmpty()) {
+			throw new JobNotFoundException("Job not found for the salary :"+salary);
+		}
+		return bySalary;
+	}
+
+	@Override
+	public Job addJob(Job job) throws JobCategoryNotFoundException {
+		ResponseEntity<List<JobCategory>> byJobCategory = jcproxy.getByJobCategory(job.getJobCategory());
+		if(byJobCategory.getBody().isEmpty()) {
+			throw new JobCategoryNotFoundException("Job category not found");
+		}
+		return repo.save(job);
+	}
+
+}

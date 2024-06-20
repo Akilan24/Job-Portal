@@ -1,0 +1,20 @@
+package com.jobapplicationservice.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.jobapplicationservice.model.JobApplication;
+
+@Service
+public interface JobApplicationService {
+	
+	JobApplication addApplication(JobApplication application);
+	
+	JobApplication updateApplication(JobApplication appliaction);
+	
+	List<JobApplication> getAllApplications();
+	
+	String deleteApplication(long applicationId);
+
+}

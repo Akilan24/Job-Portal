@@ -1,0 +1,58 @@
+package com.authservice.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.authservice.entity.Recruiter;
+import com.authservice.exception.RecruiterNotFoundException;
+import com.authservice.proxyentity.user.RecruiterProxyController;
+
+@RestController
+@RequestMapping("/user/recruiters")
+public class RecruiterController {
+
+	@Autowired
+	private RecruiterProxyController recruiterService;
+
+	@PostMapping("/add")
+	public ResponseEntity<Recruiter> addRecruiter(@RequestBody Recruiter recruiter) {
+		Recruiter addedRecruiter = recruiterService.addRecruiter(recruiter);
+		return new ResponseEntity<>(addedRecruiter, HttpStatus.CREATED);
+	}
+
+	@GetMapping("/getall")
+	public ResponseEntity<List<Recruiter>> getAllRecruiters() throws RecruiterNotFoundException {
+		List<Recruiter> allRecruiters = recruiterService.getAllRecruiters();
+		return new ResponseEntity<>(allRecruiters, HttpStatus.OK);
+	}
+
+	@GetMapping("/get/{id}")
+	public ResponseEntity<Recruiter> getRecruiterById(@PathVariable long id) throws RecruiterNotFoundException {
+		Recruiter recruiter = recruiterService.getRecruiterById(id);
+		return new ResponseEntity<>(recruiter, HttpStatus.OK);
+	}
+
+	@PutMapping("/update")
+	public ResponseEntity<Recruiter> updateRecruiter(@RequestBody Recruiter recruiter)
+			throws RecruiterNotFoundException {
+		Recruiter updatedRecruiter = recruiterService.updateRecruiter(recruiter);
+		return new ResponseEntity<>(updatedRecruiter, HttpStatus.OK);
+	}
+
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<String> deleteRecruiter(@PathVariable long id) throws RecruiterNotFoundException {
+		String deleteRecruiter = recruiterService.deleteRecruiter(id);
+		return new ResponseEntity<>(deleteRecruiter, HttpStatus.OK);
+	}
+}

@@ -1,0 +1,58 @@
+package com.jobservice.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.jobservice.exception.JobApplicationNotFoundException;
+import com.jobservice.model.JobApplication;
+import com.jobservice.service.JobApplicationService;
+
+@RestController
+@RequestMapping("/applications")
+public class JobApplicationController {
+
+    @Autowired
+    private JobApplicationService service;
+
+    @PostMapping("/add")
+    public ResponseEntity<JobApplication> addJobApplication(@RequestBody JobApplication jobApplication) {
+        JobApplication addedJobApplication = service.addJobApplication(jobApplication);
+        return new ResponseEntity<>(addedJobApplication, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/getall")
+    public ResponseEntity<List<JobApplication>> getAllJobApplications() throws JobApplicationNotFoundException {
+        List<JobApplication> allJobApplications = service.getAllJobApplications();
+        return new ResponseEntity<>(allJobApplications, HttpStatus.OK);
+    }
+
+    @GetMapping("/get/{id}")
+    public ResponseEntity<Optional<JobApplication>> getJobApplicationById(@PathVariable long id) throws JobApplicationNotFoundException {
+        Optional<JobApplication> jobApplication = service.getJobApplicationById(id);
+        return new ResponseEntity<>(jobApplication, HttpStatus.OK);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<JobApplication> updateJobApplication(@RequestBody JobApplication jobApplication) throws JobApplicationNotFoundException {
+        JobApplication updatedJobApplication = service.updateJobApplication(jobApplication);
+        return new ResponseEntity<>(updatedJobApplication, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteJobApplication(@PathVariable long id) throws JobApplicationNotFoundException {
+        String result = service.deleteJobApplication(id);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+}

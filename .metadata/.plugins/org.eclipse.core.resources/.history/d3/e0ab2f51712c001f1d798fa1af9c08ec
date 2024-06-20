@@ -1,0 +1,5 @@
+package com.jobapplicationservice.service;
+
+public class JobApplicationServiceImpl {
+
+}

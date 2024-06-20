@@ -1,0 +1,18 @@
+package com.jobapplicationservice.model;
+
+import java.util.Date;
+
+public class JobApplication {
+	
+	private long applicationId;
+	
+	private long jobId;
+	
+	private int userId;
+	
+	private String status;
+	
+	private Date appliedDate;
+	
+
+}

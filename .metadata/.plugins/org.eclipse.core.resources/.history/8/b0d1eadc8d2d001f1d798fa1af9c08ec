@@ -1,0 +1,13 @@
+package com.userservice.service;
+
+import java.util.List;
+
+import com.userservice.model.Recruiter;
+
+public interface RecruiterService {
+    Recruiter addRecruiter(Recruiter recruiter);
+    List<Recruiter> getAllRecruiters();
+    Recruiter getRecruiterById(long id);
+    Recruiter updateRecruiter(Recruiter recruiter);
+    void deleteRecruiter(long id);
+}

@@ -1,0 +1,36 @@
+package com.jobservice.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.jobservice.exception.JobCategoryNotFoundException;
+import com.jobservice.exception.JobNotFoundException;
+import com.jobservice.model.Job;
+
+@Service
+public interface JobService {
+	
+	Job addJob(Job job) throws JobCategoryNotFoundException;
+	
+	List<Job> getAllJob() throws JobNotFoundException;
+	
+	String deleteJob(int jobId);
+	
+	Job updateJob(Job job);
+	
+	List<Job> getByJobCategory(String jobCategory);
+	
+	List<Job> getByJobType(String jobType);
+	
+	List<Job> getBySalary(double salary);
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

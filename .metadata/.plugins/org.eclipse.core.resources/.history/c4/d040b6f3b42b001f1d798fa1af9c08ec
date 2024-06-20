@@ -1,0 +1,6 @@
+package com.jobcategoryservice.exception;
+
+public class JobCategoryNotFoundException {
+	
+}
+

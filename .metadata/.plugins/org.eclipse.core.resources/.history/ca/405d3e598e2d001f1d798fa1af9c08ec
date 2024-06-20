@@ -1,0 +1,13 @@
+package com.userservice.service;
+
+import java.util.List;
+
+import com.userservice.model.Applicant;
+
+public interface ApplicantService {
+    Applicant addApplicant(Applicant applicant);
+    List<Applicant> getAllApplicants();
+    Applicant getApplicantById(long id);
+    Applicant updateApplicant(Applicant applicant);
+    void deleteApplicant(long id);
+}
