@@ -18,7 +18,7 @@ import com.authservice.exception.JobNotFoundException;
 
 import jakarta.validation.Valid;
 
-@FeignClient(name = "JOB-SERVICE", url = "http://localhost:8082/jobs")
+@FeignClient(name = "JOB-SERVICE", url = "http://localhost:8082/Job")
 public interface JobProxyController {
 
 	@PostMapping(ApplicationConstant.ADD_APPLICATION)
