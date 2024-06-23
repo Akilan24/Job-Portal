@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Login.css";
+import "./ForgotPassword.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 function ForgotPassword() {
@@ -27,19 +27,41 @@ function ForgotPassword() {
   }
   return (
     <div className="forgotclass">
-      <img id="logo" src="./jplogo.png" />
-      <h2>Forgot Password</h2>
-      <form className="formclass" onSubmit={onsubmit}>
+      <div className="container">
+        <img id="logo" src="./jplogo.png" />
         <div>
-          <label htmlFor="email">Enter your mail id: </label>
+          <button id="signin" onClick={(e) => navigate("/")}>
+            Sign in
+          </button>
+          <button id="joinnow" onClick={(e) => navigate("/register")}>
+            Join now
+          </button>
+        </div>
+      </div>
+
+      <form className="formclass" onSubmit={onsubmit}>
+        <div id="contain">
+          <h2>Forgot password</h2>
           <input
             type="text"
             name="email"
             value={formData}
             id="email"
+            placeholder="Email"
             onChange={onchangeinput}
           />
-          <button type="submit">Send</button>
+          <p>
+            We’ll send a verification code to this email if it matches an
+            existing Career Flow account.
+          </p>
+        </div>
+        <div className="buttons">
+          <button id="send" type="submit">
+            Send
+          </button>
+          <button id="back" onClick={(e) => navigate(-1)}>
+            Back
+          </button>
         </div>
       </form>
     </div>

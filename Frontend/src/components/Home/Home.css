@@ -1,9 +1,4 @@
 body {
-  background-image: url(./bg.jpg);
-  background-position: bottom;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   margin: 0;
   font-size: 25px;
   font-weight: bold;

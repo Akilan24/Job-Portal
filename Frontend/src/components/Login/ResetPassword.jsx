@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./Login.css";
+import "./ResetPassword.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 function ResetPassword() {
   const [formData, setFormData] = useState({
-    userid: "",
+    username: "",
     resetpassword: "",
     newpassword: "",
   });
@@ -19,7 +19,7 @@ function ResetPassword() {
 
     try {
       const login = {
-        userid: formData.userid,
+        username: formData.username,
         password: formData.resetpassword,
       };
       const token = await axios.post(
@@ -42,7 +42,7 @@ function ResetPassword() {
       };
       const response = await axios.post(
         "http://localhost:8080/JP/User/updatepassword/" +
-          formData.userid +
+          formData.username +
           "/" +
           formData.newpassword,
         config
@@ -60,21 +60,32 @@ function ResetPassword() {
 
   return (
     <div className="resetclass">
-      <img id="logo" src="./cslogo.png" />
-      <h2>Reset Password</h2>
-      <form className="formclass" onSubmit={onreset}>
+      <div className="container">
+        <img id="logo" src="./jplogo.png" />
         <div>
-          <label htmlFor="userid">Userid: </label>
+          <button id="signin" onClick={(e) => navigate("/")}>
+            Sign in
+          </button>
+          <button id="joinnow" onClick={(e) => navigate("/register")}>
+            Join now
+          </button>
+        </div>
+      </div>
+
+      <form className="formclass" onSubmit={onreset}>
+        <h2>Reset Password</h2>
+        <div>
+          <label htmlFor="username">Username </label>
           <input
             type="text"
-            name="userid"
-            value={formData.userid}
-            id="userid"
+            name="username"
+            value={formData.username}
+            id="username"
             onChange={onchangeinput}
           />
         </div>
         <div>
-          <label htmlFor="resetpassword">Reset Password: </label>
+          <label htmlFor="resetpassword">Reset Password </label>
           <input
             type="resetpassword"
             name="resetpassword"
@@ -84,7 +95,7 @@ function ResetPassword() {
           />
         </div>
         <div>
-          <label htmlFor="newpassword">New Password: </label>
+          <label htmlFor="newpassword">New Password</label>
           <input
             type="newpassword"
             name="newpassword"
@@ -93,9 +104,8 @@ function ResetPassword() {
             onChange={onchangeinput}
           />
         </div>
-        <div>
-          <button type="submit">Reset</button>
-        </div>
+
+        <button type="submit">Reset</button>
       </form>
     </div>
   );

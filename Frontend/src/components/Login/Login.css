@@ -1,6 +1,4 @@
-.loginclass,
-.forgotclass,
-.resetclass {
+.loginclass {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,39 +6,42 @@
   text-align: center;
   font-family: "Times New Roman", Times, serif;
 }
-
-.loginclass .formclass,
-.forgotclass .formclass {
+.loginclass .formclass {
   border: 1px;
   border-radius: 25px;
-  margin: 10px;
-  height: 420px;
+  height: 600px;
   width: 450px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: start;
   margin: 0 auto;
 }
-.loginclass input,
-.forgotclass input {
-  padding: 8px;
+
+.loginclass label {
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+.loginclass input {
   border: 1px solid hsl(0, 0%, 0%);
   border-radius: 4px;
   width: 400px;
-  max-width: 100%;
+  height: 50px;
   font-family: "Times New Roman", Times, serif;
   font-size: 25px;
   font-style: normal;
   background-color: white;
 }
-.loginclass label,
-.forgotclass label {
-  color: rgb(145, 51, 186);
-  font-size: 30px;
+.loginclass .formclass div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 15px;
 }
-.loginclass button,
-.forgotclass button {
+.loginclass #container button {
   border: 2px;
   border-radius: 25px;
   font-size: 20px;
@@ -51,39 +52,61 @@
   height: 40px;
   font-size: 25px;
 }
+.loginclass {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: self-start;
+  margin-top: 40px;
+}
+
+.loginclass #home {
+  width: 700px;
+  height: 630px;
+}
 .loginclass #a {
   color: rgb(61, 80, 226);
   text-decoration: underline;
 }
-.forgotclass #email {
-  margin: 20px;
+.loginclass #container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  width: 50%;
+  margin-left: 50px;
 }
-.forgotclass .formclass {
-  height: 200px;
-}
-.loginclass h2,
-.forgotclass h2,
-.resetclass h2 {
-  color: rgb(10, 141, 45);
+
+.loginclass p {
+  color: rgb(156, 25, 25);
   font-size: 50px;
-  font-style: italic;
+  font-weight: lighter;
+  font-family: sans-serif;
+  text-align: start;
+}
+
+.loginclass #logo {
+  width: 250px;
+  margin-bottom: 0px;
+}
+
+.loginclass .formclass #tag {
+  margin-top: 15px;
+}
+.loginclass #img {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.loginclass #img button {
+  text-align: center;
+  background-color: white;
+  border: 1px solid rgb(61, 80, 226);
+  border-radius: 25px;
   font-family: "Times New Roman", Times, serif;
-}
-.forgotclass h2 {
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-.loginclass h2 {
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-.resetclass h2 {
-  margin-bottom: 0px;
-}
-.loginclass #logo,
-.forgotclass #logo,
-.resetclass #logo {
-  padding: 25px;
-  width: 450px;
-  margin-bottom: 0px;
+  color: rgb(61, 80, 226);
+  width: 150px;
+  height: 50px;
+  font-size: 25px;
+  margin-right: 50px;
 }

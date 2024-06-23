@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 function Login() {
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ function Login() {
 
     try {
       const login = {
-        username: formData.username,
+        email: formData.email,
         password: formData.password,
       };
       const token = await axios.post(
@@ -27,7 +27,7 @@ function Login() {
       );
       localStorage.setItem(`accesstoken`, token.data.accessToken);
       localStorage.setItem(`refreshtoken`, token.data.refreshToken);
-      localStorage.setItem(`username`, formData.username);
+      localStorage.setItem(`email`, formData.email);
       console.log(token);
       console.log(token.data.accessToken + ` ` + token.data.refreshToken);
       if (token.status == 200) navigate("/job");
@@ -38,43 +38,47 @@ function Login() {
 
   return (
     <div className="loginclass">
-      <img id="logo" src="./jplogo.png" />
-      <form className="formclass" onSubmit={onlogin}>
-        <h2>Login</h2>
-        <div>
-          <label htmlFor="username">Username: </label>
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            id="username"
-            onChange={onchangeinput}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            id="password"
-            onChange={onchangeinput}
-          />
-        </div>
-        <div>
-          <button id="log" type="submit">
-            Login
-          </button>
-        </div>
-        <div>
-          <Link id="a" to="/forgotpassword">
-            Forgot Password?
-          </Link>
-          <Link id="a" to="/register">
-            Register
-          </Link>
-        </div>
-      </form>
+      <div id="container">
+        <form className="formclass" onSubmit={onlogin}>
+          <img id="logo" src="./jplogo.png" />
+          <p>Welcome to your professional community</p>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              name="email"
+              value={formData.email}
+              id="email"
+              onChange={onchangeinput}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password </label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              id="password"
+              onChange={onchangeinput}
+            />
+            <div id="tag">
+              <Link id="a" to="/forgotpassword">
+                Forgot Password?
+              </Link>
+            </div>
+          </div>
+
+          <div>
+            <button id="log" type="submit">
+              Sign in
+            </button>
+          </div>
+        </form>
+      </div>
+      <div id="img">
+        <button onClick={(e) => navigate("/register")}>Join now</button>
+        <img id="home" src="./home.jpg" />
+      </div>
     </div>
   );
 }
