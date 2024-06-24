@@ -1,5 +1,0 @@
-package com.jobcategoryservice.repository;
-
-public interface JobCategoryRepository {
-
-}

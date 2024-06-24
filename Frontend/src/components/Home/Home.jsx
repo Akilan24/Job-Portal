@@ -1,7 +1,9 @@
 import React from "react";
 import "./Home.css";
 import { Route, Routes } from "react-router-dom";
-import Register from "../Register/Register.jsx";
+import Applicant from "../Register/Applicant.jsx";
+import Recruiter from "../Register/Recruiter.jsx";
+import Search from "../Search/Search.jsx";
 import ForgotPassword from "../Login/ForgotPassword.jsx";
 import ResetPassword from "../Login/ResetPassword.jsx";
 import Login from "../Login/Login.jsx";
@@ -13,10 +15,12 @@ function Home() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/applicant" element={<Applicant />} />
+          <Route path="/recruiter" element={<Recruiter />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
       </div>
     </>

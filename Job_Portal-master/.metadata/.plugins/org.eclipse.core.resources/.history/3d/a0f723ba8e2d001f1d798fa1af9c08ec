@@ -1,8 +1,0 @@
-package com.userservice.exception;
-
-public class Snippet {
-	public static void main(String[] args) {
-		deleteApplicant
-	}
-}
-

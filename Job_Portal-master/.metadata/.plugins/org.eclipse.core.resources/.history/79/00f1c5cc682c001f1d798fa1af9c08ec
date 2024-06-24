@@ -1,5 +1,0 @@
-package com.jobservice.exception;
-
-public class JobNotFoundException extends Exception {
-
-}

@@ -76,7 +76,7 @@ function Login() {
         </form>
       </div>
       <div id="img">
-        <button onClick={(e) => navigate("/register")}>Join now</button>
+        <button onClick={(e) => navigate("/applicant")}>Join now</button>
         <img id="home" src="./home.jpg" />
       </div>
     </div>

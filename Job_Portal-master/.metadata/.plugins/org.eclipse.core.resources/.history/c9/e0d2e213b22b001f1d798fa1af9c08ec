@@ -1,5 +1,0 @@
-package com.employeeservice.repository;
-
-public class EmployerRepository {
-
-}
