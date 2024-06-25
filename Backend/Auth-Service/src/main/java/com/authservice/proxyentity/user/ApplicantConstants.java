@@ -23,8 +23,7 @@ public class ApplicantConstants {
     public static final String USERNAME_PATTERN = "Username should be alphanumeric and 6 characters long";
     public static final String PASSWORD_PATTERN = "Password must contain at least one digit, one lowercase and uppercase letter, one special character, and be at least 8 characters long";
     public static final String ROLE_PATTERN = "Please provide a valid role";
-    public static final String FIRST_NAME_REQUIRED = "Please provide the first name";
-    public static final String LAST_NAME_REQUIRED = "Please provide the last name";
+    public static final String NAME_REQUIRED = "Please provide the applicant name";
     public static final String EMAIL_VALID = "Please provide a valid email address";
     public static final String CITY_REQUIRED = "Please provide the city";
     public static final String STATE_REQUIRED = "Please provide the state";

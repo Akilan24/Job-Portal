@@ -8,8 +8,7 @@ function Applicant() {
   const [formData, setFormData] = useState({
     password: "",
     role: "applicant",
-    firstName: "",
-    lastName: "",
+    name: "",
     emailId: "",
     mobile: "",
     city: "",
@@ -17,6 +16,7 @@ function Applicant() {
     country: "",
     pincode: "",
     workStatus: "",
+    headline: "",
   });
 
   function onchangeinput(e) {
@@ -79,28 +79,28 @@ function Applicant() {
           <h2 id="register">Create your Career Flow profile</h2>
           <p>Search & apply to jobs from India's No.1 Job Site</p>
           <div className="form-group">
-            <label htmlFor="firstName">
-              First Name<span style={{ color: "red" }}>*</span>
+            <label htmlFor="name">
+              Name<span style={{ color: "red" }}>*</span>
             </label>
             <input
               type="text"
-              id="firstName"
-              name="firstName"
-              value={formData.firstName}
-              placeholder="First name"
+              id="name"
+              name="name"
+              value={formData.name}
+              placeholder="Applicant name"
               onChange={onchangeinput}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="lastName">
-              Last Name<span style={{ color: "red" }}>*</span>
+            <label htmlFor="headline">
+              Headline<span style={{ color: "red" }}>*</span>
             </label>
             <input
               type="text"
-              id="lastName"
-              name="lastName"
-              value={formData.lastName}
-              placeholder="Last name"
+              id="headline"
+              name="headline"
+              value={formData.headline}
+              placeholder="headline"
               onChange={onchangeinput}
             />
           </div>

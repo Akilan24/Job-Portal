@@ -41,8 +41,7 @@ public class ApplicantServiceImpl implements ApplicantService {
         Optional<Applicant> existingApplicant = applicantRepository.findById(applicant.getEmailId());
         if (existingApplicant.isPresent()) {
             Applicant updatedApplicant = existingApplicant.get();
-            updatedApplicant.setFirstName(applicant.getFirstName());
-            updatedApplicant.setLastName(applicant.getLastName());
+            updatedApplicant.setName(applicant.getName());
             updatedApplicant.setCity(applicant.getCity());
             updatedApplicant.setState(applicant.getState());
             updatedApplicant.setCountry(applicant.getCountry());
@@ -50,6 +49,7 @@ public class ApplicantServiceImpl implements ApplicantService {
             updatedApplicant.setSkills(applicant.getSkills());
             updatedApplicant.setExperience(applicant.getExperience());
             updatedApplicant.setEducation(applicant.getEducation());
+            updatedApplicant.setHeadline(applicant.getHeadline());   
             return applicantRepository.save(updatedApplicant);
         } else {
             throw new ApplicantNotFoundException("Applicant not found with id " + applicant.getEmailId());

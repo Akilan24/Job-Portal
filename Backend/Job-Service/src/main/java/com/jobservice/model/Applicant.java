@@ -38,11 +38,8 @@ public class Applicant {
     @Pattern(regexp = "^(applicant|recruiter|admin)$", message = ApplicantConstants.ROLE_PATTERN)
     private String role;
 
-    @NotBlank(message = ApplicantConstants.FIRST_NAME_REQUIRED)
-    private String firstName;
-
-    @NotBlank(message = ApplicantConstants.LAST_NAME_REQUIRED)
-    private String lastName;
+    @NotBlank(message = ApplicantConstants.NAME_REQUIRED)
+    private String name;
 
     @Email(message = ApplicantConstants.EMAIL_VALID)
     private String emailId;
@@ -59,6 +56,8 @@ public class Applicant {
     @NotBlank(message = ApplicantConstants.PINCODE_REQUIRED)
     private String pincode;
 
+    private String heaadline;
+    
     private Set<String> Skills;
 
     @OneToMany(cascade = CascadeType.ALL)
