@@ -18,7 +18,7 @@ function Login() {
 
     try {
       const login = {
-        email: formData.email,
+        emailId: formData.email,
         password: formData.password,
       };
       const token = await axios.post(
@@ -30,7 +30,7 @@ function Login() {
       localStorage.setItem(`email`, formData.email);
       console.log(token);
       console.log(token.data.accessToken + ` ` + token.data.refreshToken);
-      if (token.status == 200) navigate("/job");
+      if (token.status == 200) navigate("search");
     } catch (error) {
       console.log(error.response.data.message);
     }

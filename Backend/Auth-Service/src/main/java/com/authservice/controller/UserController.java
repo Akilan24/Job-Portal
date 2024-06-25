@@ -61,7 +61,7 @@ public class UserController {
 		return userProxy.getAllApplicants();
 	}
 
-	@PreAuthorize("hasAuthority('recruiter')")
+	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@GetMapping(ApplicantConstants.GET_BY_ID)
 	public ResponseEntity<Applicant> getApplicantById(@PathVariable String emailId) throws ApplicantNotFoundException {
 		return userProxy.getApplicantByEmailId(emailId);

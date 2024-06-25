@@ -22,8 +22,7 @@ function Search() {
   });
   const [isExpanded, setIsExpanded] = useState(false);
 
-  async function handleAllPost(e) {
-    e.preventDefault();
+  async function handleAllPost() {
     try {
       setDisplay("post");
       const response = await axios.get(
@@ -37,8 +36,7 @@ function Search() {
     }
   }
 
-  async function handleAllJob(e) {
-    e.preventDefault();
+  async function handleAllJob() {
     try {
       setDisplay("job");
       const response = await axios.get(
@@ -52,13 +50,12 @@ function Search() {
     }
   }
 
-  async function handleAllAppliedJob(e) {
-    e.preventDefault();
+  async function handleAllAppliedJob() {
     try {
       setDisplay("status");
       const response = await axios.get(
         "http://localhost:8080/JP/Job/getallAppliedJob",
-        localStorage.getItem("username"),
+        localStorage.getItem("email"),
         config
       );
       setAppliedJobs(response.data);
@@ -87,8 +84,7 @@ function Search() {
     handleProfileDetails();
   }, []);
 
-  async function handlePost(e) {
-    e.preventDefault();
+  async function handlePost() {
     try {
       const response = await axios.post(
         "http://localhost:8080/JP/User/addPost",
@@ -100,28 +96,21 @@ function Search() {
       console.log(response.data);
     } catch (error) {
       console.log(error.response.data.message);
-      setTimeout(() => {
-        navigate("/register");
-      }, 1000);
     }
   }
-  async function handleProfileDetails(e) {
-    e.preventDefault();
+  async function handleProfileDetails() {
     try {
       const response = await axios.get(
-        `http://localhost:8080/JP/User/getApplicantbyId/${localStorage.getItem(
-          "username"
+        `http://localhost:8080/JP/User/getApplicant/${localStorage.getItem(
+          "email"
         )}`,
         config
       );
       setIsExpanded(false);
-      setPostDetails({ ...postDetails, post: "" });
+      setApplicant(response.data);
       console.log(response.data);
     } catch (error) {
       console.log(error.response.data.message);
-      setTimeout(() => {
-        navigate("/register");
-      }, 1000);
     }
   }
   const handleChange = (e) => {
@@ -295,7 +284,7 @@ function Search() {
             <div className="profileDetails">
               {applicant && (
                 <div className="profile">
-                  <img src={applicant.photo} alt="Company logo" />
+                  <img src="./bg.jpg" />
                   <div>
                     <p>{applicant.name}</p>
                     <p>{applicant.headline}</p>
