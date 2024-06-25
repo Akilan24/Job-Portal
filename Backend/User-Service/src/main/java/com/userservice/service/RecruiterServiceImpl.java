@@ -42,8 +42,6 @@ public class RecruiterServiceImpl implements RecruiterService {
 		Optional<Recruiter> existingRecruiter = recruiterRepository.findById(recruiter.getEmailId());
 		if (existingRecruiter.isPresent()) {
 			Recruiter updatedRecruiter = existingRecruiter.get();
-			updatedRecruiter.setFirstName(recruiter.getFirstName());
-			updatedRecruiter.setLastName(recruiter.getLastName());
 			updatedRecruiter.setCompany(recruiter.getCompany());
 			updatedRecruiter.setCity(recruiter.getCity());
 			updatedRecruiter.setState(recruiter.getState());

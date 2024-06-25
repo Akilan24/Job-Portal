@@ -27,13 +27,7 @@ public class Recruiter {
     @Pattern(regexp = "^(recruiter)$", message = RecruiterConstants.ROLE_PATTERN)
     private String role;
 
-    @NotBlank(message = RecruiterConstants.FIRST_NAME_REQUIRED)
-    private String firstName;
-
-    @NotBlank(message = RecruiterConstants.LAST_NAME_REQUIRED)
-    private String lastName;    
-
-    @NotBlank(message = RecruiterConstants.COMPANY_NAME_REQUIRED)
+     @NotBlank(message = RecruiterConstants.COMPANY_NAME_REQUIRED)
     private String company;
 
     @NotBlank(message = RecruiterConstants.CITY_REQUIRED)

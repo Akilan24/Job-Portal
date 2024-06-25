@@ -84,19 +84,7 @@ function Search() {
   }
 
   useEffect(() => {
-    async function fetchApplicantDetails() {
-      try {
-        const response = await axios.get(
-          "http://localhost:8080/JP/User/getapplicantbyid",
-          config
-        );
-        setApplicant(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.log(error.response.data.message);
-      }
-    }
-    fetchApplicantDetails();
+    handleProfileDetails();
   }, []);
 
   async function handlePost(e) {
@@ -117,7 +105,25 @@ function Search() {
       }, 1000);
     }
   }
-
+  async function handleProfileDetails(e) {
+    e.preventDefault();
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/JP/User/getApplicantbyId/${localStorage.getItem(
+          "username"
+        )}`,
+        config
+      );
+      setIsExpanded(false);
+      setPostDetails({ ...postDetails, post: "" });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.response.data.message);
+      setTimeout(() => {
+        navigate("/register");
+      }, 1000);
+    }
+  }
   const handleChange = (e) => {
     const { name, value } = e.target;
     setPostDetails({ ...postDetails, [name]: value });
@@ -165,7 +171,7 @@ function Search() {
             <img id="icon" src="./notification.png" alt="Status" />
             <p>Status</p>
           </div>
-          <div>
+          <div onClick={(e) => setDisplay("profile")}>
             <img id="icon" src="./profile.png" alt="Profile" />
             <p>Profile</p>
           </div>
@@ -282,6 +288,44 @@ function Search() {
                 ))
               ) : (
                 <p>No jobs status are available</p>
+              )}
+            </div>
+          )}
+          {display == "profile" && (
+            <div className="profileDetails">
+              {applicant && (
+                <div className="profile">
+                  <img src={applicant.photo} alt="Company logo" />
+                  <div>
+                    <p>{applicant.name}</p>
+                    <p>{applicant.headline}</p>
+                    <p>{applicant.emailId}</p>
+                    <p>{applicant.workStatus}</p>
+                    {applicant.experience > 0 && (
+                      <div className="experience">
+                        {applicant.experience.map((exp, index) => (
+                          <div key={index}>
+                            <p>{exp.company}</p>
+                            <p>{exp.position}</p>
+                            <p>{exp.startDate}</p>
+                            <p>{exp.endDate}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    {applicant.education > 0 && (
+                      <div className="experience">
+                        {applicant.education.map((edu, index) => (
+                          <div key={index}>
+                            <p>{edu.degree}</p>
+                            <p>{edu.startDate}</p>
+                            <p>{edu.endDate}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
               )}
             </div>
           )}

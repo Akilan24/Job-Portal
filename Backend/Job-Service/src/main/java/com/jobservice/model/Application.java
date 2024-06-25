@@ -29,6 +29,8 @@ public class Application {
 	@Email(message=ApplicationConstant.EMAIL_VALID)
 	private String applicantEmailId;
 
+	private String company;
+	
 	@Pattern(regexp = "^(Shortlisted|Rejected|Closed|In progress|Submitted)$", message = ApplicationConstant.VALID_STATUS_MESSAGE)
 	private String status;
 
