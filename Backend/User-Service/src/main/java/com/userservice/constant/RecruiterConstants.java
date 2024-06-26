@@ -10,9 +10,9 @@ public class RecruiterConstants {
     // Endpoints
     public static final String ADD = "/addRecruiter";
     public static final String GET_ALL = "/getallRecruiter";
-    public static final String GET_BY_ID = "/getRecruiter/{id}";
+    public static final String GET_BY_ID = "/getRecruiter/{emailId}";
     public static final String UPDATE = "/updateRecruiter";
-    public static final String DELETE = "/deleteRecruiter/{id}";
+    public static final String DELETE = "/deleteRecruiter/{emailId}";
 
     // HTTP Statuses
     public static final HttpStatus HTTP_STATUS_CREATED = HttpStatus.CREATED;

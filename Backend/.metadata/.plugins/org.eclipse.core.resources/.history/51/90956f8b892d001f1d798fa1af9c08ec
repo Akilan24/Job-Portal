@@ -1,0 +1,25 @@
+package com.jobservice.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.jobservice.exception.JobApplicationNotFoundException;
+import com.jobservice.model.JobApplication;
+
+@Service
+public interface JobApplicationService {
+
+
+	JobApplication addJobApplication(JobApplication jobApplication);
+
+	List<JobApplication> getAllJobApplications() throws JobApplicationNotFoundException;
+
+	JobApplication updateJobApplication(JobApplication jobApplication) throws JobApplicationNotFoundException;
+
+	String deleteJobApplication(long applicationId) throws JobApplicationNotFoundException;
+
+	Optional<JobApplication> getJobApplicationById(long applicationId) throws JobApplicationNotFoundException;
+
+}

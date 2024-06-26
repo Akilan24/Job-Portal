@@ -1,0 +1,21 @@
+package com.userservice.model;
+
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
+
+public class Registration {
+
+	@Id
+	@Pattern(regexp = "^(?=.*\\d)[a-zA-Z0-9]{6}$", message = "Username should be alphanumeric and 6 characters long")
+	private String username;
+	@Pattern(regexp = "^[a-zA-Z]{3,30}$", message = "Please provide a Name")
+	private String name;
+	@Email(message = "Please provide a valid email address")
+	private String email;
+	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$", message = "Password must contain at least one digit, one lowercase and uppercase letter, one special character, and be at least 8 characters long")
+	private String password;
+	@Pattern(regexp = "^(employer|employee|admin)$", message = "Please provide a valid role")
+	private String roles;
+	
+}

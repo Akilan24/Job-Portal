@@ -1,0 +1,60 @@
+package com.jobservice.exception;
+
+import java.time.LocalDate;
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import com.productcustomer.constants.ProductConstant;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+
+	@ExceptionHandler(ProductNotFoundException.class)
+	public ResponseEntity<ErrorResponse> handleException(ProductNotFoundException ex, WebRequest request) {
+
+		ErrorResponse err = new ErrorResponse(LocalDate.now(), ex.getMessage(), request.getDescription(false),
+				"Bad Request");
+		return new ResponseEntity<>(err, ProductConstant.BAD_REQUEST);
+
+	}
+
+	@ExceptionHandler(CustomerNameAlreadyExistsException.class)
+	public ResponseEntity<ErrorResponse> handleException(CustomerNameAlreadyExistsException ex, WebRequest request) {
+
+		ErrorResponse err = new ErrorResponse(LocalDate.now(), ex.getMessage(), request.getDescription(false),
+				"Bad Request");
+		return new ResponseEntity<>(err, ProductConstant.BAD_REQUEST);
+
+	}
+
+	@ExceptionHandler(CustomerNotFoundException.class)
+	public ResponseEntity<ErrorResponse> handleException(CustomerNotFoundException ex, WebRequest request) {
+
+		ErrorResponse err = new ErrorResponse(LocalDate.now(), ex.getMessage(), request.getDescription(false),
+				"Bad Request");
+		return new ResponseEntity<>(err, ProductConstant.BAD_REQUEST);
+
+	}
+
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+
+			HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+		StringBuilder details = new StringBuilder();
+		for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+			details.append(error.getDefaultMessage()).append(".");
+		}
+		ErrorResponse response = new ErrorResponse(LocalDate.now(), details.toString(), request.getDescription(false),
+				"Bad Request");
+		return new ResponseEntity<Object>(response, ProductConstant.BAD_REQUEST);
+	}
+
+
+}

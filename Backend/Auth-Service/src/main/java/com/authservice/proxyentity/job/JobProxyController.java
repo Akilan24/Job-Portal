@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.authservice.exception.ApplicantNotFoundException;
 import com.authservice.exception.ApplicationNotFoundException;
 import com.authservice.exception.JobNotFoundException;
+import com.authservice.exception.PostNotFoundException;
 
 import jakarta.validation.Valid;
 
@@ -28,9 +29,9 @@ public interface JobProxyController {
 	@GetMapping(ApplicationConstant.GET_ALL_APPLICATIONS)
 	public ResponseEntity<List<Application>> getAllJobApplications() throws ApplicationNotFoundException;
 
-	  @GetMapping(ApplicationConstant.GET_APPLICATION_BY_ID)
-	    public ResponseEntity<Optional<Application>> getJobApplicationById(@PathVariable long id)
-	            throws ApplicationNotFoundException;
+	@GetMapping(ApplicationConstant.GET_APPLICATION_BY_ID)
+	public ResponseEntity<Optional<Application>> getJobApplicationById(@PathVariable long id)
+			throws ApplicationNotFoundException;
 
 	@PutMapping(ApplicationConstant.UPDATE_APPLICATION)
 	public ResponseEntity<Application> updateJobApplication(@RequestBody @Valid Application application)
@@ -59,4 +60,19 @@ public interface JobProxyController {
 
 	@DeleteMapping(JobConstant.DELETE_JOB)
 	public ResponseEntity<String> deleteJob(@PathVariable long jobId) throws JobNotFoundException;
+
+	@PostMapping(PostConstants.ADD_POST)
+	public ResponseEntity<Post> addPost(@RequestBody @Valid Post post);
+
+	@GetMapping(PostConstants.GET_ALL_POSTS)
+	public ResponseEntity<List<Post>> getAllPosts() throws PostNotFoundException;
+
+	@GetMapping(PostConstants.GET_POST_BY_ID)
+	public ResponseEntity<Optional<Post>> getPostById(@PathVariable int id) throws PostNotFoundException;
+
+	@PutMapping(PostConstants.UPDATE_POST)
+	public ResponseEntity<Post> updatePost(@RequestBody @Valid Post post) throws PostNotFoundException;
+
+	@DeleteMapping(PostConstants.DELETE_POST)
+	public ResponseEntity<String> deletePost(@PathVariable int id) throws PostNotFoundException;
 }

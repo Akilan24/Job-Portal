@@ -1,7 +1,6 @@
 package com.authservice.proxyentity.user;
 
 import java.util.List;
-import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -50,9 +49,9 @@ public class Applicant {
 	@NotBlank(message = ApplicantConstants.PINCODE_REQUIRED)
 	private String pincode;
 
-	private String heaadline;
+	private String headline;
 	
-	private Set<String> Skills;
+	private String skills;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "emailId", referencedColumnName = "emailId")
@@ -62,6 +61,6 @@ public class Applicant {
 	@JoinColumn(name = "emailId", referencedColumnName = "emailId")
 	private List<Education> education;
 
-	@Pattern(regexp = "^(I'm experienced | I'm a fresher)$", message = ApplicantConstants.STATUS_PATTERN)
+	@Pattern(regexp = "^(experienced|fresher)$", message = ApplicantConstants.STATUS_PATTERN)
 	private String workStatus;
 }

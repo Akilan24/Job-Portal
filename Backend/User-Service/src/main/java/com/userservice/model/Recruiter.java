@@ -42,5 +42,5 @@ public class Recruiter {
     @NotBlank(message = RecruiterConstants.PINCODE_REQUIRED)
     private String pincode;
 
-    private File logo;
+
 }

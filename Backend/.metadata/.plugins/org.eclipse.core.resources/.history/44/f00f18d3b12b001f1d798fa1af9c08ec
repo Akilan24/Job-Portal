@@ -1,0 +1,5 @@
+package com.employerservice.model;
+
+public class Employer {
+
+}

@@ -1,0 +1,5 @@
+package com.jobcategoryservice.exception;
+
+public class JobCategoryIdAlreadyExistsException extends Exception {
+
+}

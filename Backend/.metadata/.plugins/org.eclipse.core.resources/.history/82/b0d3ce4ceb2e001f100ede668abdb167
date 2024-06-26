@@ -1,0 +1,33 @@
+package com.authservice.proxyentity.user;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.authservice.entity.Applicant;
+import com.authservice.exception.ApplicantNotFoundException;
+
+@FeignClient(name = "User-Service", url = "http://localhost:8086/user/applicants")
+public interface ApplicantProxyController {
+
+
+	@GetMapping("/getall")
+	public ResponseEntity<List<Applicant>> getAllApplicants() throws ApplicantNotFoundException ;
+
+	@GetMapping("/get/{id}")
+	public ResponseEntity<Applicant> getApplicantById(@PathVariable long id) throws ApplicantNotFoundException;
+
+	@PutMapping("/update")
+	public ResponseEntity<Applicant> updateApplicant(@RequestBody Applicant applicant)
+			throws ApplicantNotFoundException ;
+
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<String> deleteApplicant(@PathVariable long id) throws ApplicantNotFoundException ;
+}

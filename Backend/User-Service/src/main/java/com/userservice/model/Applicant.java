@@ -54,7 +54,7 @@ public class Applicant {
 
 	private String headline;
 	
-	private Set<String> Skills;
+	private String skills;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "emailId", referencedColumnName = "emailId")
@@ -64,6 +64,6 @@ public class Applicant {
 	@JoinColumn(name = "emailId", referencedColumnName = "emailId")
 	private List<Education> education;
 	
-	@Pattern(regexp="^(I'm experienced | I'm a fresher)$",message = ApplicantConstants.STATUS_PATTERN)
+	@Pattern(regexp="^(experienced|fresher)$",message = ApplicantConstants.STATUS_PATTERN)
 	private String workStatus;
 }

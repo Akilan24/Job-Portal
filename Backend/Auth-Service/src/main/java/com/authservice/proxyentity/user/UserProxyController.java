@@ -31,7 +31,7 @@ public interface UserProxyController {
 			throws ApplicantNotFoundException;
 
 	@DeleteMapping(ApplicantConstants.DELETE)
-	public ResponseEntity<String> deleteApplicant(@PathVariable long id) throws ApplicantNotFoundException;
+	public ResponseEntity<String> deleteApplicant(@PathVariable String emailId) throws ApplicantNotFoundException;
 	
 	@PostMapping(RecruiterConstants.ADD)
 	public ResponseEntity<Recruiter> addRecruiter(@RequestBody Recruiter recruiter);
@@ -47,6 +47,6 @@ public interface UserProxyController {
 			throws RecruiterNotFoundException;
 
 	@DeleteMapping(RecruiterConstants.DELETE)
-	public ResponseEntity<String> deleteRecruiter(@PathVariable long id) throws RecruiterNotFoundException;
+	public ResponseEntity<String> deleteRecruiter(@PathVariable String emailId) throws RecruiterNotFoundException;
 
 }

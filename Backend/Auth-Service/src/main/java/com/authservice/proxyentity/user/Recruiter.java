@@ -1,7 +1,5 @@
 package com.authservice.proxyentity.user;
 
-import java.io.File;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
@@ -41,5 +39,5 @@ public class Recruiter {
     @NotBlank(message = RecruiterConstants.PINCODE_REQUIRED)
     private String pincode;
 
-    private File logo;
+   
 }

@@ -12,7 +12,7 @@ public class ApplicantConstants {
     public static final String GET_ALL = "/getallApplicant";
     public static final String GET_BY_ID = "/getApplicant/{emailId}";
     public static final String UPDATE = "/updateApplicant";
-    public static final String DELETE = "/deleteApplicant/{id}";
+    public static final String DELETE = "/deleteApplicant/{emailId}";
 
     // HTTP Statuses
     public static final HttpStatus HTTP_STATUS_CREATED = HttpStatus.CREATED;

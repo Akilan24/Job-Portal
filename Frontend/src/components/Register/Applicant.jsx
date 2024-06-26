@@ -6,48 +6,47 @@ import { useNavigate } from "react-router-dom";
 function Applicant() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
+    emailId: "",
     password: "",
     role: "applicant",
     name: "",
-    emailId: "",
-    mobile: "",
+    mobileNo: "",
     city: "",
     state: "",
     country: "",
     pincode: "",
-    workStatus: "",
     headline: "",
+    skills: "",
+    workStatus: "",
+    experience: [],
+    education: [],
   });
 
   function onchangeinput(e) {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
+
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const skillsSet = new Set(
-        formData.Skills.split(",").map((skill) => skill.trim())
-      );
       const response = await axios.post(
-        "http://localhost:8080/JP/Auth/register",
+        "http://localhost:8080/JP/Auth/addApplicant",
         formData
       );
+      console.log(response);
       window.alert("User registered successfully");
       navigate("/login");
     } catch (error) {
       window.alert("Error registering user");
       console.error("Error registering user:", error);
-      setTimeout(() => {
-        navigate("/register");
-      }, 1000);
     }
   }
 
   return (
     <div className="register">
       <div className="container">
-        <img id="logo" src="./jplogo.png" />
+        <img id="logo" src="./jplogo.png" alt="JP Logo" />
         <p>
           Already Registered?&nbsp;
           <a id="signin" onClick={(e) => navigate("/")}>
@@ -58,7 +57,7 @@ function Applicant() {
       </div>
       <div className="section">
         <div className="leftpane">
-          <img id="reg" src="./register.png" />
+          <img id="reg" src="./register.png" alt="Register" />
           <p>On registering, you can</p>
           <div>
             <div>
@@ -131,14 +130,14 @@ function Applicant() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="mobile">
+            <label htmlFor="mobileNo">
               Mobile Number<span style={{ color: "red" }}>*</span>
             </label>
             <input
               type="tel"
-              id="mobile"
-              name="mobile"
-              value={formData.mobile}
+              id="mobileNo"
+              name="mobileNo"
+              value={formData.mobileNo}
               placeholder="Enter your mobile number"
               onChange={onchangeinput}
             />
@@ -188,27 +187,38 @@ function Applicant() {
             />
           </div>
           <div className="form-group">
+            <label htmlFor="skills">Skills(',' separated)</label>
+            <input
+              type="text"
+              id="skills"
+              name="skills"
+              value={formData.skills}
+              placeholder="eg: java,spring boot"
+              onChange={onchangeinput}
+            />
+          </div>
+          <div className="form-group">
             <label htmlFor="workStatus">Work Status</label>
             <div>
               <div>
                 <input
                   type="radio"
-                  id="workStatus"
+                  id="experienced"
                   name="workStatus"
                   value="experienced"
                   onChange={onchangeinput}
                 />
-                <label>I'm experienced</label>
+                <label htmlFor="experienced">I'm experienced</label>
               </div>
               <div>
                 <input
                   type="radio"
-                  id="workStatus"
+                  id="fresher"
                   name="workStatus"
                   value="fresher"
                   onChange={onchangeinput}
                 />
-                <label>I'm a fresher</label>
+                <label htmlFor="fresher">I'm a fresher</label>
               </div>
             </div>
           </div>

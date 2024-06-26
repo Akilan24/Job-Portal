@@ -1,0 +1,55 @@
+package com.jobcategoryservice.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.jobcategoryservice.exception.JobCategoryNotFoundException;
+import com.jobcategoryservice.model.JobCategory;
+import com.jobcategoryservice.repository.JobCategoryRepository;
+
+@Service
+public class JobCategoryServiceImpl implements JobCategoryService {
+
+	@Autowired
+	private JobCategoryRepository repo;
+
+	@Override
+	public JobCategory addJobCategory(JobCategory job) {
+		return repo.save(job);
+	}
+
+	@Override
+	public List<JobCategory> getAllJobCategory() throws JobCategoryNotFoundException {
+		List<JobCategory> findAll = repo.findAll();
+		if (findAll.isEmpty()) {
+			throw new JobCategoryNotFoundException("Job Category not found");
+		}
+		return findAll;
+	}
+
+	@Override
+	public JobCategory updateJobCategory(JobCategory job) throws JobCategoryNotFoundException {
+		Optional<JobCategory> existingJob = repo.findById(job.getJobId());
+		if (existingJob.isPresent()) {
+			JobCategory newJobCategory = existingJob.get();
+			newJobCategory.setJobTitle(job.getJobTitle());
+			newJobCategory.setJobDescription(job.getJobDescription());
+			return repo.save(newJobCategory);
+		} else {
+			throw new JobCategoryNotFoundException("Job Category not found with the id :" + job.getJobId());
+		}
+	}
+
+	@Override
+	public String deleteJobCategory(int jobId) throws JobCategoryNotFoundException {
+		if (repo.existsById(jobId)) {
+			repo.deleteById(jobId);
+			return "JobCategory deleted with id :" + jobId;
+		}
+		throw new JobCategoryNotFoundException("Job Category not found with the id :" + jobId);
+	}
+
+}

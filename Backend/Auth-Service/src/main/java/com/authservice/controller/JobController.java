@@ -18,11 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.authservice.exception.ApplicantNotFoundException;
 import com.authservice.exception.ApplicationNotFoundException;
 import com.authservice.exception.JobNotFoundException;
+import com.authservice.exception.PostNotFoundException;
 import com.authservice.proxyentity.job.Application;
 import com.authservice.proxyentity.job.ApplicationConstant;
 import com.authservice.proxyentity.job.Job;
 import com.authservice.proxyentity.job.JobConstant;
 import com.authservice.proxyentity.job.JobProxyController;
+import com.authservice.proxyentity.job.Post;
+import com.authservice.proxyentity.job.PostConstants;
 
 import jakarta.validation.Valid;
 
@@ -40,13 +43,13 @@ public class JobController {
 		return jobProxy.addJobApplication(application);
 	}
 
-	@PreAuthorize("hasAuthority('recruiter')")
+	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@GetMapping(ApplicationConstant.GET_ALL_APPLICATIONS)
 	public ResponseEntity<List<Application>> getAllJobApplications() throws ApplicationNotFoundException {
 		return jobProxy.getAllJobApplications();
 	}
 
-	@PreAuthorize("hasAuthority('recruiter')")
+	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@GetMapping(ApplicationConstant.GET_APPLICATION_BY_ID)
 	public ResponseEntity<Optional<Application>> getJobApplicationById(@PathVariable long id)
 			throws ApplicationNotFoundException {
@@ -72,25 +75,25 @@ public class JobController {
 		return jobProxy.addJob(job);
 	}
 
-	@PreAuthorize("hasAuthority('applicant')")
+	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@GetMapping(JobConstant.GET_ALL_JOBS)
 	public ResponseEntity<List<Job>> getAllJobs() throws JobNotFoundException {
 		return jobProxy.getAllJobs();
 	}
 
-	@PreAuthorize("hasAuthority('applicant')")
+	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@GetMapping(JobConstant.GET_JOBS_BY_CATEGORY)
 	public ResponseEntity<List<Job>> getJobsByCategory(@PathVariable String category) throws JobNotFoundException {
 		return jobProxy.getJobsByCategory(category);
 	}
 
-	@PreAuthorize("hasAuthority('applicant')")
+	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@GetMapping(JobConstant.GET_JOBS_BY_TYPE)
 	public ResponseEntity<List<Job>> getJobsByType(@PathVariable String type) throws JobNotFoundException {
 		return jobProxy.getJobsByType(type);
 	}
 
-	@PreAuthorize("hasAuthority('applicant')")
+	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@GetMapping(JobConstant.GET_JOBS_BY_SALARY)
 	public ResponseEntity<List<Job>> getJobsBySalary(@PathVariable double salary) throws JobNotFoundException {
 		return jobProxy.getJobsBySalary(salary);
@@ -106,5 +109,35 @@ public class JobController {
 	@DeleteMapping(JobConstant.DELETE_JOB)
 	public ResponseEntity<String> deleteJob(@PathVariable long jobId) throws JobNotFoundException {
 		return jobProxy.deleteJob(jobId);
+	}
+
+	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
+	@PostMapping(PostConstants.ADD_POST)
+	public ResponseEntity<Post> addPost(@RequestBody @Valid Post post) {
+		return jobProxy.addPost(post);
+	}
+	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
+	@GetMapping(PostConstants.GET_ALL_POSTS)
+	public ResponseEntity<List<Post>> getAllPosts() throws PostNotFoundException {
+		return jobProxy.getAllPosts();
+
+	}
+	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
+	@GetMapping(PostConstants.GET_POST_BY_ID)
+	public ResponseEntity<Optional<Post>> getPostById(@PathVariable int id) throws PostNotFoundException {
+		return jobProxy.getPostById(id);
+
+	}
+	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
+	@PutMapping(PostConstants.UPDATE_POST)
+	public ResponseEntity<Post> updatePost(@RequestBody @Valid Post post) throws PostNotFoundException {
+		return jobProxy.updatePost(post);
+
+	}
+	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
+	@DeleteMapping(PostConstants.DELETE_POST)
+	public ResponseEntity<String> deletePost(@PathVariable int id) throws PostNotFoundException {
+		return jobProxy.deletePost(id);
+
 	}
 }

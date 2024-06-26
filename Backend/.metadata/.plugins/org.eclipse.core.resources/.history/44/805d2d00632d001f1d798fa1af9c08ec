@@ -1,0 +1,43 @@
+package com.userservice.model;
+
+import java.io.File;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@NoArgsConstructor
+public class Recruiter {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	private long userId;
+	
+	@NotBlank(message = "Please provide the first name")
+	private String firstName;
+	@NotBlank(message = "Please provide the last name")
+	private String lastName;
+	@Email(message = "Please provide a valid email address")
+	private String emailId;
+	@NotBlank(message = "Please provide the company name")
+	private String company;
+	@NotBlank(message = "Please provide the city")
+	private String city;
+	@NotBlank(message = "Please provide the state")
+	private String state;
+	@NotBlank(message = "Please provide the country")
+	private String country;
+	@NotBlank(message = "Please provide the pincode")
+	private File logo;
+	
+	
+	
+}

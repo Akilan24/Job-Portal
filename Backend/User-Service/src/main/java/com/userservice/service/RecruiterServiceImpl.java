@@ -47,7 +47,7 @@ public class RecruiterServiceImpl implements RecruiterService {
 			updatedRecruiter.setState(recruiter.getState());
 			updatedRecruiter.setCountry(recruiter.getCountry());
 			updatedRecruiter.setPincode(recruiter.getPincode());
-			updatedRecruiter.setLogo(recruiter.getLogo());
+
 			return recruiterRepository.save(updatedRecruiter);
 		} else {
 			throw new RecruiterNotFoundException("Recruiter not found with id " + recruiter.getEmailId());
