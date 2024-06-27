@@ -275,3 +275,7 @@
   margin-bottom: 15px;
   text-align: start;
 }
+.searchClass .jobDetails .container {
+  display: flex;
+  flex-direction: column;
+}

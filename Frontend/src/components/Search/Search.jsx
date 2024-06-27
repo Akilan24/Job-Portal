@@ -286,6 +286,10 @@ function Search() {
             <img id="icon" src="./profile.png" alt="Profile" />
             <p>Profile</p>
           </div>
+          <div onClick={(e) => setDisplay("profile")}>
+            <img id="icon" src="./profile.png" alt="Profile" />
+            <p>Profile</p>
+          </div>
         </div>
       </div>
       <div className="details">
@@ -328,7 +332,7 @@ function Search() {
           )}
           {display == "job" && (
             <div className="jobDetails">
-              <div>
+              <div className="container">
                 {jobs.length > 0 ? (
                   jobs.map((job) => (
                     <div
