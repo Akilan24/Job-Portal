@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Search.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Search() {
+  const { value } = useParams();
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [jobs, setJobs] = useState([]);
@@ -284,10 +285,12 @@ function Search() {
             <img id="icon" src="./profile.png" alt="Profile" />
             <p>Profile</p>
           </div>
-          <div>
-            <img id="icon" src="./business.png" alt="Business" />
-            <p>Business</p>
-          </div>
+          {value == "recruiter" && (
+            <div>
+              <img id="icon" src="./business.png" alt="Business" />
+              <p>Business</p>
+            </div>
+          )}
         </div>
       </div>
       <div className="details">

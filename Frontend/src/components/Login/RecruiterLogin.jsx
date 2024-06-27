@@ -30,7 +30,7 @@ function Login() {
       localStorage.setItem(`email`, formData.email);
       console.log(token);
       console.log(token.data.accessToken + ` ` + token.data.refreshToken);
-      navigate("/search");
+      navigate("/search/recruiter");
     } catch (error) {
       console.log(error.response.data.message);
     }

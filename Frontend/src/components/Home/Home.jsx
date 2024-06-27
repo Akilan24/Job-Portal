@@ -23,6 +23,7 @@ function Home() {
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/search/:value" element={<Search />} />
         </Routes>
       </div>
     </>
