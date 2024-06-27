@@ -18,7 +18,7 @@ function Search() {
   };
   const [postDetails, setPostDetails] = useState({
     emailId: localStorage.getItem("accesstoken"),
-    post: "",
+    description: "",
   });
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -87,12 +87,12 @@ function Search() {
   async function handlePost() {
     try {
       const response = await axios.post(
-        "http://localhost:8080/JP/User/addPost",
+        "http://localhost:8080/JP/User/addpost",
         postDetails,
         config
       );
       setIsExpanded(false);
-      setPostDetails({ ...postDetails, post: "" });
+      setPostDetails({ ...postDetails, description: "" });
       console.log(response.data);
     } catch (error) {
       console.log(error.response.data.message);
@@ -124,7 +124,7 @@ function Search() {
 
   const closeTextarea = () => {
     setIsExpanded(false);
-    setPostDetails({ ...postDetails, post: "" });
+    setPostDetails({ ...postDetails, description: "" });
   };
 
   const handleApplyJob = async (jobId) => {
@@ -139,6 +139,128 @@ function Search() {
       console.log(error.response.data.message);
     }
   };
+  const [traveller, setTraveller] = useState({
+    name: "",
+    age: "",
+    gender: "",
+    mobile: "",
+    address: "",
+  });
+  const [education, setEducation] = useState([]);
+  const [update, setUpdate] = useState(0);
+
+  function handleEducationChange(e) {
+    const { name, value } = e.target;
+    setEducation({ ...education, [name]: value });
+  }
+
+  useEffect(() => {
+    fetchEducation();
+  }, []);
+
+  async function fetchEducation() {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/CS/User/getallEducation/${localStorage.getItem(
+          "email"
+        )}`,
+        config
+      );
+      setEducation(response.data);
+      console.log(response);
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `http://localhost:8080/CS/User/addEducation/${localStorage.getItem(
+          "email"
+        )}`,
+        education,
+        config
+      );
+      setEducation({
+        degree: "",
+        startDate: "",
+        endDate: "",
+      });
+      setEducation([...education, response.data]);
+      console.log(response.data);
+      toggleEducationForm();
+      fetchEducation();
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  }
+
+  async function getEducation(e) {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/CS/User/getEducation/${localStorage.getItem(
+          "username"
+        )}/${e.target.value}`,
+        config
+      );
+      setEducation(response.data);
+      setUpdate(1);
+      toggleEducationForm();
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  }
+
+  async function updateEducation(e) {
+    e.preventDefault();
+    try {
+      const response = await axios.put(
+        `http://localhost:8080/CS/User/updateEducation/${localStorage.getItem(
+          "email"
+        )}`,
+        education,
+        config
+      );
+      fetchEducation();
+      setEducation({
+        degree: "",
+        startDate: "",
+        endDate: "",
+      });
+      setUpdate(0);
+      toggleEducationForm();
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  }
+
+  async function deleteEducation(e) {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8080/CS/User/deleteEducation/${localStorage.getItem(
+          "email"
+        )}/${e.target.value}`,
+        config
+      );
+      fetchEducation();
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  }
+
+  function toggleEducationForm() {
+    const element = document.getElementById("tc");
+    if (element.style.display === "none") {
+      element.style.display = "flex";
+    } else {
+      element.style.display = "none";
+    }
+  }
 
   return (
     <div className="searchClass">
@@ -167,12 +289,6 @@ function Search() {
         </div>
       </div>
       <div className="details">
-        <div className="applicantDetails">
-          <p>
-            {applicant.firstname}&nbsp;{applicant.lastname}
-          </p>
-          <p>{applicant.headline}</p>
-        </div>
         <div className="contain">
           {display == "post" && (
             <div className="postContainer">
@@ -200,7 +316,7 @@ function Search() {
                 {posts.length > 0 ? (
                   posts.map((post, index) => (
                     <div key={index} className="post">
-                      <p>{post.username}</p>
+                      <p>{post.emailId}</p>
                       <p>{post.description}</p>
                     </div>
                   ))
@@ -284,35 +400,123 @@ function Search() {
             <div className="profileDetails">
               {applicant && (
                 <div className="profile">
-                  <img src="./bg.jpg" />
-                  <div>
-                    <p>{applicant.name}</p>
-                    <p>{applicant.headline}</p>
-                    <p>{applicant.emailId}</p>
-                    <p>{applicant.workStatus}</p>
-                    {applicant.experience > 0 && (
-                      <div className="experience">
-                        {applicant.experience.map((exp, index) => (
-                          <div key={index}>
-                            <p>{exp.company}</p>
-                            <p>{exp.position}</p>
-                            <p>{exp.startDate}</p>
-                            <p>{exp.endDate}</p>
+                  <p>{applicant.name}</p>
+                  <p>{applicant.headline}</p>
+                  <p>{applicant.emailId}</p>
+                  <p>{applicant.workStatus}</p>
+                  {applicant.experience > 0 && (
+                    <div className="experience">
+                      {applicant.experience.map((exp, index) => (
+                        <div key={index}>
+                          <p>{exp.company}</p>
+                          <p>{exp.position}</p>
+                          <p>{exp.startDate}</p>
+                          <p>{exp.endDate}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="stc">
+                    <div className="savedEducationclass">
+                      <div id="stdiv">
+                        {education.map((item, index) => (
+                          <div id="st" key={index} className="education-item">
+                            <div className="input">
+                              <p>
+                                <strong>Degree:</strong> {item.degree}
+                              </p>
+                              <p>
+                                <strong>Start Date:</strong> {item.startDate}
+                              </p>
+                              <p>
+                                <strong>End Date:</strong> {item.endDate}
+                              </p>
+                            </div>
+                            <div className="button">
+                              <button
+                                id="s"
+                                value={item.degree}
+                                onClick={(e) => getEducation(e)}
+                              >
+                                Edit
+                              </button>
+                              <button
+                                id="c"
+                                value={item.degree}
+                                onClick={(e) => deleteEducation(e)}
+                              >
+                                Delete
+                              </button>
+                            </div>
                           </div>
                         ))}
+                        <div>
+                          <button id="c" onClick={() => navigate(-1)}>
+                            Cancel
+                          </button>
+                          <button id="s" onClick={toggleEducationForm}>
+                            Add
+                          </button>
+                        </div>
                       </div>
-                    )}
-                    {applicant.education > 0 && (
-                      <div className="experience">
-                        {applicant.education.map((edu, index) => (
-                          <div key={index}>
-                            <p>{edu.degree}</p>
-                            <p>{edu.startDate}</p>
-                            <p>{edu.endDate}</p>
-                          </div>
-                        ))}
+                    </div>
+                    <form
+                      id="tc"
+                      className="educationclass"
+                      onSubmit={update > 0 ? updateEducation : handleSubmit}
+                      style={{ display: "none" }}
+                    >
+                      <div>
+                        <h2>{update > 0 ? "Update" : "Add"} Education</h2>
                       </div>
-                    )}
+                      <div>
+                        <label htmlFor="name">Degree</label>
+                        <input
+                          type="text"
+                          name="name"
+                          id="name"
+                          value={education.name}
+                          onChange={handleEducationChange}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="startDate">Start Date</label>
+                        <input
+                          type="date"
+                          name="startDate"
+                          id="startDate"
+                          value={education.startDate}
+                          onChange={handleEducationChange}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="endStart">End Date</label>
+                        <input
+                          type="date"
+                          name="endDate"
+                          id="endDate"
+                          value={education.endDate}
+                          onChange={handleEducationChange}
+                          required
+                        />
+                      </div>
+
+                      <div id="submit">
+                        <button
+                          id="c"
+                          type="button"
+                          onClick={toggleEdcationForm}
+                        >
+                          Cancel
+                        </button>
+                        <button id="s" type="submit">
+                          Save
+                        </button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               )}

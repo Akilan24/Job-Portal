@@ -1,7 +1,6 @@
 package com.jobservice.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,8 +40,8 @@ public class PostController {
     }
 
     @GetMapping(PostConstants.GET_POST_BY_ID)
-    public ResponseEntity<Optional<Post>> getPostById(@PathVariable int id) throws PostNotFoundException {
-        Optional<Post> post = postService.getPostById(id);
+    public ResponseEntity<Post> getPostById(@PathVariable int id) throws PostNotFoundException {
+        Post post = postService.getPostById(id);
         return new ResponseEntity<>(post,PostConstants.HTTP_STATUS_OK);
     }
 

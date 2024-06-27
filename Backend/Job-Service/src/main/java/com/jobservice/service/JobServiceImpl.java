@@ -76,12 +76,12 @@ public class JobServiceImpl implements JobService {
 	}
 
 	@Override
-	public List<Job> getBySalary(double salary) throws JobNotFoundException {
-		List<Job> bySalary = jobRepo.findBySalary(salary);
-		if (bySalary.isEmpty()) {
-			throw new JobNotFoundException("Job not found for the salary :" + salary);
+	public Job getByJobId(long jobId) throws JobNotFoundException {
+		Optional<Job> byId = jobRepo.findById(jobId);
+		if (byId.isEmpty()) {
+			throw new JobNotFoundException("Job not found for the salary :" + jobId);
 		}
-		return bySalary;
+		return byId.get();
 	}
 
 	@Override

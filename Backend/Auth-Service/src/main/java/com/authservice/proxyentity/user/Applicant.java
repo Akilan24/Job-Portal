@@ -1,6 +1,7 @@
 package com.authservice.proxyentity.user;
 
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -49,7 +50,7 @@ public class Applicant {
 	@NotBlank(message = ApplicantConstants.PINCODE_REQUIRED)
 	private String pincode;
 
-	private String headline;
+	private String heaadline;
 	
 	private String skills;
 

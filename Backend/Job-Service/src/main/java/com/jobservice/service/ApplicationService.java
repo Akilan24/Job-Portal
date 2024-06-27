@@ -20,6 +20,6 @@ public interface ApplicationService {
 
 	String deleteJobApplication(long applicationId) throws ApplicationNotFoundException;
 
-	Optional<Application> getJobApplicationById(long applicationId) throws ApplicationNotFoundException;
+	Application getJobApplicationById(long applicationId) throws ApplicationNotFoundException;
 
 }

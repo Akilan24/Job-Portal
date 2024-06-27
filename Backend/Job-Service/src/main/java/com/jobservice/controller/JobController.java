@@ -1,6 +1,7 @@
 package com.jobservice.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -51,10 +52,10 @@ public class JobController {
         return new ResponseEntity<>(jobsByType, JobConstant.HTTP_STATUS_OK);
     }
 
-    @GetMapping(JobConstant.GET_JOBS_BY_SALARY)
-    public ResponseEntity<List<Job>> getJobsBySalary(@PathVariable double salary) throws JobNotFoundException {
-        List<Job> jobsBySalary = jobService.getBySalary(salary);
-        return new ResponseEntity<>(jobsBySalary, JobConstant.HTTP_STATUS_OK);
+    @GetMapping(JobConstant.GET_JOBS_BY_ID)
+    public ResponseEntity<Job> getJobsById(@PathVariable int jobId) throws JobNotFoundException {
+        Job byJobId = jobService.getByJobId(jobId);
+        return new ResponseEntity<>(byJobId, JobConstant.HTTP_STATUS_OK);
     }
 
     @PutMapping(JobConstant.UPDATE_JOB)

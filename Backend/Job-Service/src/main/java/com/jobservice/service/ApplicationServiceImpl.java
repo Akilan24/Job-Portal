@@ -31,12 +31,12 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Override
-	public Optional<Application> getJobApplicationById(long applicationId) throws ApplicationNotFoundException {
+	public Application getJobApplicationById(long applicationId) throws ApplicationNotFoundException {
 		Optional<Application> application = repo.findById(applicationId);
 		if (!application.isPresent()) {
 			throw new ApplicationNotFoundException("Job application not found with the id :" + applicationId);
 		}
-		return application;
+		return application.get();
 	}
 
 	@Override

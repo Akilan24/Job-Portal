@@ -1,7 +1,5 @@
 package com.userservice.model;
 
-import java.io.File;
-
 import com.userservice.constant.RecruiterConstants;
 
 import jakarta.persistence.Entity;
@@ -17,30 +15,29 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Recruiter {
 
-    @Id
-    @Email(message = RecruiterConstants.EMAIL_VALID)
-    private String emailId;
+	@Id
+	@Email(message = RecruiterConstants.EMAIL_VALID)
+	private String emailId;
 
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$", message = RecruiterConstants.PASSWORD_PATTERN)
-    private String password;
+	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$", message = RecruiterConstants.PASSWORD_PATTERN)
+	private String password;
 
-    @Pattern(regexp = "^(recruiter)$", message = RecruiterConstants.ROLE_PATTERN)
-    private String role;
+	@Pattern(regexp = "^(recruiter)$", message = RecruiterConstants.ROLE_PATTERN)
+	private String role;
 
-     @NotBlank(message = RecruiterConstants.COMPANY_NAME_REQUIRED)
-    private String company;
+	@NotBlank(message = RecruiterConstants.COMPANY_NAME_REQUIRED)
+	private String company;
 
-    @NotBlank(message = RecruiterConstants.CITY_REQUIRED)
-    private String city;
+	@NotBlank(message = RecruiterConstants.CITY_REQUIRED)
+	private String city;
 
-    @NotBlank(message = RecruiterConstants.STATE_REQUIRED)
-    private String state;
+	@NotBlank(message = RecruiterConstants.STATE_REQUIRED)
+	private String state;
 
-    @NotBlank(message = RecruiterConstants.COUNTRY_REQUIRED)
-    private String country;
+	@NotBlank(message = RecruiterConstants.COUNTRY_REQUIRED)
+	private String country;
 
-    @NotBlank(message = RecruiterConstants.PINCODE_REQUIRED)
-    private String pincode;
-
+	@NotBlank(message = RecruiterConstants.PINCODE_REQUIRED)
+	private String pincode;
 
 }

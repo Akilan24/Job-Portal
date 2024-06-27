@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 
 public class ApplicationConstant {
 
-    public static final String APPLICATION = "/job/applications";
+    public static final String APPLICATION = "/job";
     public static final String ADD_APPLICATION = "/add";
     public static final String GET_ALL_APPLICATIONS = "/getall";
     public static final String GET_APPLICATION_BY_ID = "/get/{id}";

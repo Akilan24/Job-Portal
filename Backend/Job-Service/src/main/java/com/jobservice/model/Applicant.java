@@ -58,7 +58,7 @@ public class Applicant {
 
     private String heaadline;
     
-    private Set<String> Skills;
+    private String Skills;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "applicantId", referencedColumnName = "applicantId")

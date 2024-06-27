@@ -1,7 +1,6 @@
 package com.jobservice.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,9 +40,9 @@ public class ApplicationController {
     }
 
     @GetMapping(ApplicationConstant.GET_APPLICATION_BY_ID)
-    public ResponseEntity<Optional<Application>> getJobApplicationById(@PathVariable long id)
+    public ResponseEntity<Application> getJobApplicationById(@PathVariable long id)
             throws ApplicationNotFoundException {
-        Optional<Application> application = service.getJobApplicationById(id);
+        Application application = service.getJobApplicationById(id);
         return new ResponseEntity<>(application, ApplicationConstant.HTTPS_STATUS_OK);
     }
 

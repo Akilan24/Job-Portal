@@ -4,12 +4,12 @@ import org.springframework.http.HttpStatus;
 
 public class ApplicationConstant {
 
-    public static final String APPLICATION = "/job/applications";
+    public static final String APPLICATION = "/job";
     public static final String ADD_APPLICATION = "/add";
     public static final String GET_ALL_APPLICATIONS = "/getall";
-    public static final String GET_APPLICATION_BY_ID = "/get/{emailId}";
+    public static final String GET_APPLICATION_BY_ID = "/get/{id}";
     public static final String UPDATE_APPLICATION = "/update";
-    public static final String DELETE_APPLICATION = "/delete/{emailId}";
+    public static final String DELETE_APPLICATION = "/delete/{id}";
 
     public static final HttpStatus HTTPS_STATUS_CREATED = HttpStatus.CREATED;
     public static final HttpStatus HTTPS_STATUS_OK = HttpStatus.OK;

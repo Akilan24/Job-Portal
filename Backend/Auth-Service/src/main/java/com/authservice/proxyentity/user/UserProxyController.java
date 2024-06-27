@@ -24,7 +24,8 @@ public interface UserProxyController {
 	public ResponseEntity<List<Applicant>> getAllApplicants() throws ApplicantNotFoundException;
 
 	@GetMapping(ApplicantConstants.GET_BY_ID)
-    public ResponseEntity<Applicant> getApplicantByEmailId(@PathVariable String emailId) throws ApplicantNotFoundException;
+	public ResponseEntity<Applicant> getApplicantByEmailId(@PathVariable String emailId)
+			throws ApplicantNotFoundException;
 
 	@PutMapping(ApplicantConstants.UPDATE)
 	public ResponseEntity<Applicant> updateApplicant(@RequestBody Applicant applicant)
@@ -32,15 +33,16 @@ public interface UserProxyController {
 
 	@DeleteMapping(ApplicantConstants.DELETE)
 	public ResponseEntity<String> deleteApplicant(@PathVariable String emailId) throws ApplicantNotFoundException;
-	
+
 	@PostMapping(RecruiterConstants.ADD)
 	public ResponseEntity<Recruiter> addRecruiter(@RequestBody Recruiter recruiter);
 
 	@GetMapping(RecruiterConstants.GET_ALL)
 	public ResponseEntity<List<Recruiter>> getAllRecruiters() throws RecruiterNotFoundException;
 
-    @GetMapping(RecruiterConstants.GET_BY_ID)
-    public ResponseEntity<Recruiter> getRecruiterByEmailId(@PathVariable String emailId) throws RecruiterNotFoundException;
+	@GetMapping(RecruiterConstants.GET_BY_ID)
+	public ResponseEntity<Recruiter> getRecruiterByEmailId(@PathVariable String emailId)
+			throws RecruiterNotFoundException;
 
 	@PutMapping(RecruiterConstants.UPDATE)
 	public ResponseEntity<Recruiter> updateRecruiter(@RequestBody Recruiter recruiter)
@@ -48,5 +50,38 @@ public interface UserProxyController {
 
 	@DeleteMapping(RecruiterConstants.DELETE)
 	public ResponseEntity<String> deleteRecruiter(@PathVariable String emailId) throws RecruiterNotFoundException;
+
+	@GetMapping(ApplicantConstants.GET_EDUCATION_ALL)
+	public ResponseEntity<List<Education>> getAllEducation(@PathVariable String emailId);
+
+	@PostMapping(ApplicantConstants.ADD_EDUCATION)
+	public ResponseEntity<List<Education>> addEducation(@PathVariable String emailId, @RequestBody Education education);
+
+	@GetMapping(ApplicantConstants.GET_EDUCATION)
+	public ResponseEntity<Education> getEducation(@PathVariable String emailId, @PathVariable String degree);
+
+	@PutMapping(ApplicantConstants.UPDATE_EDUCATION)
+	public ResponseEntity<List<Education>> updateEducation(@PathVariable String emailId,
+			@RequestBody Education education);
+
+	@DeleteMapping(ApplicantConstants.DELETE_EDUCATION)
+	public ResponseEntity<String> deleteEducation(@PathVariable String emailId, @PathVariable String degree);
+
+	@GetMapping(ApplicantConstants.GET_WORK_EXPERIENCE_ALL)
+	public ResponseEntity<List<WorkExperience>> getAllWorkExperience(@PathVariable String emailId);
+
+	@PostMapping(ApplicantConstants.ADD_WORK_EXPERIENCE)
+	public ResponseEntity<List<WorkExperience>> addWorkExperience(@PathVariable String emailId,
+			@RequestBody WorkExperience experience);
+
+	@GetMapping(ApplicantConstants.GET_WORK_EXPERIENCE)
+	public ResponseEntity<WorkExperience> getWorkExperience(@PathVariable String emailId, @PathVariable String company);
+
+	@PutMapping(ApplicantConstants.UPDATE_WORK_EXPERIENCE)
+	public ResponseEntity<List<WorkExperience>> updateWorkExperience(@PathVariable String emailId,
+			@RequestBody WorkExperience experience);
+
+	@DeleteMapping(ApplicantConstants.DELETE_WORK_EXPERIENCE)
+	public ResponseEntity<String> deleteWorkExperience(@PathVariable String emailId, @PathVariable String company);
 
 }

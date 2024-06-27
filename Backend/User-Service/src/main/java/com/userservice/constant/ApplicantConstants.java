@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 public class ApplicantConstants {
 
     // Base Paths
-    public static final String APPLICANTS_BASE_PATH = "/user/applicants";
+    public static final String APPLICANTS_BASE_PATH = "/user";
 
     // Endpoints
     public static final String ADD = "/addApplicant";
@@ -30,11 +30,26 @@ public class ApplicantConstants {
     public static final String COUNTRY_REQUIRED = "Please provide the country";
     public static final String PINCODE_REQUIRED = "Please provide the pincode";
     public static final String MOBILE_NO_REQUIRED="Please provide the mobile number";
-    public static final String STATUS_PATTERN = "Please provide a valid ststus";
+    public static final String STATUS_PATTERN = "Please provide a valid status";
     public static final String DEGREE_REQUIRED = "Please provide the degree";
+    
+    // Education endpoints
+    public static final String GET_EDUCATION_ALL = "/getAllEducation/{emailId}";
+    public static final String ADD_EDUCATION = "/addEducation/{emailId}";
+    public static final String GET_EDUCATION = "/getEducation/{emailId}/{degree}";
+    public static final String UPDATE_EDUCATION = "/updateEducation/{emailId}";
+    public static final String DELETE_EDUCATION = "/deleteEducation/{emailId}/{degree}";
+
+    // WorkExperience endpoints
+    public static final String GET_WORK_EXPERIENCE_ALL = "/getAllWorkExperience/{emailId}";
+    public static final String ADD_WORK_EXPERIENCE = "/addWorkExperience/{emailId}";
+    public static final String GET_WORK_EXPERIENCE = "/getWorkExperience/{emailId}/{company}";
+    public static final String UPDATE_WORK_EXPERIENCE = "/updateWorkExperience/{emailId}";
+    public static final String DELETE_WORK_EXPERIENCE = "/deleteWorkExperience/{emailId}/{company}";
     
  // WorkExperience validation messages
     public static final String COMPANY_REQUIRED = "Please provide the company name";
     public static final String POSITION_REQUIRED = "Please provide the position";
 
+    
 }

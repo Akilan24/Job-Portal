@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 public class RecruiterConstants {
 
     // Base Paths
-    public static final String RECRUITERS_BASE_PATH = "/user/recruiters";
+    public static final String RECRUITERS_BASE_PATH = "/user";
 
     // Endpoints
     public static final String ADD = "/addRecruiter";
@@ -32,7 +32,5 @@ public class RecruiterConstants {
     public static final String COUNTRY_REQUIRED = "Please provide the country";
     public static final String PINCODE_REQUIRED = "Please provide the pincode";
 
-    // Field Names
-    public static final String RECRUITER_ID = "recruiterId";
-    public static final String USER_ID = "userId";
+
 }

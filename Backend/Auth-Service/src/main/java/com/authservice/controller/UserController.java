@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +18,11 @@ import com.authservice.exception.ApplicantNotFoundException;
 import com.authservice.exception.RecruiterNotFoundException;
 import com.authservice.proxyentity.user.Applicant;
 import com.authservice.proxyentity.user.ApplicantConstants;
+import com.authservice.proxyentity.user.Education;
 import com.authservice.proxyentity.user.Recruiter;
 import com.authservice.proxyentity.user.RecruiterConstants;
 import com.authservice.proxyentity.user.UserProxyController;
+import com.authservice.proxyentity.user.WorkExperience;
 
 @RestController
 @RequestMapping("/JP/User")
@@ -77,5 +80,59 @@ public class UserController {
 	@DeleteMapping(ApplicantConstants.DELETE)
 	public ResponseEntity<String> deleteApplicant(@PathVariable String emailId) throws ApplicantNotFoundException {
 		return userProxy.deleteApplicant(emailId);
+	}
+	@GetMapping(ApplicantConstants.GET_EDUCATION_ALL)
+	public ResponseEntity<List<Education>> getAllEducation(@PathVariable String emailId) {
+		return userProxy.getAllEducation(emailId);
+		
+	}
+
+	@PostMapping(ApplicantConstants.ADD_EDUCATION)
+	public ResponseEntity<List<Education>> addEducation(@PathVariable String emailId,
+			@RequestBody Education education) {
+		return userProxy.addEducation(emailId, education);
+	}
+
+	@GetMapping(ApplicantConstants.GET_EDUCATION)
+	public ResponseEntity<Education> getEducation(@PathVariable String emailId, @PathVariable String degree) {
+		return userProxy.getEducation(emailId, degree);
+	}
+
+	@PutMapping(ApplicantConstants.UPDATE_EDUCATION)
+	public ResponseEntity<List<Education>> updateEducation(@PathVariable String emailId,
+			@RequestBody Education education) {
+		return userProxy.updateEducation(emailId, education);	}
+
+	@DeleteMapping(ApplicantConstants.DELETE_EDUCATION)
+	public ResponseEntity<String> deleteEducation(@PathVariable String emailId, @PathVariable String degree) {
+		return userProxy.deleteEducation(emailId, degree);
+	}
+
+	@GetMapping(ApplicantConstants.GET_WORK_EXPERIENCE_ALL)
+	public ResponseEntity<List<WorkExperience>> getAllWorkExperience(@PathVariable String emailId) {
+		return userProxy.getAllWorkExperience(emailId);
+	}
+
+	@PostMapping(ApplicantConstants.ADD_WORK_EXPERIENCE)
+	public ResponseEntity<List<WorkExperience>> addWorkExperience(@PathVariable String emailId,
+			@RequestBody WorkExperience experience) {
+		return userProxy.addWorkExperience(emailId, experience);
+	}
+
+	@GetMapping(ApplicantConstants.GET_WORK_EXPERIENCE)
+	public ResponseEntity<WorkExperience> getWorkExperience(@PathVariable String emailId,
+			@PathVariable String company) {
+		return userProxy.getWorkExperience(emailId, company);
+	}
+
+	@PutMapping(ApplicantConstants.UPDATE_WORK_EXPERIENCE)
+	public ResponseEntity<List<WorkExperience>> updateWorkExperience(@PathVariable String emailId,
+			@RequestBody WorkExperience experience) {
+		return userProxy.updateWorkExperience(emailId, experience);
+	}
+
+	@DeleteMapping(ApplicantConstants.DELETE_WORK_EXPERIENCE)
+	public ResponseEntity<String> deleteWorkExperience(@PathVariable String emailId, @PathVariable String company) {
+		return userProxy.deleteWorkExperience(emailId, company);
 	}
 }

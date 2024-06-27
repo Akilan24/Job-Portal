@@ -7,7 +7,7 @@ public class PostConstants {
 	public static final String DESCRIPTION_REQUIRED = "Please provide the description";
 	public static final String EMAIL_VALID = "Please provide a valid email address";
 
-	public static final String POST_BASE_URL = "/posts";
+	public static final String POST_BASE_URL = "/Job";
 	public static final String ADD_POST = "/addpost";
 	public static final String GET_ALL_POSTS = "/getallposts";
 	public static final String GET_POST_BY_ID = "/getpostbyid/{id}";

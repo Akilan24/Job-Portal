@@ -10,7 +10,7 @@ public class JobConstant {
     public static final String GET_ALL_JOBS = "/getallJob";
     public static final String GET_JOBS_BY_CATEGORY = "/getJobbycategory/{category}";
     public static final String GET_JOBS_BY_TYPE = "/getJobbytype/{type}";
-    public static final String GET_JOBS_BY_SALARY = "/getJobbysalary/{salary}";
+    public static final String GET_JOBS_BY_ID = "/getJobbyid/{jobId}";
     public static final String UPDATE_JOB = "/updateJob";
     public static final String DELETE_JOB = "/deleteJob/{jobId}";
 

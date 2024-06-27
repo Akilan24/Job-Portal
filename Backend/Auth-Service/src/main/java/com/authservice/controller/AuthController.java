@@ -28,7 +28,6 @@ public class AuthController {
 
 	@PostMapping("/addApplicant")
 	public ResponseEntity<String> addApplicant(@RequestBody Applicant applicant) {
-		System.out.println("rfdvfvf");
 		return new ResponseEntity<>(userService.saveApplicant(applicant), HttpStatus.OK);
 	}
 

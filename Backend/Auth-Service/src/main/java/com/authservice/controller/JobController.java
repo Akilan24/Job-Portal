@@ -51,7 +51,7 @@ public class JobController {
 
 	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@GetMapping(ApplicationConstant.GET_APPLICATION_BY_ID)
-	public ResponseEntity<Optional<Application>> getJobApplicationById(@PathVariable long id)
+	public ResponseEntity<Application> getJobApplicationById(@PathVariable long id)
 			throws ApplicationNotFoundException {
 		return jobProxy.getJobApplicationById(id);
 	}
@@ -94,9 +94,9 @@ public class JobController {
 	}
 
 	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
-	@GetMapping(JobConstant.GET_JOBS_BY_SALARY)
-	public ResponseEntity<List<Job>> getJobsBySalary(@PathVariable double salary) throws JobNotFoundException {
-		return jobProxy.getJobsBySalary(salary);
+	@GetMapping(JobConstant.GET_JOBS_BY_ID)
+	public ResponseEntity<Job> getJobsById(@PathVariable long jobId) throws JobNotFoundException {
+		return jobProxy.getJobsById(jobId);
 	}
 
 	@PreAuthorize("hasAuthority('recruiter')")
@@ -124,7 +124,7 @@ public class JobController {
 	}
 	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@GetMapping(PostConstants.GET_POST_BY_ID)
-	public ResponseEntity<Optional<Post>> getPostById(@PathVariable int id) throws PostNotFoundException {
+	public ResponseEntity<Post> getPostById(@PathVariable int id) throws PostNotFoundException {
 		return jobProxy.getPostById(id);
 
 	}

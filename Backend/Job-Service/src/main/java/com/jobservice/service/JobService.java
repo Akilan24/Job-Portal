@@ -1,6 +1,7 @@
 package com.jobservice.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public interface JobService {
 	
 	List<Job> getByJobType(String jobType) throws JobNotFoundException;
 	
-	List<Job> getBySalary(double salary) throws JobNotFoundException;
+	Job getByJobId(long jobId) throws JobNotFoundException;
 	
 	
 	

@@ -1,7 +1,6 @@
 package com.authservice.proxyentity.job;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +29,7 @@ public interface JobProxyController {
 	public ResponseEntity<List<Application>> getAllJobApplications() throws ApplicationNotFoundException;
 
 	@GetMapping(ApplicationConstant.GET_APPLICATION_BY_ID)
-	public ResponseEntity<Optional<Application>> getJobApplicationById(@PathVariable long id)
+	public ResponseEntity<Application> getJobApplicationById(@PathVariable long id)
 			throws ApplicationNotFoundException;
 
 	@PutMapping(ApplicationConstant.UPDATE_APPLICATION)
@@ -52,8 +51,8 @@ public interface JobProxyController {
 	@GetMapping(JobConstant.GET_JOBS_BY_TYPE)
 	public ResponseEntity<List<Job>> getJobsByType(@PathVariable String type) throws JobNotFoundException;
 
-	@GetMapping(JobConstant.GET_JOBS_BY_SALARY)
-	public ResponseEntity<List<Job>> getJobsBySalary(@PathVariable double salary) throws JobNotFoundException;
+	@GetMapping(JobConstant.GET_JOBS_BY_ID)
+    public ResponseEntity<Job> getJobsById(@PathVariable long jobId) throws JobNotFoundException ;
 
 	@PutMapping(JobConstant.UPDATE_JOB)
 	public ResponseEntity<Job> updateJob(@RequestBody @Valid Job job) throws JobNotFoundException;
@@ -68,7 +67,7 @@ public interface JobProxyController {
 	public ResponseEntity<List<Post>> getAllPosts() throws PostNotFoundException;
 
 	@GetMapping(PostConstants.GET_POST_BY_ID)
-	public ResponseEntity<Optional<Post>> getPostById(@PathVariable int id) throws PostNotFoundException;
+	public ResponseEntity<Post> getPostById(@PathVariable int id) throws PostNotFoundException;
 
 	@PutMapping(PostConstants.UPDATE_POST)
 	public ResponseEntity<Post> updatePost(@RequestBody @Valid Post post) throws PostNotFoundException;
