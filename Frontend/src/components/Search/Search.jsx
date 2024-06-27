@@ -285,8 +285,8 @@ function Search() {
             <p>Profile</p>
           </div>
           <div>
-            <img id="icon" src="./business.png" alt="Profile" />
-            <p>For Business</p>
+            <img id="icon" src="./business.png" alt="Business" />
+            <p>Business</p>
           </div>
         </div>
       </div>
