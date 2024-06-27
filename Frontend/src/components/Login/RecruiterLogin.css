@@ -1,0 +1,123 @@
+.recruiterLoginClass {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+}
+.recruiterLoginClass .formclass {
+  border: 1px;
+  border-radius: 25px;
+  height: 600px;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+  margin: 0 auto;
+}
+
+.recruiterLoginClass label {
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+.recruiterLoginClass input {
+  border: 1px solid hsl(0, 0%, 0%);
+  border-radius: 4px;
+  width: 400px;
+  height: 50px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 25px;
+  font-style: normal;
+  background-color: white;
+}
+.recruiterLoginClass .formclass .div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 15px;
+}
+.recruiterLoginClass #container button {
+  border: 2px;
+  border-radius: 25px;
+  font-size: 20px;
+  background-color: rgb(61, 80, 226);
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  width: 100px;
+  height: 40px;
+  font-size: 25px;
+}
+.recruiterLoginClass {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: self-start;
+  margin-top: 40px;
+}
+
+.recruiterLoginClass #home {
+  width: 700px;
+  height: 620px;
+}
+.recruiterLoginClass #a {
+  color: rgb(61, 80, 226);
+}
+.recruiterLoginClass #container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  width: 50%;
+  margin-left: 50px;
+}
+
+.recruiterLoginClass p {
+  color: rgb(156, 25, 25);
+  font-size: 50px;
+  font-weight: lighter;
+  font-family: sans-serif;
+  text-align: start;
+}
+
+.recruiterLoginClass #logo {
+  width: 250px;
+  margin-bottom: 0px;
+}
+
+.recruiterLoginClass .formclass #tag {
+  margin-top: 15px;
+}
+.recruiterLoginClass #img {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.recruiterLoginClass #img button {
+  text-align: center;
+  background-color: white;
+  border: 1px solid rgb(61, 80, 226);
+  border-radius: 25px;
+  font-family: "Times New Roman", Times, serif;
+  color: rgb(61, 80, 226);
+  width: 150px;
+  height: 50px;
+  font-size: 25px;
+  margin-right: 50px;
+}
+.recruiterLoginClass .switch {
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0px;
+}
+.recruiterLoginClass .switch p {
+  font-size: 25px;
+  color: grey;
+}

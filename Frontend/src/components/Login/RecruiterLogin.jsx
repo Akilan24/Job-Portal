@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Login.css";
+import "./RecruiterLogin.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 function Login() {
@@ -37,12 +37,12 @@ function Login() {
   }
 
   return (
-    <div className="loginclass">
+    <div className="recruiterLoginClass">
       <div id="container">
         <form className="formclass" onSubmit={onlogin}>
           <img id="logo" src="./jplogo.png" />
           <p>Welcome to your professional community</p>
-          <div>
+          <div className="div">
             <label htmlFor="email">Email</label>
             <input
               type="text"
@@ -52,7 +52,7 @@ function Login() {
               onChange={onchangeinput}
             />
           </div>
-          <div>
+          <div className="div">
             <label htmlFor="password">Password </label>
             <input
               type="password"
@@ -67,11 +67,14 @@ function Login() {
               </Link>
             </div>
           </div>
-
-          <div>
+          <div className="switch">
             <button id="log" type="submit">
               Sign in
             </button>
+            <p>(or)</p>
+            <Link id="a" to="/applicantLogin">
+              Login as Individual
+            </Link>
           </div>
         </form>
       </div>

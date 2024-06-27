@@ -139,12 +139,10 @@ function Search() {
       console.log(error.response.data.message);
     }
   };
-  const [traveller, setTraveller] = useState({
-    name: "",
-    age: "",
-    gender: "",
-    mobile: "",
-    address: "",
+  const [educationPost, setEducationPost] = useState({
+    degree: "",
+    startDate: "",
+    endStart: "",
   });
   const [education, setEducation] = useState([]);
   const [update, setUpdate] = useState(0);
@@ -180,7 +178,7 @@ function Search() {
         `http://localhost:8080/CS/User/addEducation/${localStorage.getItem(
           "email"
         )}`,
-        education,
+        educationPost,
         config
       );
       setEducation({
@@ -221,7 +219,7 @@ function Search() {
         `http://localhost:8080/CS/User/updateEducation/${localStorage.getItem(
           "email"
         )}`,
-        education,
+        educationPost,
         config
       );
       fetchEducation();
@@ -286,9 +284,9 @@ function Search() {
             <img id="icon" src="./profile.png" alt="Profile" />
             <p>Profile</p>
           </div>
-          <div onClick={(e) => setDisplay("profile")}>
-            <img id="icon" src="./profile.png" alt="Profile" />
-            <p>Profile</p>
+          <div>
+            <img id="icon" src="./business.png" alt="Profile" />
+            <p>For Business</p>
           </div>
         </div>
       </div>
@@ -479,7 +477,7 @@ function Search() {
                           type="text"
                           name="name"
                           id="name"
-                          value={education.name}
+                          value={educationPost.name}
                           onChange={handleEducationChange}
                           required
                         />
@@ -490,7 +488,7 @@ function Search() {
                           type="date"
                           name="startDate"
                           id="startDate"
-                          value={education.startDate}
+                          value={educationPost.startDate}
                           onChange={handleEducationChange}
                           required
                         />
@@ -501,7 +499,7 @@ function Search() {
                           type="date"
                           name="endDate"
                           id="endDate"
-                          value={education.endDate}
+                          value={educationPost.endDate}
                           onChange={handleEducationChange}
                           required
                         />

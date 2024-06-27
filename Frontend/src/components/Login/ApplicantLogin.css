@@ -1,4 +1,4 @@
-.loginclass {
+.applicantLoginClass {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,7 +6,7 @@
   text-align: center;
   font-family: "Times New Roman", Times, serif;
 }
-.loginclass .formclass {
+.applicantLoginClass .formclass {
   border: 1px;
   border-radius: 25px;
   height: 600px;
@@ -18,14 +18,14 @@
   margin: 0 auto;
 }
 
-.loginclass label {
+.applicantLoginClass label {
   color: black;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
   margin-bottom: 10px;
   font-weight: normal;
 }
-.loginclass input {
+.applicantLoginClass input {
   border: 1px solid hsl(0, 0%, 0%);
   border-radius: 4px;
   width: 400px;
@@ -35,13 +35,13 @@
   font-style: normal;
   background-color: white;
 }
-.loginclass .formclass div {
+.applicantLoginClass .formclass .div {
   display: flex;
   flex-direction: column;
   align-items: start;
   margin-bottom: 15px;
 }
-.loginclass #container button {
+.applicantLoginClass #container button {
   border: 2px;
   border-radius: 25px;
   font-size: 20px;
@@ -52,7 +52,7 @@
   height: 40px;
   font-size: 25px;
 }
-.loginclass {
+.applicantLoginClass {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -60,14 +60,14 @@
   margin-top: 40px;
 }
 
-.loginclass #home {
+.applicantLoginClass #home {
   width: 700px;
-  height: 630px;
+  height: 620px;
 }
-.loginclass #a {
+.applicantLoginClass #a {
   color: rgb(61, 80, 226);
 }
-.loginclass #container {
+.applicantLoginClass #container {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -76,7 +76,7 @@
   margin-left: 50px;
 }
 
-.loginclass p {
+.applicantLoginClass p {
   color: rgb(156, 25, 25);
   font-size: 50px;
   font-weight: lighter;
@@ -84,20 +84,20 @@
   text-align: start;
 }
 
-.loginclass #logo {
+.applicantLoginClass #logo {
   width: 250px;
   margin-bottom: 0px;
 }
 
-.loginclass .formclass #tag {
+.applicantLoginClass .formclass #tag {
   margin-top: 15px;
 }
-.loginclass #img {
+.applicantLoginClass #img {
   display: flex;
   flex-direction: column;
   align-items: end;
 }
-.loginclass #img button {
+.applicantLoginClass #img button {
   text-align: center;
   background-color: white;
   border: 1px solid rgb(61, 80, 226);
@@ -108,4 +108,15 @@
   height: 50px;
   font-size: 25px;
   margin-right: 50px;
+}
+.applicantLoginClass .switch {
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+  align-items: center;
+  justify-content: space-between;
+}
+.applicantLoginClass .switch p {
+  font-size: 25px;
+  color: grey;
 }

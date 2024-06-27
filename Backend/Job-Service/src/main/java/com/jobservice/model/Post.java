@@ -23,6 +23,8 @@ public class Post {
 	@Email(message=PostConstants.EMAIL_VALID)
 	private String emailId;
 	
+	private String name;
+	
 	@NotBlank(message=PostConstants.DESCRIPTION_REQUIRED)
 	private String description;
 

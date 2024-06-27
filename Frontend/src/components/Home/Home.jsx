@@ -6,15 +6,17 @@ import Recruiter from "../Register/Recruiter.jsx";
 import Search from "../Search/Search.jsx";
 import ForgotPassword from "../Login/ForgotPassword.jsx";
 import ResetPassword from "../Login/ResetPassword.jsx";
-import Login from "../Login/Login.jsx";
+import ApplicantLogin from "../Login/ApplicantLogin.jsx";
+import RecruiterLogin from "../Login/RecruiterLogin.jsx";
 import Profile from "../Profile/Profile.jsx";
 function Home() {
   return (
     <>
       <div className="homeclass">
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<ApplicantLogin />} />
+          <Route path="/applicantLogin" element={<ApplicantLogin />} />
+          <Route path="/recruiterLogin" element={<RecruiterLogin />} />
           <Route path="/applicant" element={<Applicant />} />
           <Route path="/recruiter" element={<Recruiter />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
