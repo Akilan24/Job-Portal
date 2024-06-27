@@ -13,15 +13,17 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Post {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int postId;
-	
-	@Email(message=PostConstants.EMAIL_VALID)
+
+	@Email(message = PostConstants.EMAIL_VALID)
 	private String emailId;
+
+	private String name;
 	
-	@NotBlank(message=PostConstants.DESCRIPTION_REQUIRED)
+	@NotBlank(message = PostConstants.DESCRIPTION_REQUIRED)
 	private String description;
 
 }

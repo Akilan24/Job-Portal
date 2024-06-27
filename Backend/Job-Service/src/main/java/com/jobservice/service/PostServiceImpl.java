@@ -45,6 +45,7 @@ public class PostServiceImpl implements PostService {
         if (existingPost.isPresent()) {
             Post updatedPost = existingPost.get();
             updatedPost.setEmailId(post.getEmailId());
+            updatedPost.setName(post.getName());
             updatedPost.setDescription(post.getDescription());
             return postRepository.save(updatedPost);
         } else {

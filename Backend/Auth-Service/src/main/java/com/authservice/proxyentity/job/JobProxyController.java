@@ -29,8 +29,7 @@ public interface JobProxyController {
 	public ResponseEntity<List<Application>> getAllJobApplications() throws ApplicationNotFoundException;
 
 	@GetMapping(ApplicationConstant.GET_APPLICATION_BY_ID)
-	public ResponseEntity<Application> getJobApplicationById(@PathVariable long id)
-			throws ApplicationNotFoundException;
+	public ResponseEntity<Application> getJobApplicationById(@PathVariable long id) throws ApplicationNotFoundException;
 
 	@PutMapping(ApplicationConstant.UPDATE_APPLICATION)
 	public ResponseEntity<Application> updateJobApplication(@RequestBody @Valid Application application)
@@ -51,8 +50,11 @@ public interface JobProxyController {
 	@GetMapping(JobConstant.GET_JOBS_BY_TYPE)
 	public ResponseEntity<List<Job>> getJobsByType(@PathVariable String type) throws JobNotFoundException;
 
+	@GetMapping(JobConstant.GET_JOBS_BY_SEARCH)
+	public ResponseEntity<List<Job>> getJobsBySearch(@PathVariable String search) throws JobNotFoundException;
+
 	@GetMapping(JobConstant.GET_JOBS_BY_ID)
-    public ResponseEntity<Job> getJobsById(@PathVariable long jobId) throws JobNotFoundException ;
+	public ResponseEntity<Job> getJobsById(@PathVariable long jobId) throws JobNotFoundException;
 
 	@PutMapping(JobConstant.UPDATE_JOB)
 	public ResponseEntity<Job> updateJob(@RequestBody @Valid Job job) throws JobNotFoundException;

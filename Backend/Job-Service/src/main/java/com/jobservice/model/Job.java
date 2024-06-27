@@ -31,50 +31,52 @@ import lombok.Setter;
 @Table(name = "jobDetails")
 public class Job {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long jobId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long jobId;
 
-    @NotBlank(message = JobConstant.JOB_TITLE_REQUIRED)
-    private String jobTitle;
+	@NotBlank(message = JobConstant.JOB_TITLE_REQUIRED)
+	private String jobTitle;
 
-    @NotBlank(message = JobConstant.JOB_DESCRIPTION_REQUIRED)
-    private String jobDescription;
+	@NotBlank(message = JobConstant.JOB_DESCRIPTION_REQUIRED)
+	private String jobDescription;
 
-    @NotBlank(message = JobConstant.COMPANY_NAME_REQUIRED)
-    private String company;
+	@NotBlank(message = JobConstant.COMPANY_NAME_REQUIRED)
+	private String company;
 
-    @NotNull(message = JobConstant.SALARY_REQUIRED)
-    private double salary;
+	@NotNull(message = JobConstant.SALARY_REQUIRED)
+	private double salary;
 
-    @Min(value = 0, message = JobConstant.EXPERIENCE_NON_NEGATIVE)
-    private int experience;
+	@Min(value = 0, message = JobConstant.EXPERIENCE_NON_NEGATIVE)
+	private int experience;
 
-    @Pattern(regexp = "^(Full Time|Part Time|Permanent|Temporary|Internship|Freelance)$", message = JobConstant.VALID_JOB_TYPE)
-    private String jobType;
+	@Pattern(regexp = "^(Full Time|Part Time|Permanent|Temporary|Internship|Freelance)$", message = JobConstant.VALID_JOB_TYPE)
+	private String jobType;
 
-    @NotBlank(message = JobConstant.JOB_CATEGORY_REQUIRED)
-    private String jobCategory;
+	@NotBlank(message = JobConstant.JOB_CATEGORY_REQUIRED)
+	private String jobCategory;
 
-    @NotBlank(message = JobConstant.CITY_REQUIRED)
-    private String city;
+	private String requiredSkills;
+	
+	@NotBlank(message = JobConstant.CITY_REQUIRED)
+	private String city;
 
-    @NotBlank(message = JobConstant.STATE_REQUIRED)
-    private String state;
+	@NotBlank(message = JobConstant.STATE_REQUIRED)
+	private String state;
 
-    @NotBlank(message = JobConstant.COUNTRY_REQUIRED)
-    private String country;
+	@NotBlank(message = JobConstant.COUNTRY_REQUIRED)
+	private String country;
 
-    @NotBlank(message = JobConstant.PINCODE_REQUIRED)
-    private String pincode;
+	@NotBlank(message = JobConstant.PINCODE_REQUIRED)
+	private String pincode;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date postedDate;
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private Date postedDate;
 
-    @NotNull(message = JobConstant.LOGO_REQUIRED)
-    private String logo;
+	@NotNull(message = JobConstant.LOGO_REQUIRED)
+	private String logo;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "jobId", referencedColumnName = "jobId")
-    private Set<Application> applications;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "jobId", referencedColumnName = "jobId")
+	private Set<Application> applications;
 }

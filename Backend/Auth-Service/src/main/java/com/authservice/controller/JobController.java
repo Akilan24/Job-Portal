@@ -1,7 +1,6 @@
 package com.authservice.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -94,6 +93,12 @@ public class JobController {
 	}
 
 	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
+	@GetMapping(JobConstant.GET_JOBS_BY_SEARCH)
+	public ResponseEntity<List<Job>> getJobsBySearch(@PathVariable String search) throws JobNotFoundException {
+		return jobProxy.getJobsBySearch(search);
+	}
+
+	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@GetMapping(JobConstant.GET_JOBS_BY_ID)
 	public ResponseEntity<Job> getJobsById(@PathVariable long jobId) throws JobNotFoundException {
 		return jobProxy.getJobsById(jobId);
@@ -116,24 +121,28 @@ public class JobController {
 	public ResponseEntity<Post> addPost(@RequestBody @Valid Post post) {
 		return jobProxy.addPost(post);
 	}
+
 	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@GetMapping(PostConstants.GET_ALL_POSTS)
 	public ResponseEntity<List<Post>> getAllPosts() throws PostNotFoundException {
 		return jobProxy.getAllPosts();
 
 	}
+
 	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@GetMapping(PostConstants.GET_POST_BY_ID)
 	public ResponseEntity<Post> getPostById(@PathVariable int id) throws PostNotFoundException {
 		return jobProxy.getPostById(id);
 
 	}
+
 	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@PutMapping(PostConstants.UPDATE_POST)
 	public ResponseEntity<Post> updatePost(@RequestBody @Valid Post post) throws PostNotFoundException {
 		return jobProxy.updatePost(post);
 
 	}
+
 	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@DeleteMapping(PostConstants.DELETE_POST)
 	public ResponseEntity<String> deletePost(@PathVariable int id) throws PostNotFoundException {

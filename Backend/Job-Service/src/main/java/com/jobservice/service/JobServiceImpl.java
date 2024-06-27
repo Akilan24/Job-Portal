@@ -1,7 +1,9 @@
 package com.jobservice.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,6 +53,7 @@ public class JobServiceImpl implements JobService {
 			newJob.setCountry(job.getCountry());
 			newJob.setPincode(job.getPincode());
 			newJob.setPostedDate(job.getPostedDate());
+			newJob.setRequiredSkills(job.getRequiredSkills());
 			newJob.setLogo(job.getLogo());
 			return jobRepo.save(newJob);
 		}
@@ -87,6 +90,24 @@ public class JobServiceImpl implements JobService {
 	@Override
 	public Job addJob(Job job) {
 		return jobRepo.save(job);
+	}
+
+	@Override
+	public List<Job> getBySearch(String search) throws JobNotFoundException {
+		List<Job> jobList=new ArrayList<Job>();
+		List<Job> byJobCategory = jobRepo.findByJobCategory(search);
+		if(!byJobCategory.isEmpty())
+			jobList.addAll(byJobCategory);
+		List<Job> byJobType = jobRepo.findByJobType(search);
+		if(!byJobType.isEmpty())
+			jobList.addAll(byJobType);
+		List<Job> byJobSkills = jobRepo.findAll().stream().filter(f->f.getRequiredSkills().contains(search)).collect(Collectors.toList());
+		if(!byJobSkills.isEmpty())
+			jobList.addAll(byJobSkills);
+		List<Job> byJobTitle = jobRepo.findByJobTitle(search);
+		if(!byJobTitle.isEmpty())
+			jobList.addAll(byJobTitle);
+		return jobList;
 	}
 
 }

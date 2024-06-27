@@ -23,7 +23,11 @@ public interface JobService {
 	
 	List<Job> getByJobType(String jobType) throws JobNotFoundException;
 	
+	List<Job> getBySearch(String search) throws JobNotFoundException;
+	
+	
 	Job getByJobId(long jobId) throws JobNotFoundException;
+	
 	
 	
 	

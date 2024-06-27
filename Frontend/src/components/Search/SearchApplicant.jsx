@@ -9,6 +9,7 @@ function Search() {
   const [jobs, setJobs] = useState([]);
   const [jobDetails, setJobDetails] = useState(null);
   const [display, setDisplay] = useState("");
+  const [search, setSearch] = useState("");
   const [applicant, setApplicant] = useState("");
   const [appliedJobs, setAppliedJobs] = useState(new Set());
   const config = {
@@ -176,7 +177,18 @@ function Search() {
       console.log(error.response.data.message);
     }
   }
-
+  async function fetchJobs(e) {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/CS/User/getJobbysearch/${search}`,
+        config
+      );
+      setJobs(response.data);
+      console.log(response);
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  }
   async function handleSubmit(e) {
     e.preventDefault();
     try {
@@ -270,7 +282,14 @@ function Search() {
       <div id="tabs">
         <div id="leftpane">
           <img id="logo" src="./logo.png" alt="Logo" />
-          <input type="text" placeholder="Search by title, skill, or company" />
+          <input
+            type="text"
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search by title, skill, or company"
+          />
+          <button id="search" onClick={fetchJobs}>
+            Search
+          </button>
         </div>
         <div id="rightpane">
           <div onClick={handleAllPost}>

@@ -56,9 +56,9 @@ public class Applicant {
     @NotBlank(message = ApplicantConstants.PINCODE_REQUIRED)
     private String pincode;
 
-    private String heaadline;
+    private String headline;
     
-    private String Skills;
+    private String skills;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "applicantId", referencedColumnName = "applicantId")

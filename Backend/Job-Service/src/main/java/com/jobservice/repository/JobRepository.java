@@ -14,6 +14,8 @@ public interface JobRepository extends JpaRepository<Job, Long>{
 
 	List<Job> findByJobType(String jobType);
 
+	List<Job> findByJobTitle(String jobType);
+	
 	List<Job> findBySalary(double salary);
 
 }

@@ -70,6 +70,8 @@ public class Job {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date postedDate;
 
+    private String requiredSkills;
+    
     @NotNull(message = JobConstant.LOGO_REQUIRED)
     private String logo;
 
