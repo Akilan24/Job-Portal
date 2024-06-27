@@ -336,8 +336,7 @@ function Search() {
                       className="job"
                       onClick={() => handleViewJob(job.jobId)}
                     >
-                      <img src={job.logo} alt="Company logo" />
-                      <div>
+                      <div className="jobContain">
                         <p>{job.jobTitle}</p>
                         <p>{job.company}</p>
                         <p>
