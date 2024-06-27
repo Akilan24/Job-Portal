@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./Search.css";
+import "./SearchApplicant.css";
 import { useNavigate, useParams } from "react-router-dom";
 
 function Search() {
-  const { value } = useParams();
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [jobs, setJobs] = useState([]);
@@ -56,18 +55,20 @@ function Search() {
       setDisplay("status");
       const response = await axios.get(
         "http://localhost:8080/JP/Job/getallAppliedJob",
-        localStorage.getItem("email"),
+        { email: localStorage.getItem("email") },
         config
       );
-      setAppliedJobs(response.data);
+      setAppliedJobs(new Set(response.data.map((job) => job.jobId)));
       console.log(response.data);
     } catch (error) {
       console.log(error.response.data.message);
     }
   }
+
   useEffect(() => {
     handleAllAppliedJob();
   }, []);
+
   async function handleViewJob(jobId) {
     try {
       const response = await axios.get(
@@ -94,11 +95,13 @@ function Search() {
       );
       setIsExpanded(false);
       setPostDetails({ ...postDetails, description: "" });
+      handleAllPost();
       console.log(response.data);
     } catch (error) {
       console.log(error.response.data.message);
     }
   }
+
   async function handleProfileDetails() {
     try {
       const response = await axios.get(
@@ -107,13 +110,13 @@ function Search() {
         )}`,
         config
       );
-      setIsExpanded(false);
       setApplicant(response.data);
       console.log(response.data);
     } catch (error) {
       console.log(error.response.data.message);
     }
   }
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setPostDetails({ ...postDetails, [name]: value });
@@ -132,25 +135,27 @@ function Search() {
     try {
       const response = await axios.post(
         "http://localhost:8080/JP/Job/applyJob",
-        jobId,
+        { jobId },
         config
       );
+      setAppliedJobs(new Set([...appliedJobs, jobId]));
       console.log(response.data);
     } catch (error) {
       console.log(error.response.data.message);
     }
   };
+
   const [educationPost, setEducationPost] = useState({
     degree: "",
     startDate: "",
-    endStart: "",
+    endDate: "",
   });
   const [education, setEducation] = useState([]);
   const [update, setUpdate] = useState(0);
 
   function handleEducationChange(e) {
     const { name, value } = e.target;
-    setEducation({ ...education, [name]: value });
+    setEducationPost({ ...educationPost, [name]: value });
   }
 
   useEffect(() => {
@@ -182,15 +187,14 @@ function Search() {
         educationPost,
         config
       );
-      setEducation({
+      setEducationPost({
         degree: "",
         startDate: "",
         endDate: "",
       });
-      setEducation([...education, response.data]);
+      fetchEducation();
       console.log(response.data);
       toggleEducationForm();
-      fetchEducation();
     } catch (error) {
       console.log(error.response.data.message);
     }
@@ -204,7 +208,7 @@ function Search() {
         )}/${e.target.value}`,
         config
       );
-      setEducation(response.data);
+      setEducationPost(response.data);
       setUpdate(1);
       toggleEducationForm();
       console.log(response.data);
@@ -224,7 +228,7 @@ function Search() {
         config
       );
       fetchEducation();
-      setEducation({
+      setEducationPost({
         degree: "",
         startDate: "",
         endDate: "",
@@ -281,27 +285,21 @@ function Search() {
             <img id="icon" src="./notification.png" alt="Status" />
             <p>Status</p>
           </div>
-          <div onClick={(e) => setDisplay("profile")}>
+          <div onClick={() => setDisplay("profile")}>
             <img id="icon" src="./profile.png" alt="Profile" />
             <p>Profile</p>
           </div>
-          {value == "recruiter" && (
-            <div>
-              <img id="icon" src="./business.png" alt="Business" />
-              <p>Business</p>
-            </div>
-          )}
         </div>
       </div>
       <div className="details">
         <div className="contain">
-          {display == "post" && (
+          {display === "post" && (
             <div className="postContainer">
               <div className="post">
                 <div className="textareaContainer">
                   <textarea
-                    name="post"
-                    value={postDetails.post}
+                    name="description"
+                    value={postDetails.description}
                     placeholder="Start a post..."
                     onChange={handleChange}
                     className={isExpanded ? "expanded" : ""}
@@ -331,7 +329,7 @@ function Search() {
               </div>
             </div>
           )}
-          {display == "job" && (
+          {display === "job" && (
             <div className="jobDetails">
               <div className="container">
                 {jobs.length > 0 ? (
@@ -345,7 +343,7 @@ function Search() {
                         <p>{job.jobTitle}</p>
                         <p>{job.company}</p>
                         <p>
-                          {job.city},{job.state},{job.country}
+                          {job.city}, {job.state}, {job.country}
                         </p>
                       </div>
                     </div>
@@ -361,7 +359,8 @@ function Search() {
                     <p>{jobDetails.company}</p>
                     <p>{jobDetails.jobType}</p>
                     <p>
-                      {jobDetails.city},{jobDetails.state},{jobDetails.country}
+                      {jobDetails.city}, {jobDetails.state},{" "}
+                      {jobDetails.country}
                     </p>
                     <p>{jobDetails.experience}</p>
                     <p>{jobDetails.description}</p>
@@ -381,9 +380,9 @@ function Search() {
               </div>
             </div>
           )}
-          {display == "status" && (
+          {display === "status" && (
             <div className="jobStatus">
-              {appliedJobs.length > 0 ? (
+              {Array.from(appliedJobs).length > 0 ? (
                 jobs.map((job) => (
                   <div key={job.jobId} className="job">
                     <img src={job.logo} alt="Company logo" />
@@ -396,11 +395,11 @@ function Search() {
                   </div>
                 ))
               ) : (
-                <p>No jobs status are available</p>
+                <p>No job status is available</p>
               )}
             </div>
           )}
-          {display == "profile" && (
+          {display === "profile" && (
             <div className="profileDetails">
               {applicant && (
                 <div className="profile">
@@ -408,7 +407,7 @@ function Search() {
                   <p>{applicant.headline}</p>
                   <p>{applicant.emailId}</p>
                   <p>{applicant.workStatus}</p>
-                  {applicant.experience > 0 && (
+                  {applicant.experience.length > 0 && (
                     <div className="experience">
                       {applicant.experience.map((exp, index) => (
                         <div key={index}>
@@ -420,7 +419,6 @@ function Search() {
                       ))}
                     </div>
                   )}
-
                   <div className="stc">
                     <div className="savedEducationclass">
                       <div id="stdiv">
@@ -475,12 +473,12 @@ function Search() {
                         <h2>{update > 0 ? "Update" : "Add"} Education</h2>
                       </div>
                       <div>
-                        <label htmlFor="name">Degree</label>
+                        <label htmlFor="degree">Degree</label>
                         <input
                           type="text"
-                          name="name"
-                          id="name"
-                          value={educationPost.name}
+                          name="degree"
+                          id="degree"
+                          value={educationPost.degree}
                           onChange={handleEducationChange}
                           required
                         />
@@ -497,7 +495,7 @@ function Search() {
                         />
                       </div>
                       <div>
-                        <label htmlFor="endStart">End Date</label>
+                        <label htmlFor="endDate">End Date</label>
                         <input
                           type="date"
                           name="endDate"
@@ -512,7 +510,7 @@ function Search() {
                         <button
                           id="c"
                           type="button"
-                          onClick={toggleEdcationForm}
+                          onClick={toggleEducationForm}
                         >
                           Cancel
                         </button>

@@ -162,3 +162,20 @@
 .recruiter #reg {
   width: 150px;
 }
+.recruiter #emp {
+  font-size: 25px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  top: 230px;
+  height: 80px;
+  color: black;
+}
+.recruiter #emp a {
+  color: rgb(61, 80, 226);
+  font-weight: lighter;
+  margin: 0px;
+}

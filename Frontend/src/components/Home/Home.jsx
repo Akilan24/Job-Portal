@@ -3,7 +3,8 @@ import "./Home.css";
 import { Route, Routes } from "react-router-dom";
 import Applicant from "../Register/Applicant.jsx";
 import Recruiter from "../Register/Recruiter.jsx";
-import Search from "../Search/Search.jsx";
+import SearchApplicant from "../Search/SearchApplicant.jsx";
+import SearchRecruiter from "../Search/SearchRecruiter.jsx";
 import ForgotPassword from "../Login/ForgotPassword.jsx";
 import ResetPassword from "../Login/ResetPassword.jsx";
 import ApplicantLogin from "../Login/ApplicantLogin.jsx";
@@ -22,8 +23,8 @@ function Home() {
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/search/:value" element={<Search />} />
+          <Route path="/searchApplicant" element={<SearchApplicant />} />
+          <Route path="/searchRecruiter" element={<SearchRecruiter />} />
         </Routes>
       </div>
     </>

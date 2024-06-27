@@ -25,11 +25,8 @@ function Recruiter() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const skillsSet = new Set(
-        formData.Skills.split(",").map((skill) => skill.trim())
-      );
       const response = await axios.post(
-        "http://localhost:8080/JP/Auth/register",
+        "http://localhost:8080/JP/Auth/addRecruiter",
         formData
       );
       window.alert("User registered successfully");
@@ -37,9 +34,6 @@ function Recruiter() {
     } catch (error) {
       window.alert("Error registering user");
       console.error("Error registering user:", error);
-      setTimeout(() => {
-        navigate("/register");
-      }, 1000);
     }
   }
 
@@ -154,11 +148,16 @@ function Recruiter() {
               onChange={onchangeinput}
             />
           </div>
-
           <div>
             <button type="submit">Register</button>
           </div>
         </form>
+        <div id="emp">
+          <p>(or)</p>
+          <a id="a" onClick={(e) => navigate("/applicant")}>
+            Employee Register
+          </a>
+        </div>
       </div>
     </div>
   );

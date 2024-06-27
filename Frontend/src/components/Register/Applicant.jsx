@@ -44,7 +44,7 @@ function Applicant() {
   }
 
   return (
-    <div className="register">
+    <div className="applicant">
       <div className="container">
         <img id="logo" src="./jplogo.png" alt="JP Logo" />
         <p>
