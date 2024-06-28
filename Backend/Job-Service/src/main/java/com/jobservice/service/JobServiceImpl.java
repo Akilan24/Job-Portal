@@ -54,7 +54,6 @@ public class JobServiceImpl implements JobService {
 			newJob.setPincode(job.getPincode());
 			newJob.setPostedDate(job.getPostedDate());
 			newJob.setRequiredSkills(job.getRequiredSkills());
-			newJob.setLogo(job.getLogo());
 			return jobRepo.save(newJob);
 		}
 		throw new JobNotFoundException("Job not found");

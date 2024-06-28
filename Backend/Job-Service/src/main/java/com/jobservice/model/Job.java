@@ -73,9 +73,6 @@ public class Job {
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date postedDate;
 
-	@NotNull(message = JobConstant.LOGO_REQUIRED)
-	private String logo;
-
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "jobId", referencedColumnName = "jobId")
 	private Set<Application> applications;

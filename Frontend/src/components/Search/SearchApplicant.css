@@ -30,6 +30,9 @@
 .searchApplicant #leftpane {
   width: 500px;
 }
+.searchApplicant #leftpane #search {
+  background-color: #a19f9f;
+}
 
 .searchApplicant #rightpane {
   width: 600px;
@@ -83,7 +86,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 90%;
   border-radius: 15px;
 }
 
@@ -281,11 +284,49 @@
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
 }
-.searchApplicant .container {
+.searchApplicant .container1 {
   width: 100%;
   display: flex;
   flex-direction: column;
   padding-bottom: 15px;
+  border-radius: 15px;
+  width: 50%;
+  height: 600px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+.searchApplicant .container2 {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  text-align: start;
+  padding-left: 25px;
+  padding-bottom: 15px;
+  border-radius: 15px;
+  width: 60%;
+  height: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.searchApplicant .container2 p {
+  color: black;
+  font-size: 20px;
+  font-weight: lighter;
+  padding: 0px;
+  margin: 0px;
+}
+.searchApplicant .container2 button {
+  width: 80px;
+  height: 35px;
+  font-size: 16px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: rgb(127, 18, 215);
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .searchApplicant #none {
   color: black;
@@ -295,31 +336,55 @@
 }
 .searchApplicant .jobContain {
   display: flex;
-  flex-direction: column;
-  align-items: start;
-  margin-top: 15px;
-  padding-left: 50px;
-  width: 50%;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-left: 30px;
+  width: 90%;
   height: 120px;
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.searchApplicant .jobContain #detail {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-around;
+  height: 100px;
+}
+.searchApplicant .jobContain button {
+  width: 80px;
+  height: 35px;
+  font-size: 16px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: rgb(127, 18, 215);
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .searchApplicant .jobContain p {
   margin: 0px;
   padding: 0px;
 }
-.searchApplicant .jobContain #title {
+.searchApplicant #title {
   color: rgb(127, 18, 215);
   font-size: 25px;
+  font-weight: bolder;
 }
-.searchApplicant .jobContain #company {
+.searchApplicant #company {
   color: rgb(0, 0, 0);
   font-size: 20px;
+  font-weight: bolder;
 }
-.searchApplicant .jobContain #location {
+.searchApplicant #location {
   color: rgb(123, 123, 123);
   font-size: 18px;
+  font-weight: bolder;
 }
 .searchApplicant .jobDetails {
   width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
 }

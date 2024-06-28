@@ -73,7 +73,7 @@ function Search() {
   async function handleViewJob(jobId) {
     try {
       const response = await axios.get(
-        `http://localhost:8080/JP/Job/getJobbyId/${jobId}`,
+        `http://localhost:8080/JP/Job/getJobbyid/${jobId}`,
         config
       );
       setJobDetails(response.data);
@@ -351,51 +351,49 @@ function Search() {
           )}
           {display === "job" && (
             <div className="jobDetails">
-              <div className="container">
+              <div className="container1">
                 {jobs.length > 0 ? (
                   jobs.map((job) => (
-                    <div
-                      key={job.jobId}
-                      className="jobContain"
-                      onClick={() => handleViewJob(job.jobId)}
-                    >
-                      <p id="title">{job.jobTitle}</p>
-                      <p id="company">{job.company}</p>
-                      <p id="location">
-                        {job.city}, {job.state}, {job.country}
-                      </p>
+                    <div key={job.jobId} className="jobContain">
+                      <div id="detail">
+                        <p id="title">{job.jobTitle}</p>
+                        <p id="company">{job.company}</p>
+                        <p id="location">
+                          {job.city}, {job.state}, {job.country}
+                        </p>
+                      </div>
+                      <button onClick={() => handleViewJob(job.jobId)}>
+                        View
+                      </button>
                     </div>
                   ))
                 ) : (
                   <p id="none">No jobs are available</p>
                 )}
               </div>
-              <div>
-                {jobDetails && (
-                  <div>
-                    <p>{jobDetails.jobTitle}</p>
-                    <p>{jobDetails.company}</p>
-                    <p>{jobDetails.jobType}</p>
-                    <p>
-                      {jobDetails.city}, {jobDetails.state},{" "}
-                      {jobDetails.country}
-                    </p>
-                    <p>{jobDetails.experience}</p>
-                    <p>{jobDetails.description}</p>
-                    <div>
-                      <button
-                        onClick={() => handleApplyJob(jobDetails.jobId)}
-                        disabled={appliedJobs.has(jobDetails.jobId)}
-                      >
-                        {appliedJobs.has(jobDetails.jobId)
-                          ? "Applied"
-                          : "Apply"}
-                      </button>
-                      <button>Save</button>
-                    </div>
-                  </div>
-                )}
-              </div>
+
+              {jobDetails && (
+                <div className="container2">
+                  <p id="title">{jobDetails.jobTitle}</p>
+                  <p id="company">{jobDetails.company}</p>
+                  <p id="location">
+                    {jobDetails.city}, {jobDetails.state}, {jobDetails.country}
+                  </p>
+                  <p>Job Type: {jobDetails.jobType}</p>
+                  <p>Job Category: {jobDetails.jobCategory}</p>
+                  <p>Skills: {jobDetails.requiredSkills}</p>
+                  <p>Experience: {jobDetails.experience}</p>
+                  <p>Description: {jobDetails.jobDescription}</p>
+                  <p>Salary: {jobDetails.salary}</p>
+                  <p>Posted Date: {jobDetails.postedDate}</p>
+                  <button
+                    onClick={() => handleApplyJob(jobDetails.jobId)}
+                    disabled={appliedJobs.has(jobDetails.jobId)}
+                  >
+                    {appliedJobs.has(jobDetails.jobId) ? "Applied" : "Apply"}
+                  </button>
+                </div>
+              )}
             </div>
           )}
           {display === "status" && (
