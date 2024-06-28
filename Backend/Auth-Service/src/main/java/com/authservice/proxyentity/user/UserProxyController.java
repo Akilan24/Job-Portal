@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.authservice.exception.ApplicantNotFoundException;
 import com.authservice.exception.RecruiterNotFoundException;
 
-@FeignClient(name = "USER-SERVICE", url = "http://localhost:8081/user/applicants")
+@FeignClient(name = "USER-SERVICE", url = "http://localhost:8081/user")
 public interface UserProxyController {
 
 	@PostMapping(ApplicantConstants.ADD)

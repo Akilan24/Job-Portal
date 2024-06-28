@@ -93,7 +93,7 @@ function Search() {
   };
 
   return (
-    <div className="searchClass">
+    <div className="searchRecruiter">
       <div id="tabs">
         <div id="leftpane">
           <img id="logo" src="./logo.png" alt="Logo" />

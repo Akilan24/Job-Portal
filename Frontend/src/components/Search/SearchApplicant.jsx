@@ -55,7 +55,7 @@ function Search() {
     try {
       setDisplay("status");
       const response = await axios.get(
-        "http://localhost:8080/JP/Job/getallAppliedJob",
+        "http://localhost:8080/JP/Job/getallAppliedJo",
         { email: localStorage.getItem("email") },
         config
       );
@@ -105,6 +105,7 @@ function Search() {
 
   async function handleProfileDetails() {
     try {
+      setDisplay("profile");
       const response = await axios.get(
         `http://localhost:8080/JP/User/getApplicant/${localStorage.getItem(
           "email"
@@ -278,7 +279,7 @@ function Search() {
   }
 
   return (
-    <div className="searchClass">
+    <div className="searchApplicant">
       <div id="tabs">
         <div id="leftpane">
           <img id="logo" src="./logo.png" alt="Logo" />
@@ -304,7 +305,7 @@ function Search() {
             <img id="icon" src="./notification.png" alt="Status" />
             <p>Status</p>
           </div>
-          <div onClick={() => setDisplay("profile")}>
+          <div onClick={handleProfileDetails}>
             <img id="icon" src="./profile.png" alt="Profile" />
             <p>Profile</p>
           </div>
@@ -343,7 +344,7 @@ function Search() {
                     </div>
                   ))
                 ) : (
-                  <p>No posts are available</p>
+                  <p id="none">No posts are available</p>
                 )}
               </div>
             </div>
@@ -355,20 +356,18 @@ function Search() {
                   jobs.map((job) => (
                     <div
                       key={job.jobId}
-                      className="job"
+                      className="jobContain"
                       onClick={() => handleViewJob(job.jobId)}
                     >
-                      <div className="jobContain">
-                        <p>{job.jobTitle}</p>
-                        <p>{job.company}</p>
-                        <p>
-                          {job.city}, {job.state}, {job.country}
-                        </p>
-                      </div>
+                      <p id="title">{job.jobTitle}</p>
+                      <p id="company">{job.company}</p>
+                      <p id="location">
+                        {job.city}, {job.state}, {job.country}
+                      </p>
                     </div>
                   ))
                 ) : (
-                  <p>No jobs are available</p>
+                  <p id="none">No jobs are available</p>
                 )}
               </div>
               <div>
@@ -414,7 +413,7 @@ function Search() {
                   </div>
                 ))
               ) : (
-                <p>No job status is available</p>
+                <p id="none">No job status is available</p>
               )}
             </div>
           )}
