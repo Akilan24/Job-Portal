@@ -33,7 +33,7 @@ function ForgotPassword() {
           <button id="signin" onClick={(e) => navigate("/")}>
             Sign in
           </button>
-          <button id="joinnow" onClick={(e) => navigate("/register")}>
+          <button id="joinnow" onClick={(e) => navigate("/applicant")}>
             Join now
           </button>
         </div>

@@ -104,8 +104,8 @@ public class UserController {
 		return userProxy.updateEducation(emailId, education);	}
 
 	@DeleteMapping(ApplicantConstants.DELETE_EDUCATION)
-	public ResponseEntity<String> deleteEducation(@PathVariable String emailId, @PathVariable String degree) {
-		return userProxy.deleteEducation(emailId, degree);
+	public ResponseEntity<String> deleteEducation(@PathVariable String emailId, @PathVariable long id) {
+		return userProxy.deleteEducation(emailId, id);
 	}
 
 	@GetMapping(ApplicantConstants.GET_WORK_EXPERIENCE_ALL)
@@ -132,7 +132,7 @@ public class UserController {
 	}
 
 	@DeleteMapping(ApplicantConstants.DELETE_WORK_EXPERIENCE)
-	public ResponseEntity<String> deleteWorkExperience(@PathVariable String emailId, @PathVariable String company) {
-		return userProxy.deleteWorkExperience(emailId, company);
+	public ResponseEntity<String> deleteWorkExperience(@PathVariable String emailId, @PathVariable long id) {
+		return userProxy.deleteWorkExperience(emailId, id);
 	}
 }

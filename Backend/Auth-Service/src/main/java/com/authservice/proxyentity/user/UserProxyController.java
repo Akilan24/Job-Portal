@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.authservice.exception.ApplicantNotFoundException;
 import com.authservice.exception.RecruiterNotFoundException;
 
-@FeignClient(name = "USER-SERVICE", url = "http://localhost:8081/user")
+@FeignClient(name = "USER-SERVICE", url = "http://localhost:8081/User")
 public interface UserProxyController {
 
 	@PostMapping(ApplicantConstants.ADD)
@@ -65,7 +65,7 @@ public interface UserProxyController {
 			@RequestBody Education education);
 
 	@DeleteMapping(ApplicantConstants.DELETE_EDUCATION)
-	public ResponseEntity<String> deleteEducation(@PathVariable String emailId, @PathVariable String degree);
+	public ResponseEntity<String> deleteEducation(@PathVariable String emailId, @PathVariable long id);
 
 	@GetMapping(ApplicantConstants.GET_WORK_EXPERIENCE_ALL)
 	public ResponseEntity<List<WorkExperience>> getAllWorkExperience(@PathVariable String emailId);
@@ -82,6 +82,6 @@ public interface UserProxyController {
 			@RequestBody WorkExperience experience);
 
 	@DeleteMapping(ApplicantConstants.DELETE_WORK_EXPERIENCE)
-	public ResponseEntity<String> deleteWorkExperience(@PathVariable String emailId, @PathVariable String company);
+	public ResponseEntity<String> deleteWorkExperience(@PathVariable String emailId, @PathVariable long id);
 
 }

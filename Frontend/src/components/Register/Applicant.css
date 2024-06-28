@@ -4,20 +4,27 @@
   align-items: center;
   width: 100%;
   background-color: rgb(249, 249, 249);
+  color: rgb(153, 152, 152);
 }
-.applicantclass {
+.applicant .registerclass {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 15px;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.applicant .registerclass #form {
   display: flex;
   flex-direction: column;
   align-items: start;
-  margin: 0 auto;
-  margin-top: 50px;
-  border-radius: 25px;
-  width: 600px;
-  background-color: white;
-  padding: 25px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 80%;
+  padding-left: 70px;
+  
 }
-
 .form-group {
   display: flex;
   flex-direction: column;

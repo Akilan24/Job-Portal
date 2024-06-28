@@ -86,8 +86,8 @@ public class ApplicantController {
 	}
 
 	@DeleteMapping(ApplicantConstants.DELETE_EDUCATION)
-	public ResponseEntity<String> deleteEducation(@PathVariable String emailId, @PathVariable String degree) {
-		String deleteMessage = applicantService.deleteEducation(emailId, degree);
+	public ResponseEntity<String> deleteEducation(@PathVariable String emailId, @PathVariable long id) {
+		String deleteMessage = applicantService.deleteEducation(emailId, id);
 		return new ResponseEntity<>(deleteMessage, ApplicantConstants.HTTP_STATUS_OK);
 	}
 
@@ -119,8 +119,8 @@ public class ApplicantController {
 	}
 
 	@DeleteMapping(ApplicantConstants.DELETE_WORK_EXPERIENCE)
-	public ResponseEntity<String> deleteWorkExperience(@PathVariable String emailId, @PathVariable String company) {
-		String deleteMessage = applicantService.deleteWorkExperience(emailId, company);
+	public ResponseEntity<String> deleteWorkExperience(@PathVariable String emailId, @PathVariable long id) {
+		String deleteMessage = applicantService.deleteWorkExperience(emailId, id);
 		return new ResponseEntity<>(deleteMessage, ApplicantConstants.HTTP_STATUS_OK);
 	}
 }

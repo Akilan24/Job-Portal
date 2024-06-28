@@ -18,11 +18,11 @@ public interface ApplicantService {
 	List<Education> addEducation(String emailId, Education education);
 	Education getEducation(String emailId,String degree);
 	List<Education> updateEducation(String emailId, Education education);
-	String deleteEducation(String emailId,String degree);
+	String deleteEducation(String emailId,long id);
 	
 	List<WorkExperience> getAllWorkExperience(String emailId);
 	List<WorkExperience> addWorkExperience(String emailId, WorkExperience experience);
 	WorkExperience getWorkExperience(String emailId,String company);
 	List<WorkExperience> updateWorkExperience(String emailId, WorkExperience experience);
-	String deleteWorkExperience(String emailId,String company);
+	String deleteWorkExperience(String emailId,long id);
 }

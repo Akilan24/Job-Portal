@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 public class RecruiterConstants {
 
     // Base Paths
-    public static final String RECRUITERS_BASE_PATH = "/user";
+    public static final String RECRUITERS_BASE_PATH = "/User";
 
     // Endpoints
     public static final String ADD = "/addRecruiter";

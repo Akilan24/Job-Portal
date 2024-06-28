@@ -75,7 +75,10 @@
   background-color: rgb(61, 80, 226);
   font-family: "Times New Roman", Times, serif;
 }
-
+.recruiter #register{
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
 .recruiter h2 {
   color: black;
   font-size: 30px;

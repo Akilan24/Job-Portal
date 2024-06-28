@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 public class ApplicantConstants {
 
     // Base Paths
-    public static final String APPLICANTS_BASE_PATH = "/user";
+    public static final String APPLICANTS_BASE_PATH = "/User";
 
     // Endpoints
     public static final String ADD = "/addApplicant";
@@ -38,14 +38,14 @@ public class ApplicantConstants {
     public static final String ADD_EDUCATION = "/addEducation/{emailId}";
     public static final String GET_EDUCATION = "/getEducation/{emailId}/{degree}";
     public static final String UPDATE_EDUCATION = "/updateEducation/{emailId}";
-    public static final String DELETE_EDUCATION = "/deleteEducation/{emailId}/{degree}";
+    public static final String DELETE_EDUCATION = "/deleteEducation/{emailId}/{id}";
 
     // WorkExperience endpoints
     public static final String GET_WORK_EXPERIENCE_ALL = "/getAllWorkExperience/{emailId}";
     public static final String ADD_WORK_EXPERIENCE = "/addWorkExperience/{emailId}";
     public static final String GET_WORK_EXPERIENCE = "/getWorkExperience/{emailId}/{company}";
     public static final String UPDATE_WORK_EXPERIENCE = "/updateWorkExperience/{emailId}";
-    public static final String DELETE_WORK_EXPERIENCE = "/deleteWorkExperience/{emailId}/{company}";
+    public static final String DELETE_WORK_EXPERIENCE = "/deleteWorkExperience/{emailId}/{id}";
     
  // WorkExperience validation messages
     public static final String COMPANY_REQUIRED = "Please provide the company name";
