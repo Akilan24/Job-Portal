@@ -50,7 +50,9 @@ function Search() {
       console.log(error.response.data.message);
     }
   }
-
+  useEffect(() => {
+    handleAllAppliedJob();
+  }, []);
   async function handleAllAppliedJob() {
     try {
       setDisplay("status");
@@ -64,10 +66,6 @@ function Search() {
       console.log(error.response.data.message);
     }
   }
-
-  useEffect(() => {
-    handleAllAppliedJob();
-  }, []);
 
   async function handleViewJob(jobId) {
     try {
@@ -132,12 +130,13 @@ function Search() {
     setPostDetails({ ...postDetails, description: "" });
   };
 
-  const handleApplyJob = async (jobId) => {
+  async function handleApplyJob(jobId) {
     try {
       const response = await axios.post(
-        `http://localhost:8080/JP/Job/applyJob/${jobId}/${localStorage.getItem(
+        `http://localhost:8080/JP/Job/add/${jobId}/${localStorage.getItem(
           "email"
         )}`,
+        {},
         config
       );
       setAppliedJobs(new Set([...appliedJobs, jobId]));
@@ -145,7 +144,7 @@ function Search() {
     } catch (error) {
       console.log(error.response.data.message);
     }
-  };
+  }
   async function fetchJobs(e) {
     try {
       const response = await axios.get(

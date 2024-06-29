@@ -32,7 +32,7 @@ public class Application {
 	
 	private String jobTitle;
 	
-	@Pattern(regexp = "^(Shortlisted|Rejected|Submitted|Submitted)$", message = ApplicationConstant.VALID_STATUS_MESSAGE)
+	@Pattern(regexp = "^(Shortlisted|Rejected|Submitted)$", message = ApplicationConstant.VALID_STATUS_MESSAGE)
 	private String status;
 
 	@JsonFormat(pattern = "yyyy-MM-dd")
