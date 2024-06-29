@@ -24,10 +24,38 @@
 
 .searchRecruiter #leftpane {
   width: 500px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-
+.searchRecruiter #leftpane input {
+  width: 400px;
+  height: 45px;
+  border-radius: 0px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  padding: 0px;
+  padding-left: 20px;
+  margin-left: 15px;
+}
+.searchRecruiter #leftpane button {
+  width: 100px;
+  height: 45px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  background-color: #a19f9f;
+}
 .searchRecruiter #rightpane {
   width: 600px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .searchRecruiter input {
@@ -43,7 +71,8 @@
 .searchRecruiter #rightpane div {
   display: flex;
   flex-direction: column;
-  align-content: center;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   border: 0px;
 }

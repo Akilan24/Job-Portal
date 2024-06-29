@@ -7,10 +7,10 @@ function Search() {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [recruiter, setRecruiter] = useState(null);
+  const [applicants, setApplicants] = useState(null);
   const [display, setDisplay] = useState("profile");
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const [search, setSearch] = useState("");
   const config = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accesstoken")}`,
@@ -25,7 +25,6 @@ function Search() {
 
   async function handleAllPost() {
     try {
-      setLoading(true);
       setDisplay("post");
       const response = await axios.get(
         "http://localhost:8080/JP/User/getallPost",
@@ -34,8 +33,6 @@ function Search() {
       setPosts(response.data);
     } catch (error) {
       setError(error.response?.data?.message || "An error occurred");
-    } finally {
-      setLoading(false);
     }
   }
 
@@ -43,9 +40,20 @@ function Search() {
     handleProfileDetails();
   }, []);
 
+  async function fetchApplicant(e) {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/CS/User/getApplicantbysearch/${search}`,
+        config
+      );
+      setJobs(response.data);
+      console.log(response);
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  }
   async function handlePost() {
     try {
-      setLoading(true);
       const response = await axios.post(
         "http://localhost:8080/JP/User/addpost",
         postDetails,
@@ -56,14 +64,11 @@ function Search() {
       handleAllPost();
     } catch (error) {
       setError(error.response?.data?.message || "An error occurred");
-    } finally {
-      setLoading(false);
     }
   }
 
   async function handleProfileDetails() {
     try {
-      setLoading(true);
       const response = await axios.get(
         `http://localhost:8080/JP/User/getRecruiter/${localStorage.getItem(
           "email"
@@ -73,8 +78,6 @@ function Search() {
       setRecruiter(response.data);
     } catch (error) {
       setError(error.response?.data?.message || "An error occurred");
-    } finally {
-      setLoading(false);
     }
   }
 
@@ -97,7 +100,14 @@ function Search() {
       <div id="tabs">
         <div id="leftpane">
           <img id="logo" src="./logo.png" alt="Logo" />
-          <input type="text" placeholder="Search by title or skill" />
+          <input
+            type="text"
+            onChange={(e) => setApplicants(e.target.value)}
+            placeholder="Search by title, skill or name"
+          />
+          <button id="search" onClick={fetchApplicant}>
+            Search
+          </button>{" "}
         </div>
         <div id="rightpane">
           <div onClick={handleAllPost}>

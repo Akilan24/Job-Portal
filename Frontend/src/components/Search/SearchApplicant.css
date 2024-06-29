@@ -49,6 +49,7 @@
   font-size: 20px;
   padding: 0px;
   padding-left: 20px;
+  margin-left: 15px;
 }
 .searchApplicant #leftpane button {
   width: 100px;
@@ -58,7 +59,7 @@
   border: 0px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
-  background-color: rgb(61, 80, 226);
+  background-color: #A19F9F;
 }
 .searchApplicant #rightpane div {
   display: flex;
