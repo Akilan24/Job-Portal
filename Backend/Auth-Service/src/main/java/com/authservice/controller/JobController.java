@@ -37,15 +37,15 @@ public class JobController {
 
 	@PreAuthorize("hasAuthority('applicant')")
 	@PostMapping(ApplicationConstant.ADD_APPLICATION)
-	public ResponseEntity<Application> addJobApplication(@RequestBody @Valid Application application)
+	public ResponseEntity<Application> addJobApplication(@PathVariable long jobId,@PathVariable String emailId)
 			throws ApplicantNotFoundException {
-		return jobProxy.addJobApplication(application);
+		return jobProxy.addJobApplication(jobId,emailId);
 	}
 
 	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@GetMapping(ApplicationConstant.GET_ALL_APPLICATIONS)
-	public ResponseEntity<List<Application>> getAllJobApplications() throws ApplicationNotFoundException {
-		return jobProxy.getAllJobApplications();
+	public ResponseEntity<List<Application>> getAllJobApplications(@PathVariable String emailId) throws ApplicationNotFoundException {
+		return jobProxy.getAllJobApplications(emailId);
 	}
 
 	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")

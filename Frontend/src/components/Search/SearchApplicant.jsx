@@ -27,7 +27,7 @@ function Search() {
     try {
       setDisplay("post");
       const response = await axios.get(
-        "http://localhost:8080/JP/User/getallPost",
+        "http://localhost:8080/JP/User/getallposts",
         config
       );
       setPosts(response.data);
@@ -55,8 +55,7 @@ function Search() {
     try {
       setDisplay("status");
       const response = await axios.get(
-        "http://localhost:8080/JP/Job/getallAppliedJo",
-        { email: localStorage.getItem("email") },
+        `http://localhost:8080/JP/Job/getall/${localStorage.getItem("email")}`,
         config
       );
       setAppliedJobs(new Set(response.data.map((job) => job.jobId)));
@@ -150,7 +149,7 @@ function Search() {
   async function fetchJobs(e) {
     try {
       const response = await axios.get(
-        `http://localhost:8080/CS/User/getJobbysearch/${search}`,
+        `http://localhost:8080/JP/User/getJobbysearch/${search}`,
         config
       );
       setJobs(response.data);
@@ -179,7 +178,7 @@ function Search() {
   async function fetchEducation() {
     try {
       const response = await axios.get(
-        `http://localhost:8080/CS/User/getallEducation/${localStorage.getItem(
+        `http://localhost:8080/JP/User/getAllEducation/${localStorage.getItem(
           "email"
         )}`,
         config
@@ -195,7 +194,7 @@ function Search() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:8080/CS/User/addEducation/${localStorage.getItem(
+        `http://localhost:8080/JP/User/addEducation/${localStorage.getItem(
           "email"
         )}`,
         educationPost,
@@ -217,9 +216,9 @@ function Search() {
   async function getEducation(e) {
     try {
       const response = await axios.get(
-        `http://localhost:8080/CS/User/getEducation/${localStorage.getItem(
-          "username"
-        )}/${e.target.value}`,
+        `http://localhost:8080/JP/User/getEducation/${localStorage.getItem(
+          "email"
+        )}/${e.target.value.replace(" ", "_")}`,
         config
       );
       setEducationPost(response.data);
@@ -235,7 +234,7 @@ function Search() {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:8080/CS/User/updateEducation/${localStorage.getItem(
+        `http://localhost:8080/JP/User/updateEducation/${localStorage.getItem(
           "email"
         )}`,
         educationPost,
@@ -258,7 +257,7 @@ function Search() {
   async function deleteEducation(e) {
     try {
       const response = await axios.delete(
-        `http://localhost:8080/CS/User/deleteEducation/${localStorage.getItem(
+        `http://localhost:8080/JP/User/deleteEducation/${localStorage.getItem(
           "email"
         )}/${e.target.value}`,
         config
@@ -299,7 +298,7 @@ function Search() {
   async function fetchExperience() {
     try {
       const response = await axios.get(
-        `http://localhost:8080/CS/User/getallExperience/${localStorage.getItem(
+        `http://localhost:8080/JP/User/getAllWorkExperience/${localStorage.getItem(
           "email"
         )}`,
         config
@@ -315,7 +314,7 @@ function Search() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:8080/CS/User/addExperience/${localStorage.getItem(
+        `http://localhost:8080/JP/User/addWorkExperience/${localStorage.getItem(
           "email"
         )}`,
         experiencePost,
@@ -337,9 +336,9 @@ function Search() {
   async function getExperience(e) {
     try {
       const response = await axios.get(
-        `http://localhost:8080/CS/User/getExperience/${localStorage.getItem(
-          "username"
-        )}/${e.target.value}`,
+        `http://localhost:8080/JP/User/getWorkExperience/${localStorage.getItem(
+          "email"
+        )}/${e.target.value.replace(" ", "_")}`,
         config
       );
       setExperiencePost(response.data);
@@ -355,7 +354,7 @@ function Search() {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:8080/CS/User/updateExperience/${localStorage.getItem(
+        `http://localhost:8080/JP/User/updateWorkExperience/${localStorage.getItem(
           "email"
         )}`,
         experiencePost,
@@ -378,7 +377,7 @@ function Search() {
   async function deleteExperience(e) {
     try {
       const response = await axios.delete(
-        `http://localhost:8080/CS/User/deleteExperience/${localStorage.getItem(
+        `http://localhost:8080/JP/User/deleteWorkExperience/${localStorage.getItem(
           "email"
         )}/${e.target.value}`,
         config
@@ -397,6 +396,12 @@ function Search() {
     } else {
       element.style.display = "none";
     }
+  }
+  function handleLogout() {
+    localStorage.setItem(`accesstoken`, "");
+    localStorage.setItem(`refreshtoken`, "");
+    localStorage.setItem(`email`, "");
+    navigate("/applicantLogin");
   }
   return (
     <div className="searchApplicant">
@@ -428,6 +433,10 @@ function Search() {
           <div onClick={handleProfileDetails}>
             <img id="icon" src="./profile.png" alt="Profile" />
             <p>Profile</p>
+          </div>
+          <div onClick={handleLogout}>
+            <img id="icon" src="./logout.png" alt="Logout" />
+            <p>Logout</p>
           </div>
         </div>
       </div>
@@ -539,22 +548,29 @@ function Search() {
             <div className="profileDetails">
               {applicant && (
                 <div className="profile">
-                  <p>{applicant.name}</p>
-                  <p>{applicant.headline}</p>
-                  <p>{applicant.emailId}</p>
-                  <p>{applicant.workStatus}</p>
-                  {applicant.experience.length > 0 && (
-                    <div className="experience">
-                      {applicant.experience.map((exp, index) => (
-                        <div key={index}>
-                          <p>{exp.company}</p>
-                          <p>{exp.position}</p>
-                          <p>{exp.startDate}</p>
-                          <p>{exp.endDate}</p>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  <p>
+                    <span>Name: </span>
+                    {applicant.name}
+                  </p>
+                  <p>
+                    <span>Headline:</span> &nbsp;{applicant.headline}
+                  </p>
+                  <p>
+                    <span>EmailId:</span> &nbsp;{applicant.emailId}
+                  </p>
+                  <p>
+                    <span>Mobile:</span> &nbsp;{applicant.mobileNo}
+                  </p>
+                  <p>
+                    <span>Location:</span> &nbsp;{applicant.city},
+                    {applicant.state}
+                  </p>
+                  <p>
+                    <span>Work Status:</span> &nbsp;{applicant.workStatus}
+                  </p>
+                  <p>
+                    <span>Education:</span>
+                  </p>
                   <div className="stc">
                     <div className="savedEducationclass">
                       <div id="stdiv">
@@ -562,13 +578,22 @@ function Search() {
                           <div id="st" key={index} className="education-item">
                             <div className="input">
                               <p>
-                                <strong>Degree:</strong> {item.degree}
+                                <strong>
+                                  <span>Degree:&nbsp;</span>
+                                </strong>{" "}
+                                {item.degree}
                               </p>
                               <p>
-                                <strong>Start Date:</strong> {item.startDate}
+                                <strong>
+                                  <span>Start Date:&nbsp;</span>
+                                </strong>{" "}
+                                {item.startDate}
                               </p>
                               <p>
-                                <strong>End Date:</strong> {item.endDate}
+                                <strong>
+                                  <span>End Date:&nbsp;</span>
+                                </strong>{" "}
+                                {item.endDate}
                               </p>
                             </div>
                             <div className="button">
@@ -581,7 +606,7 @@ function Search() {
                               </button>
                               <button
                                 id="c"
-                                value={item.degree}
+                                value={item.qualificationId}
                                 onClick={(e) => deleteEducation(e)}
                               >
                                 Delete
@@ -589,11 +614,11 @@ function Search() {
                             </div>
                           </div>
                         ))}
-                        <div>
-                          <button id="c" onClick={() => navigate(-1)}>
+                        <div id="ac">
+                          <button id="cancel" onClick={() => navigate(-1)}>
                             Cancel
                           </button>
-                          <button id="s" onClick={toggleEducationForm}>
+                          <button id="add" onClick={toggleEducationForm}>
                             Add
                           </button>
                         </div>
@@ -610,7 +635,7 @@ function Search() {
                       <div>
                         <h2>{update > 0 ? "Update" : "Add"} Education</h2>
                       </div>
-                      <div>
+                      <div id="div">
                         <label htmlFor="degree">Degree</label>
                         <input
                           type="text"
@@ -621,7 +646,7 @@ function Search() {
                           required
                         />
                       </div>
-                      <div>
+                      <div id="div">
                         <label htmlFor="startDate">Start Date</label>
                         <input
                           type="date"
@@ -632,7 +657,7 @@ function Search() {
                           required
                         />
                       </div>
-                      <div>
+                      <div id="div">
                         <label htmlFor="endDate">End Date</label>
                         <input
                           type="date"
@@ -643,7 +668,6 @@ function Search() {
                           required
                         />
                       </div>
-
                       <div id="submit">
                         <button
                           id="c"
@@ -658,6 +682,9 @@ function Search() {
                       </div>
                     </form>
                   </div>
+                  <p>
+                    <span>Work Experience:</span>
+                  </p>
                   <div className="stc1">
                     <div className="savedExperienceclass">
                       <div id="stdiv">
@@ -665,13 +692,28 @@ function Search() {
                           <div id="st" key={index} className="experience-item">
                             <div className="input">
                               <p>
-                                <strong>Company:</strong> {item.company}
+                                <strong>
+                                  <span>Company:&nbsp;</span>
+                                </strong>{" "}
+                                {item.company}
                               </p>
                               <p>
-                                <strong>Start Date:</strong> {item.startDate}
+                                <strong>
+                                  <span>Position:&nbsp;</span>
+                                </strong>{" "}
+                                {item.position}
                               </p>
                               <p>
-                                <strong>End Date:</strong> {item.endDate}
+                                <strong>
+                                  <span>Start Date:&nbsp;</span>
+                                </strong>{" "}
+                                {item.startDate}
+                              </p>
+                              <p>
+                                <strong>
+                                  <span>End Date:&nbsp;</span>
+                                </strong>{" "}
+                                {item.endDate}
                               </p>
                             </div>
                             <div className="button">
@@ -684,7 +726,7 @@ function Search() {
                               </button>
                               <button
                                 id="c"
-                                value={item.company}
+                                value={item.experienceId}
                                 onClick={(e) => deleteExperience(e)}
                               >
                                 Delete
@@ -692,11 +734,11 @@ function Search() {
                             </div>
                           </div>
                         ))}
-                        <div>
-                          <button id="c" onClick={() => navigate(-1)}>
+                        <div id="ac">
+                          <button id="cancel" onClick={() => navigate(-1)}>
                             Cancel
                           </button>
-                          <button id="s" onClick={toggleExperienceForm}>
+                          <button id="add" onClick={toggleExperienceForm}>
                             Add
                           </button>
                         </div>
@@ -713,7 +755,7 @@ function Search() {
                       <div>
                         <h2>{update1 > 0 ? "Update" : "Add"} Experience</h2>
                       </div>
-                      <div>
+                      <div id="div">
                         <label htmlFor="company">Company</label>
                         <input
                           type="text"
@@ -724,7 +766,7 @@ function Search() {
                           required
                         />
                       </div>
-                      <div>
+                      <div id="div">
                         <label htmlFor="startDate">Start Date</label>
                         <input
                           type="date"
@@ -735,7 +777,7 @@ function Search() {
                           required
                         />
                       </div>
-                      <div>
+                      <div id="div">
                         <label htmlFor="endDate">End Date</label>
                         <input
                           type="date"

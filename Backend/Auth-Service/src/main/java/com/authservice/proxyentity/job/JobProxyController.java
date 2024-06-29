@@ -22,11 +22,11 @@ import jakarta.validation.Valid;
 public interface JobProxyController {
 
 	@PostMapping(ApplicationConstant.ADD_APPLICATION)
-	public ResponseEntity<Application> addJobApplication(@RequestBody @Valid Application application)
+	public ResponseEntity<Application> addJobApplication(@PathVariable long jobId,@PathVariable String emailId)
 			throws ApplicantNotFoundException;
 
 	@GetMapping(ApplicationConstant.GET_ALL_APPLICATIONS)
-	public ResponseEntity<List<Application>> getAllJobApplications() throws ApplicationNotFoundException;
+	public ResponseEntity<List<Application>> getAllJobApplications(@PathVariable String emailId) throws ApplicationNotFoundException;
 
 	@GetMapping(ApplicationConstant.GET_APPLICATION_BY_ID)
 	public ResponseEntity<Application> getJobApplicationById(@PathVariable long id) throws ApplicationNotFoundException;

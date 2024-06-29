@@ -1,6 +1,6 @@
 package com.jobservice.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jobservice.constant.ApplicationConstant;
@@ -31,11 +31,13 @@ public class Application {
 
 	private String company;
 	
-	@Pattern(regexp = "^(Shortlisted|Rejected|In progress)$", message = ApplicationConstant.VALID_STATUS_MESSAGE)
+	private String jobTitle;
+	
+	@Pattern(regexp = "^(Shortlisted|Rejected|In progress|Submitted)$", message = ApplicationConstant.VALID_STATUS_MESSAGE)
 	private String status;
 
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	@NotNull(message=ApplicationConstant.APPLICATION_DATE_REQUIRED)
-	private Date appliedDate;
+	private LocalDate appliedDate;
 
 }

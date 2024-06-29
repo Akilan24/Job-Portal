@@ -101,7 +101,7 @@ public class ApplicantServiceImpl implements ApplicantService {
 	@Override
 	public Education getEducation(String emailId, String degree) {
 		Optional<Applicant> existingApplicant = applicantRepository.findByEmailId(emailId);
-		return existingApplicant.get().getEducation().stream().filter(e -> e.getDegree().equalsIgnoreCase(degree))
+		return existingApplicant.get().getEducation().stream().filter(e -> e.getDegree().equalsIgnoreCase(degree.replace("_"," ")))
 				.collect(Collectors.toList()).get(0);
 
 	}
@@ -141,7 +141,7 @@ public class ApplicantServiceImpl implements ApplicantService {
 	@Override
 	public WorkExperience getWorkExperience(String emailId, String company) {
 		Optional<Applicant> existingApplicant = applicantRepository.findByEmailId(emailId);
-		return existingApplicant.get().getExperience().stream().filter(e -> e.getCompany().equalsIgnoreCase(company))
+		return existingApplicant.get().getExperience().stream().filter(e -> e.getCompany().equalsIgnoreCase(company.replace("_","")))
 				.collect(Collectors.toList()).get(0);
 	}
 

@@ -94,7 +94,12 @@ function Search() {
     setIsExpanded(false);
     setPostDetails({ ...postDetails, description: "" });
   };
-
+  function handleLogout() {
+    localStorage.setItem(`accesstoken`, "");
+    localStorage.setItem(`refreshtoken`, "");
+    localStorage.setItem(`email`, "");
+    navigate("/recruiterLogin");
+  }
   return (
     <div className="searchRecruiter">
       <div id="tabs">
@@ -125,6 +130,10 @@ function Search() {
           <div onClick={() => setDisplay("profile")}>
             <img id="icon" src="./profile.png" alt="Profile" />
             <p>Profile</p>
+          </div>
+          <div onClick={handleLogout}>
+            <img id="icon" src="./logout.png" alt="Logout" />
+            <p>Logout</p>
           </div>
         </div>
       </div>

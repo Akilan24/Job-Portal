@@ -9,6 +9,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,7 +41,7 @@ public class ApplicationServiceImplTest {
     public void setUp() throws Exception {
         application = new Application();
         application.setApplicationId(1L);
-        application.setAppliedDate(dateFormat.parse("2024-06-28"));  // Correctly setting the date
+        application.setAppliedDate(LocalDate.now());  // Correctly setting the date
         application.setStatus("Pending");
         application.setApplicantEmailId("applicant@example.com");
     }
@@ -49,7 +50,7 @@ public class ApplicationServiceImplTest {
     public void testAddJobApplication() {
         when(applicationRepository.save(any(Application.class))).thenReturn(application);
 
-        Application result = applicationService.addJobApplication(application);
+        Application result = applicationService.addJobApplication(123456,"user@gmail.com");
         assertNotNull(result);
         assertEquals(1L, result.getApplicationId());
         assertEquals("Pending", result.getStatus());
@@ -62,7 +63,7 @@ public class ApplicationServiceImplTest {
 
         when(applicationRepository.findAll()).thenReturn(applications);
 
-        List<Application> result = applicationService.getAllJobApplications();
+        List<Application> result = applicationService.getAllJobApplications("user@gmail.com");
         assertNotNull(result);
         assertEquals(1, result.size());
         assertEquals(1L, result.get(0).getApplicationId());
@@ -72,7 +73,7 @@ public class ApplicationServiceImplTest {
     public void testGetAllJobApplicationsNotFound() {
         when(applicationRepository.findAll()).thenReturn(List.of());
 
-        assertThrows(ApplicationNotFoundException.class, () -> applicationService.getAllJobApplications());
+        assertThrows(ApplicationNotFoundException.class, () -> applicationService.getAllJobApplications("user@gmail.com"));
     }
 
     @Test
@@ -99,7 +100,7 @@ public class ApplicationServiceImplTest {
         when(applicationRepository.save(any(Application.class))).thenReturn(application);
 
         application.setStatus("Approved");
-        application.setAppliedDate(dateFormat.parse("2024-07-01"));  // Update the applied date
+        application.setAppliedDate(LocalDate.now());  // Update the applied date
         Application result = applicationService.updateJobApplication(application);
         assertNotNull(result);
         assertEquals("Approved", result.getStatus());

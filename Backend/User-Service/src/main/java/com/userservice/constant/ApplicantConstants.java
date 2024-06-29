@@ -45,7 +45,7 @@ public class ApplicantConstants {
     public static final String ADD_WORK_EXPERIENCE = "/addWorkExperience/{emailId}";
     public static final String GET_WORK_EXPERIENCE = "/getWorkExperience/{emailId}/{company}";
     public static final String UPDATE_WORK_EXPERIENCE = "/updateWorkExperience/{emailId}";
-    public static final String DELETE_WORK_EXPERIENCE = "/deleteWorkExperience/{emailId}/{company}";
+    public static final String DELETE_WORK_EXPERIENCE = "/deleteWorkExperience/{emailId}/{id}";
     
  // WorkExperience validation messages
     public static final String COMPANY_REQUIRED = "Please provide the company name";
