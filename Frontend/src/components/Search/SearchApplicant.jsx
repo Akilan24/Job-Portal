@@ -136,8 +136,9 @@ function Search() {
   const handleApplyJob = async (jobId) => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/JP/Job/applyJob",
-        { jobId },
+        `http://localhost:8080/JP/Job/applyJob/${jobId}/${localStorage.getItem(
+          "email"
+        )}`,
         config
       );
       setAppliedJobs(new Set([...appliedJobs, jobId]));
