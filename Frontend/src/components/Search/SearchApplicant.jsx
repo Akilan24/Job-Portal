@@ -146,7 +146,18 @@ function Search() {
       console.log(error.response.data.message);
     }
   };
-
+  async function fetchJobs(e) {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/CS/User/getJobbysearch/${search}`,
+        config
+      );
+      setJobs(response.data);
+      console.log(response);
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  }
   const [educationPost, setEducationPost] = useState({
     degree: "",
     startDate: "",
@@ -178,19 +189,8 @@ function Search() {
       console.log(error.response.data.message);
     }
   }
-  async function fetchJobs(e) {
-    try {
-      const response = await axios.get(
-        `http://localhost:8080/CS/User/getJobbysearch/${search}`,
-        config
-      );
-      setJobs(response.data);
-      console.log(response);
-    } catch (error) {
-      console.log(error.response.data.message);
-    }
-  }
-  async function handleSubmit(e) {
+
+  async function handleSubmitEducation(e) {
     e.preventDefault();
     try {
       const response = await axios.post(
@@ -278,6 +278,125 @@ function Search() {
     }
   }
 
+  const [experiencePost, setExperiencePost] = useState({
+    company: "",
+    startDate: "",
+    endDate: "",
+  });
+  const [experience, setExperience] = useState([]);
+  const [update1, setUpdate1] = useState(0);
+
+  function handleExperienceChange(e) {
+    const { name, value } = e.target;
+    setExperiencePost({ ...experiencePost, [name]: value });
+  }
+
+  useEffect(() => {
+    fetchExperience();
+  }, []);
+
+  async function fetchExperience() {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/CS/User/getallExperience/${localStorage.getItem(
+          "email"
+        )}`,
+        config
+      );
+      setExperience(response.data);
+      console.log(response);
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  }
+
+  async function handleSubmitExperience(e) {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `http://localhost:8080/CS/User/addExperience/${localStorage.getItem(
+          "email"
+        )}`,
+        experiencePost,
+        config
+      );
+      setExperiencePost({
+        company: "",
+        startDate: "",
+        endDate: "",
+      });
+      fetchExperience();
+      console.log(response.data);
+      toggleExperienceForm();
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  }
+
+  async function getExperience(e) {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/CS/User/getExperience/${localStorage.getItem(
+          "username"
+        )}/${e.target.value}`,
+        config
+      );
+      setExperiencePost(response.data);
+      setUpdate1(1);
+      toggleExperienceForm();
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  }
+
+  async function updateExperience(e) {
+    e.preventDefault();
+    try {
+      const response = await axios.put(
+        `http://localhost:8080/CS/User/updateExperience/${localStorage.getItem(
+          "email"
+        )}`,
+        experiencePost,
+        config
+      );
+      fetchExperience();
+      setExperiencePost({
+        company: "",
+        startDate: "",
+        endDate: "",
+      });
+      setUpdate1(0);
+      toggleExperienceForm();
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  }
+
+  async function deleteExperience(e) {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8080/CS/User/deleteExperience/${localStorage.getItem(
+          "email"
+        )}/${e.target.value}`,
+        config
+      );
+      fetchExperience();
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  }
+
+  function toggleExperienceForm() {
+    const element = document.getElementById("tc1");
+    if (element.style.display === "none") {
+      element.style.display = "flex";
+    } else {
+      element.style.display = "none";
+    }
+  }
   return (
     <div className="searchApplicant">
       <div id="tabs">
@@ -482,7 +601,9 @@ function Search() {
                     <form
                       id="tc"
                       className="educationclass"
-                      onSubmit={update > 0 ? updateEducation : handleSubmit}
+                      onSubmit={
+                        update > 0 ? updateEducation : handleSubmitEducation
+                      }
                       style={{ display: "none" }}
                     >
                       <div>
@@ -527,6 +648,109 @@ function Search() {
                           id="c"
                           type="button"
                           onClick={toggleEducationForm}
+                        >
+                          Cancel
+                        </button>
+                        <button id="s" type="submit">
+                          Save
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  <div className="stc1">
+                    <div className="savedExperienceclass">
+                      <div id="stdiv">
+                        {experience.map((item, index) => (
+                          <div id="st" key={index} className="experience-item">
+                            <div className="input">
+                              <p>
+                                <strong>Company:</strong> {item.company}
+                              </p>
+                              <p>
+                                <strong>Start Date:</strong> {item.startDate}
+                              </p>
+                              <p>
+                                <strong>End Date:</strong> {item.endDate}
+                              </p>
+                            </div>
+                            <div className="button">
+                              <button
+                                id="s"
+                                value={item.company}
+                                onClick={(e) => getExperience(e)}
+                              >
+                                Edit
+                              </button>
+                              <button
+                                id="c"
+                                value={item.company}
+                                onClick={(e) => deleteExperience(e)}
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                        <div>
+                          <button id="c" onClick={() => navigate(-1)}>
+                            Cancel
+                          </button>
+                          <button id="s" onClick={toggleExperienceForm}>
+                            Add
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <form
+                      id="tc1"
+                      className="experienceclass"
+                      onSubmit={
+                        update1 > 0 ? updateExperience : handleSubmitExperience
+                      }
+                      style={{ display: "none" }}
+                    >
+                      <div>
+                        <h2>{update1 > 0 ? "Update" : "Add"} Experience</h2>
+                      </div>
+                      <div>
+                        <label htmlFor="company">Company</label>
+                        <input
+                          type="text"
+                          name="company"
+                          id="company"
+                          value={experiencePost.company}
+                          onChange={handleExperienceChange}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="startDate">Start Date</label>
+                        <input
+                          type="date"
+                          name="startDate"
+                          id="startDate"
+                          value={experiencePost.startDate}
+                          onChange={handleExperienceChange}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="endDate">End Date</label>
+                        <input
+                          type="date"
+                          name="endDate"
+                          id="endDate"
+                          value={experiencePost.endDate}
+                          onChange={handleExperienceChange}
+                          required
+                        />
+                      </div>
+
+                      <div id="submit">
+                        <button
+                          id="c"
+                          type="button"
+                          onClick={toggleExperienceForm}
                         >
                           Cancel
                         </button>
