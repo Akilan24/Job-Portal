@@ -7,11 +7,11 @@ function Search() {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [jobs, setJobs] = useState([]);
-  const [jobDetails, setJobDetails] = useState(null);
+  const [jobDetails, setJobDetails] = useState();
   const [display, setDisplay] = useState("");
   const [search, setSearch] = useState("");
   const [applicant, setApplicant] = useState("");
-  const [appliedJobs, setAppliedJobs] = useState(new Set());
+  const [appliedJobs, setAppliedJobs] = useState([]);
   const config = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accesstoken")}`,
@@ -50,9 +50,7 @@ function Search() {
       console.log(error.response.data.message);
     }
   }
-  useEffect(() => {
-    handleAllAppliedJob();
-  }, []);
+
   async function handleAllAppliedJob() {
     try {
       setDisplay("status");
@@ -60,7 +58,7 @@ function Search() {
         `http://localhost:8080/JP/Job/getall/${localStorage.getItem("email")}`,
         config
       );
-      setAppliedJobs(new Set(response.data.map((job) => job.jobId)));
+      setAppliedJobs(response.data);
       console.log(response.data);
     } catch (error) {
       console.log(error.response.data.message);
@@ -514,11 +512,8 @@ function Search() {
                   <p>Description: {jobDetails.jobDescription}</p>
                   <p>Salary: {jobDetails.salary}</p>
                   <p>Posted Date: {jobDetails.postedDate}</p>
-                  <button
-                    onClick={() => handleApplyJob(jobDetails.jobId)}
-                    disabled={appliedJobs.has(jobDetails.jobId)}
-                  >
-                    {appliedJobs.has(jobDetails.jobId) ? "Applied" : "Apply"}
+                  <button onClick={() => handleApplyJob(jobDetails.jobId)}>
+                    Apply
                   </button>
                 </div>
               )}
@@ -526,16 +521,25 @@ function Search() {
           )}
           {display === "status" && (
             <div className="jobStatus">
-              {Array.from(appliedJobs).length > 0 ? (
-                jobs.map((job) => (
-                  <div key={job.jobId} className="job">
-                    <img src={job.logo} alt="Company logo" />
-                    <div>
-                      <p>{job.jobTitle}</p>
-                      <p>{job.company}</p>
-                      <p>{job.appliedDate}</p>
-                      <p>{job.status}</p>
-                    </div>
+              {appliedJobs.length > 0 ? (
+                appliedJobs.map((job, _) => (
+                  <div key={job.applicationId} className="job">
+                    <p>
+                      <span>Title:&nbsp;</span>
+                      {job.jobTitle}
+                    </p>
+                    <p>
+                      <span>Company:&nbsp;</span>
+                      {job.company}
+                    </p>
+                    <p>
+                      <span>Applied Date:&nbsp;</span>
+                      {job.appliedDate}
+                    </p>
+                    <p>
+                      <span>Status:</span>
+                      {job.status}
+                    </p>
                   </div>
                 ))
               ) : (

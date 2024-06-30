@@ -426,6 +426,29 @@
   align-items: start;
   justify-content: center;
 }
+.searchApplicant .jobStatus {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.searchApplicant .jobStatus .job {
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+  align-items: start;
+  width: 40%;
+  color: rgb(127, 18, 215);
+  font-weight: lighter;
+  height: 150px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.searchApplicant .jobStatus .job p {
+  margin: 0px;
+  padding: 0px;
+}
+
 .searchApplicant .profileDetails {
   display: flex;
   flex-direction: column;
@@ -447,7 +470,8 @@
   font-weight: lighter;
   margin-bottom: 0px;
 }
-.searchApplicant .profileDetails .profile p span {
+.searchApplicant .profileDetails .profile p span,
+.searchApplicant .jobStatus .job p span {
   color: rgb(0, 0, 0);
   font-weight: lighter;
 }
@@ -469,7 +493,8 @@
 .searchApplicant .profileDetails .savedExperienceclass #stdiv .button {
   width: 60%;
 }
-.searchApplicant .profileDetails .savedEducationclass #ac,.searchApplicant .profileDetails .savedExperienceclass #ac {
+.searchApplicant .profileDetails .savedEducationclass #ac,
+.searchApplicant .profileDetails .savedExperienceclass #ac {
   display: flex;
   justify-content: center;
   width: 40%;

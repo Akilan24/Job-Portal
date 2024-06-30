@@ -76,6 +76,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 		a.setStatus("Submitted");
 		a.setAppliedDate(LocalDate.now());
 		a.setApplicantEmailId(emailId);
-		return repo.save(a);
+		job.getApplications().add(a);
+		jrepo.save(job);
+		return a;
 	}
 }
