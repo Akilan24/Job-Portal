@@ -1,21 +1,19 @@
-package com.userservice.model;
+package com.jobservice.model;
 
-import com.userservice.constant.RecruiterConstants;
+import com.jobservice.constant.RecruiterConstants;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+
 @Data
 @NoArgsConstructor
 public class Recruiter {
 
-	@Id
+	
 	@Email(message = RecruiterConstants.EMAIL_VALID)
 	private String emailId;
 

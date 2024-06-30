@@ -8,9 +8,20 @@ function Search() {
   const [posts, setPosts] = useState([]);
   const [recruiter, setRecruiter] = useState(null);
   const [applicants, setApplicants] = useState(null);
+  const [jobs, setJobs] = useState([]);
   const [display, setDisplay] = useState("profile");
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
+  const [formData, setFormData] = useState({
+    jobTitle: "",
+    jobDescription: "",
+    salary: 0,
+    experience: 0,
+    jobType: "",
+    jobCategory: "",
+    requiredSkills: "",
+    jobDescription: "",
+  });
   const config = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accesstoken")}`,
@@ -46,7 +57,6 @@ function Search() {
         `http://localhost:8080/CS/User/getApplicantbysearch/${search}`,
         config
       );
-      setJobs(response.data);
       console.log(response);
     } catch (error) {
       console.log(error.response.data.message);
@@ -66,7 +76,20 @@ function Search() {
       setError(error.response?.data?.message || "An error occurred");
     }
   }
-
+  async function handleJobSubmit() {
+    try {
+      const response = await axios.post(
+        `http://localhost:8080/JP/Job/addJob/${localStorage.getItem("email")}`,
+        formData,
+        config
+      );
+      setIsExpanded(false);
+      setPostDetails({ ...postDetails, description: "" });
+      handleAllPost();
+    } catch (error) {
+      setError(error.response?.data?.message || "An error occurred");
+    }
+  }
   async function handleProfileDetails() {
     try {
       const response = await axios.get(
@@ -77,10 +100,23 @@ function Search() {
       );
       setRecruiter(response.data);
     } catch (error) {
-      setError(error.response?.data?.message || "An error occurred");
+      setError(error.response.data);
     }
   }
-
+  async function getAllJobs() {
+    try {
+      setDisplay("status");
+      const response = await axios.get(
+        `http://localhost:8080/JP/Job/getallJobbyemail/${localStorage.getItem(
+          "email"
+        )}`,
+        config
+      );
+      setJobs(response.data);
+    } catch (error) {
+      setError(error.response.data);
+    }
+  }
   const handleChange = (e) => {
     const { name, value } = e.target;
     setPostDetails({ ...postDetails, [name]: value });
@@ -89,7 +125,10 @@ function Search() {
   const toggleTextareaSize = () => {
     setIsExpanded(!isExpanded);
   };
-
+  function onchangeinput(e) {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  }
   const closeTextarea = () => {
     setIsExpanded(false);
     setPostDetails({ ...postDetails, description: "" });
@@ -119,11 +158,11 @@ function Search() {
             <img id="icon" src="./home.png" alt="Home" />
             <p>Home</p>
           </div>
-          <div>
+          <div onClick={() => setDisplay("business")}>
             <img id="icon" src="./business.png" alt="Business" />
             <p>Business</p>
           </div>
-          <div>
+          <div nClick={() => getAllJobs}>
             <img id="icon" src="./notification.png" alt="Status" />
             <p>Status</p>
           </div>
@@ -175,13 +214,169 @@ function Search() {
               </div>
             </div>
           )}
-          {display === "business" && <div className="business"></div>}
-          {display === "status" && <div className="jobStatus"></div>}
+          {display === "business" && (
+            <div className="business">
+              <h2 id="register">Register job</h2>
+              <form className="registerclass" onSubmit={handleJobSubmit}>
+                <div id="form">
+                  <div className="form-group">
+                    <label htmlFor="jobTitle">
+                      Job Title<span style={{ color: "red" }}>*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="jobTitle"
+                      name="jobTitle"
+                      value={formData.jobTitle}
+                      placeholder="jobTitle"
+                      required
+                      onChange={onchangeinput}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="jobType">
+                      Job Type<span style={{ color: "red" }}>*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="jobType"
+                      name="jobType"
+                      value={formData.jobType}
+                      placeholder="Enter job type"
+                      required
+                      onChange={onchangeinput}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="jobCategory">
+                      Job Category<span style={{ color: "red" }}>*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="jobCategory"
+                      name="jobCategory"
+                      value={formData.jobCategory}
+                      placeholder="Enter job category"
+                      required
+                      onChange={onchangeinput}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="requiredSkills">
+                      Required Skills<span style={{ color: "red" }}>*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="requiredSkills"
+                      name="requiredSkills"
+                      value={formData.requiredSkills}
+                      placeholder="eg: java, spring boot"
+                      required
+                      onChange={onchangeinput}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="salary">
+                      Salary<span style={{ color: "red" }}>*</span>
+                    </label>
+                    <input
+                      type="number"
+                      id="salary"
+                      name="salary"
+                      value={formData.salary}
+                      required
+                      onChange={onchangeinput}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="experience">
+                      Experience<span style={{ color: "red" }}>*</span>
+                    </label>
+                    <input
+                      type="number"
+                      id="experience"
+                      name="experience"
+                      value={formData.experience}
+                      required
+                      onChange={onchangeinput}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="jobDescription">
+                      Description<span style={{ color: "red" }}>*</span>
+                    </label>
+                    <textarea
+                      id="jobDescription"
+                      name="jobDescription"
+                      value={formData.jobDescription}
+                      placeholder="About your job..."
+                      required
+                      onChange={onchangeinput}
+                    />
+                  </div>
+                  <div>
+                    <button type="submit">Register</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          )}
+          {display === "status" && (
+            <div className="jobStatus">
+              {jobs.length > 0 ? (
+                jobs.map((job, _) => (
+                  <div key={job.jobId} className="job">
+                    <p>
+                      <span>Title:&nbsp;</span>
+                      {job.jobTitle}
+                    </p>
+                    <p>
+                      <span>Description:&nbsp;</span>
+                      {job.jobDescription}
+                    </p>
+                    <p>
+                      <span>Required Skills:&nbsp;</span>
+                      {job.requiredskills}
+                    </p>
+                    <p>
+                      <span>Posted Date:&nbsp;</span>
+                      {job.postedDate}
+                    </p>
+                    <p>
+                      <span>Experience:</span>
+                      {job.experience}
+                    </p>
+                  </div>
+                ))
+              ) : (
+                <p id="none">No job status is available</p>
+              )}
+            </div>
+          )}
           {display === "profile" && recruiter && (
             <div className="profileDetails">
-              <p>Name: {recruiter.name}</p>
-              <p>Email: {recruiter.emailId}</p>
-              <p>Company: {recruiter.company}</p>
+              <p>
+                <span>Company:</span> {recruiter.company}
+              </p>
+              <p>
+                <span>Email:</span> {recruiter.emailId}
+              </p>
+              <p>
+                <span>City:</span> {recruiter.city}
+              </p>
+              <p>
+                <span>State:</span> {recruiter.state}
+              </p>
+              <p>
+                <span>Country:</span> {recruiter.country}
+              </p>
+              <p>
+                <span>Pincode:</span> {recruiter.pincode}
+              </p>
+              <p id="about">
+                <span>About:</span>
+              </p>
+              <p id="description">{recruiter.about}</p>
             </div>
           )}
         </div>

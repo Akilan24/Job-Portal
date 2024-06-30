@@ -28,8 +28,8 @@ public class JobController {
     private JobService jobService;
 
     @PostMapping(JobConstant.ADD_JOB)
-    public ResponseEntity<Job> addJob(@RequestBody @Valid Job job) {
-        Job addedJob = jobService.addJob(job);
+    public ResponseEntity<Job> addJob(@PathVariable String emailId, @RequestBody Job job) {
+        Job addedJob = jobService.addJob(emailId,job);
         return new ResponseEntity<>(addedJob, JobConstant.HTTP_STATUS_CREATED);
     }
 
@@ -45,6 +45,12 @@ public class JobController {
         return new ResponseEntity<>(jobsByCategory, JobConstant.HTTP_STATUS_OK);
     }
 
+    @GetMapping(JobConstant.GET_JOBS_BY_EMAIL)
+    public ResponseEntity<List<Job>> getJobsByEmail(@PathVariable String emailId) throws JobNotFoundException {
+        List<Job> jobsByCategory = jobService.getByEmail(emailId);
+        return new ResponseEntity<>(jobsByCategory, JobConstant.HTTP_STATUS_OK);
+    }
+    
     @GetMapping(JobConstant.GET_JOBS_BY_TYPE)
     public ResponseEntity<List<Job>> getJobsByType(@PathVariable String type) throws JobNotFoundException {
         List<Job> jobsByType = jobService.getByJobType(type);

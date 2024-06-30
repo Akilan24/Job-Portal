@@ -1,5 +1,6 @@
 package com.jobservice.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -10,13 +11,18 @@ import org.springframework.stereotype.Service;
 
 import com.jobservice.exception.JobNotFoundException;
 import com.jobservice.model.Job;
+import com.jobservice.model.Recruiter;
 import com.jobservice.repository.JobRepository;
+import com.jobservice.repository.RecruiterRepository;
 
 @Service
 public class JobServiceImpl implements JobService {
 
 	@Autowired
 	private JobRepository jobRepo;
+	
+	@Autowired
+	private RecruiterRepository recruiterRepo;
 
 	@Override
 	public List<Job> getAllJob() throws JobNotFoundException {
@@ -69,6 +75,16 @@ public class JobServiceImpl implements JobService {
 	}
 
 	@Override
+	public List<Job> getByEmail(String emailId) throws JobNotFoundException {
+		String company = recruiterRepo.findById(emailId).get().getCompany();
+		List<Job> byCompany = jobRepo.findByCompany(company);
+		if (byCompany.isEmpty()) {
+			throw new JobNotFoundException("Job not found for the job emailId :" + emailId);
+		}
+		return byCompany;
+	}
+	
+	@Override
 	public List<Job> getByJobType(String jobType) throws JobNotFoundException {
 		List<Job> byJobType = jobRepo.findByJobType(jobType);
 		if (byJobType.isEmpty()) {
@@ -87,7 +103,14 @@ public class JobServiceImpl implements JobService {
 	}
 
 	@Override
-	public Job addJob(Job job) {
+	public Job addJob(String emaiId,Job job) {
+		Recruiter recruiter = recruiterRepo.findById(emaiId).get();
+		job.setCompany(recruiter.getCompany());
+		job.setCity(recruiter.getCity());
+		job.setState(recruiter.getState());
+		job.setCountry(recruiter.getCountry());
+		job.setPincode(recruiter.getPincode());
+		job.setPostedDate(LocalDate.now());
 		return jobRepo.save(job);
 	}
 

@@ -31,6 +31,8 @@ public class Recruiter {
 	@NotBlank(message = RecruiterConstants.CITY_REQUIRED)
 	private String city;
 
+	private String about;
+	
 	@NotBlank(message = RecruiterConstants.STATE_REQUIRED)
 	private String state;
 

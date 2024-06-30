@@ -11,7 +11,7 @@ import com.jobservice.model.Job;
 @Service
 public interface JobService {
 	
-	Job addJob(Job job);
+	Job addJob(String emailId,Job job);
 	
 	List<Job> getAllJob() throws JobNotFoundException;
 	
@@ -20,6 +20,8 @@ public interface JobService {
 	Job updateJob(Job job) throws JobNotFoundException;
 	
 	List<Job> getByJobCategory(String jobCategory) throws JobNotFoundException;
+	
+	List<Job> getByEmail(String emailId) throws JobNotFoundException;
 	
 	List<Job> getByJobType(String jobType) throws JobNotFoundException;
 	

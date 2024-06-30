@@ -1,6 +1,6 @@
 package com.authservice.proxyentity.job;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -68,7 +68,7 @@ public class Job {
     private String pincode;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date postedDate;
+    private LocalDate postedDate;
 
     private String requiredSkills;
     

@@ -37,14 +37,15 @@ public class JobController {
 
 	@PreAuthorize("hasAuthority('applicant')")
 	@PostMapping(ApplicationConstant.ADD_APPLICATION)
-	public ResponseEntity<Application> addJobApplication(@PathVariable long jobId,@PathVariable String emailId)
+	public ResponseEntity<Application> addJobApplication(@PathVariable long jobId, @PathVariable String emailId)
 			throws ApplicantNotFoundException {
-		return jobProxy.addJobApplication(jobId,emailId);
+		return jobProxy.addJobApplication(jobId, emailId);
 	}
 
 	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@GetMapping(ApplicationConstant.GET_ALL_APPLICATIONS)
-	public ResponseEntity<List<Application>> getAllJobApplications(@PathVariable String emailId) throws ApplicationNotFoundException {
+	public ResponseEntity<List<Application>> getAllJobApplications(@PathVariable String emailId)
+			throws ApplicationNotFoundException {
 		return jobProxy.getAllJobApplications(emailId);
 	}
 
@@ -70,8 +71,8 @@ public class JobController {
 
 	@PreAuthorize("hasAuthority('recruiter')")
 	@PostMapping(JobConstant.ADD_JOB)
-	public ResponseEntity<Job> addJob(@RequestBody @Valid Job job) {
-		return jobProxy.addJob(job);
+	public ResponseEntity<Job> addJob(@PathVariable String emailId, @RequestBody Job job) {
+		return jobProxy.addJob(emailId, job);
 	}
 
 	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
@@ -84,6 +85,12 @@ public class JobController {
 	@GetMapping(JobConstant.GET_JOBS_BY_CATEGORY)
 	public ResponseEntity<List<Job>> getJobsByCategory(@PathVariable String category) throws JobNotFoundException {
 		return jobProxy.getJobsByCategory(category);
+	}
+
+	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
+	@GetMapping(JobConstant.GET_JOBS_BY_EMAIL)
+	public ResponseEntity<List<Job>> getJobsByEmail(@PathVariable String emailId) throws JobNotFoundException {
+		return jobProxy.getJobsByEmail(emailId);
 	}
 
 	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")

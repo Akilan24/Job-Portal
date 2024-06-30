@@ -137,7 +137,6 @@ function Search() {
         {},
         config
       );
-      setAppliedJobs(new Set([...appliedJobs, jobId]));
       console.log(response.data);
     } catch (error) {
       console.log(error.response.data.message);

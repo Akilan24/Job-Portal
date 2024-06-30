@@ -1,6 +1,6 @@
 package com.jobservice.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -71,7 +71,7 @@ public class Job {
 	private String pincode;
 
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date postedDate;
+	private LocalDate postedDate;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "jobId", referencedColumnName = "jobId")

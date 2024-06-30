@@ -15,7 +15,7 @@ function Recruiter() {
     state: "",
     country: "",
     pincode: "",
-    logo: "",
+    about: "",
   });
 
   function onchangeinput(e) {
@@ -62,6 +62,7 @@ function Recruiter() {
               name="company"
               value={formData.company}
               placeholder="Company"
+              required
               onChange={onchangeinput}
             />
           </div>
@@ -75,6 +76,7 @@ function Recruiter() {
               name="emailId"
               value={formData.emailId}
               placeholder="Tell us your Email ID"
+              required
               onChange={onchangeinput}
             />
           </div>
@@ -87,7 +89,8 @@ function Recruiter() {
               id="password"
               name="password"
               value={formData.password}
-              placeholder="(Minimum 8 characters)"
+              placeholder="Minimum 8 characters"
+              required
               onChange={onchangeinput}
             />
           </div>
@@ -101,6 +104,7 @@ function Recruiter() {
               name="mobile"
               value={formData.mobile}
               placeholder="Enter your mobile number"
+              required
               onChange={onchangeinput}
             />
           </div>
@@ -145,6 +149,16 @@ function Recruiter() {
               name="pincode"
               value={formData.pincode}
               placeholder="eg: 620011"
+              onChange={onchangeinput}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="about">About</label>
+            <textarea
+              id="about"
+              name="about"
+              value={formData.about}
+              placeholder="About your organization..."
               onChange={onchangeinput}
             />
           </div>

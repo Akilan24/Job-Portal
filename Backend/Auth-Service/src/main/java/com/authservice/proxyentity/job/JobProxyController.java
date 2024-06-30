@@ -22,11 +22,12 @@ import jakarta.validation.Valid;
 public interface JobProxyController {
 
 	@PostMapping(ApplicationConstant.ADD_APPLICATION)
-	public ResponseEntity<Application> addJobApplication(@PathVariable long jobId,@PathVariable String emailId)
+	public ResponseEntity<Application> addJobApplication(@PathVariable long jobId, @PathVariable String emailId)
 			throws ApplicantNotFoundException;
 
 	@GetMapping(ApplicationConstant.GET_ALL_APPLICATIONS)
-	public ResponseEntity<List<Application>> getAllJobApplications(@PathVariable String emailId) throws ApplicationNotFoundException;
+	public ResponseEntity<List<Application>> getAllJobApplications(@PathVariable String emailId)
+			throws ApplicationNotFoundException;
 
 	@GetMapping(ApplicationConstant.GET_APPLICATION_BY_ID)
 	public ResponseEntity<Application> getJobApplicationById(@PathVariable long id) throws ApplicationNotFoundException;
@@ -39,13 +40,16 @@ public interface JobProxyController {
 	public ResponseEntity<String> deleteJobApplication(@PathVariable long id) throws ApplicationNotFoundException;
 
 	@PostMapping(JobConstant.ADD_JOB)
-	public ResponseEntity<Job> addJob(@RequestBody @Valid Job job);
+	public ResponseEntity<Job> addJob(@PathVariable String emailId, @RequestBody Job job);
 
 	@GetMapping(JobConstant.GET_ALL_JOBS)
 	public ResponseEntity<List<Job>> getAllJobs() throws JobNotFoundException;
 
 	@GetMapping(JobConstant.GET_JOBS_BY_CATEGORY)
 	public ResponseEntity<List<Job>> getJobsByCategory(@PathVariable String category) throws JobNotFoundException;
+
+	@GetMapping(JobConstant.GET_JOBS_BY_EMAIL)
+	public ResponseEntity<List<Job>> getJobsByEmail(@PathVariable String emailId) throws JobNotFoundException;
 
 	@GetMapping(JobConstant.GET_JOBS_BY_TYPE)
 	public ResponseEntity<List<Job>> getJobsByType(@PathVariable String type) throws JobNotFoundException;

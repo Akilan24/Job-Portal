@@ -6,9 +6,10 @@ public class JobConstant {
 
     // API Endpoints
     public static final String JOB = "/Job";
-    public static final String ADD_JOB = "/addJob";
+    public static final String ADD_JOB = "/addJob/{emailId}";
     public static final String GET_ALL_JOBS = "/getallJob";
     public static final String GET_JOBS_BY_CATEGORY = "/getJobbycategory/{category}";
+    public static final String GET_JOBS_BY_EMAIL = "/getJobbyemail/{emailId}";
     public static final String GET_JOBS_BY_TYPE = "/getJobbytype/{type}";
     public static final String GET_JOBS_BY_SEARCH = "/getJobbysearch/{search}";
     public static final String GET_JOBS_BY_ID = "/getJobbyid/{jobId}";
