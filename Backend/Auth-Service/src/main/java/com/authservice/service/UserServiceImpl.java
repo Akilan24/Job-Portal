@@ -161,7 +161,7 @@ public class UserServiceImpl implements UserService {
 					+ "<a href=\'http://localhost:5173/resetpassword\'>Reset Password link</a></body></html>";
 
 			helper.setText(emailBody, true);
-			helper.setSubject("Coastal Serenity - Reset Password");
+			helper.setSubject("Career Flow - Reset Password");
 			helper.setFrom(fromEmail);
 			helper.setTo(toEmail);
 
