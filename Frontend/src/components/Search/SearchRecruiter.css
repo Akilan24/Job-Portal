@@ -339,6 +339,9 @@
   scrollbar-width: thin;
   scrollbar-color: #888 #f1f1f1;
 }
+.searchRecruiter .jobStatus #div1 p {
+  width: 90%;
+}
 
 .searchRecruiter .jobStatus #div2 {
   width: 60%;

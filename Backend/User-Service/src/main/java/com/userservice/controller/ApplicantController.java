@@ -39,13 +39,14 @@ public class ApplicantController {
 		return new ResponseEntity<>(allApplicants, ApplicantConstants.HTTP_STATUS_OK);
 	}
 
-	@GetMapping(ApplicantConstants.GET_BY_ID)
+	@GetMapping(ApplicantConstants.GET_BY_EMAIL)
 	public ResponseEntity<Applicant> getApplicantByEmailId(@PathVariable String emailId)
 			throws ApplicantNotFoundException {
 		Applicant applicant = applicantService.getApplicantByEmailId(emailId);
 		return new ResponseEntity<>(applicant, ApplicantConstants.HTTP_STATUS_OK);
 	}
 
+	
 	@PutMapping(ApplicantConstants.UPDATE)
 	public ResponseEntity<Applicant> updateApplicant(@RequestBody Applicant applicant)
 			throws ApplicantNotFoundException {

@@ -335,7 +335,6 @@ function Search() {
           {display === "status" && (
             <div className="jobStatus">
               <div id="div1">
-                {" "}
                 {jobs.length > 0 ? (
                   jobs.map((job, _) => (
                     <div
@@ -369,9 +368,10 @@ function Search() {
                   <p id="none">No job status is available</p>
                 )}
               </div>
-              <div id="div2">
-                {application.length > 0 &&
-                  application.map((app, _) => (
+
+              {application.length > 0 &&
+                application.map((app, _) => (
+                  <div id="div2">
                     <div className="list" key={app.applicationId}>
                       <p>
                         <span>Name:&nbsp;</span>
@@ -394,8 +394,8 @@ function Search() {
                         {app.status}
                       </p>
                     </div>
-                  ))}
-              </div>
+                  </div>
+                ))}
             </div>
           )}
           {display === "profile" && recruiter && (

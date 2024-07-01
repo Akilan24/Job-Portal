@@ -11,6 +11,7 @@ public class ApplicantConstants {
     public static final String ADD = "/addApplicant";
     public static final String GET_ALL = "/getallApplicant";
     public static final String GET_BY_ID = "/getApplicant/{id}";
+    public static final String GET_BY_EMAIL = "/getApplicantbyemailId/{emailId}";
     public static final String UPDATE = "/updateApplicant";
     public static final String DELETE = "/deleteApplicant/{id}";
 
