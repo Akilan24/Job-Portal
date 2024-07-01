@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./SearchRecruiter.css";
-import { useNavigate, useParams } from "react-router-dom";
 
 function Search() {
   const navigate = useNavigate();
@@ -12,6 +12,7 @@ function Search() {
   const [display, setDisplay] = useState("profile");
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
+  const [application, setApplication] = useState([]);
   const [formData, setFormData] = useState({
     jobTitle: "",
     jobDescription: "",
@@ -20,7 +21,6 @@ function Search() {
     jobType: "",
     jobCategory: "",
     requiredSkills: "",
-    jobDescription: "",
   });
   const config = {
     headers: {
@@ -38,7 +38,7 @@ function Search() {
     try {
       setDisplay("post");
       const response = await axios.get(
-        "http://localhost:8080/JP/User/getallPost",
+        "http://localhost:8080/JP/Job/getallposts",
         config
       );
       setPosts(response.data);
@@ -54,7 +54,7 @@ function Search() {
   async function fetchApplicant(e) {
     try {
       const response = await axios.get(
-        `http://localhost:8080/CS/User/getApplicantbysearch/${search}`,
+        `http://localhost:8080/JP/Job/getJobbysearch//${search}`,
         config
       );
       console.log(response);
@@ -65,7 +65,7 @@ function Search() {
   async function handlePost() {
     try {
       const response = await axios.post(
-        "http://localhost:8080/JP/User/addpost",
+        "http://localhost:8080/JP/Job/addpost",
         postDetails,
         config
       );
@@ -103,11 +103,22 @@ function Search() {
       setError(error.response.data);
     }
   }
+  async function getJobApplication(jobId) {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/JP/Job/getapplication/${jobId}`,
+        config
+      );
+      setApplication(response.data);
+    } catch (error) {
+      setError(error.response.data);
+    }
+  }
   async function getAllJobs() {
     try {
       setDisplay("status");
       const response = await axios.get(
-        `http://localhost:8080/JP/Job/getallJobbyemail/${localStorage.getItem(
+        `http://localhost:8080/JP/Job/getJobbyemail/${localStorage.getItem(
           "email"
         )}`,
         config
@@ -162,7 +173,7 @@ function Search() {
             <img id="icon" src="./business.png" alt="Business" />
             <p>Business</p>
           </div>
-          <div nClick={() => getAllJobs}>
+          <div onClick={getAllJobs}>
             <img id="icon" src="./notification.png" alt="Status" />
             <p>Status</p>
           </div>
@@ -323,34 +334,68 @@ function Search() {
           )}
           {display === "status" && (
             <div className="jobStatus">
-              {jobs.length > 0 ? (
-                jobs.map((job, _) => (
-                  <div key={job.jobId} className="job">
-                    <p>
-                      <span>Title:&nbsp;</span>
-                      {job.jobTitle}
-                    </p>
-                    <p>
-                      <span>Description:&nbsp;</span>
-                      {job.jobDescription}
-                    </p>
-                    <p>
-                      <span>Required Skills:&nbsp;</span>
-                      {job.requiredskills}
-                    </p>
-                    <p>
-                      <span>Posted Date:&nbsp;</span>
-                      {job.postedDate}
-                    </p>
-                    <p>
-                      <span>Experience:</span>
-                      {job.experience}
-                    </p>
-                  </div>
-                ))
-              ) : (
-                <p id="none">No job status is available</p>
-              )}
+              <div id="div1">
+                {" "}
+                {jobs.length > 0 ? (
+                  jobs.map((job, _) => (
+                    <div
+                      key={job.jobId}
+                      className="job"
+                      onClick={(e) => getJobApplication(job.jobId)}
+                    >
+                      <p>
+                        <span>Title:&nbsp;</span>
+                        {job.jobTitle}
+                      </p>
+                      <p>
+                        <span>Description:&nbsp;</span>
+                        {job.jobDescription}
+                      </p>
+                      <p>
+                        <span>Required Skills:&nbsp;</span>
+                        {job.requiredskills}
+                      </p>
+                      <p>
+                        <span>Posted Date:&nbsp;</span>
+                        {job.postedDate}
+                      </p>
+                      <p>
+                        <span>Experience:</span>
+                        {job.experience}
+                      </p>
+                    </div>
+                  ))
+                ) : (
+                  <p id="none">No job status is available</p>
+                )}
+              </div>
+              <div id="div2">
+                {application.length > 0 &&
+                  application.map((app, _) => (
+                    <div className="list" key={app.applicationId}>
+                      <p>
+                        <span>Name:&nbsp;</span>
+                        {app.name}
+                      </p>
+                      <p>
+                        <span>Job Title:&nbsp;</span>
+                        {app.jobTitle}
+                      </p>
+                      <p>
+                        <span>Company:&nbsp;</span>
+                        {app.company}
+                      </p>
+                      <p>
+                        <span>Applied Date:&nbsp;</span>
+                        {app.appliedDate}
+                      </p>
+                      <p>
+                        <span>Status:&nbsp;</span>
+                        {app.status}
+                      </p>
+                    </div>
+                  ))}
+              </div>
             </div>
           )}
           {display === "profile" && recruiter && (

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jobservice.constant.ApplicationConstant;
+import com.jobservice.exception.ApplicantNotFoundException;
 import com.jobservice.exception.ApplicationNotFoundException;
 import com.jobservice.model.Application;
 import com.jobservice.service.ApplicationService;
@@ -28,7 +29,7 @@ public class ApplicationController {
 	private ApplicationService service;
 
 	@PostMapping(ApplicationConstant.ADD_APPLICATION)
-	public ResponseEntity<Application> addJobApplication(@PathVariable long jobId, @PathVariable String emailId) {
+	public ResponseEntity<Application> addJobApplication(@PathVariable long jobId, @PathVariable String emailId) throws ApplicantNotFoundException {
 		Application addedJobApplication = service.addJobApplication(jobId, emailId);
 		return new ResponseEntity<>(addedJobApplication, ApplicationConstant.HTTPS_STATUS_CREATED);
 	}
@@ -58,4 +59,6 @@ public class ApplicationController {
 		String result = service.deleteJobApplication(id);
 		return new ResponseEntity<>(result, ApplicationConstant.HTTPS_STATUS_OK);
 	}
+	
+	
 }

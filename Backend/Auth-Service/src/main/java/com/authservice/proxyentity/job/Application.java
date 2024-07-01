@@ -27,6 +27,8 @@ public class Application {
 
 	@Email(message=ApplicationConstant.EMAIL_VALID)
 	private String applicantEmailId;
+	
+	private String name;
 
 	private String company;
 	

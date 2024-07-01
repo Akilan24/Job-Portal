@@ -4,12 +4,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jobservice.exception.ApplicationNotFoundException;
 import com.jobservice.exception.JobNotFoundException;
+import com.jobservice.model.Application;
 import com.jobservice.model.Job;
 import com.jobservice.model.Recruiter;
 import com.jobservice.repository.JobRepository;
@@ -20,7 +23,7 @@ public class JobServiceImpl implements JobService {
 
 	@Autowired
 	private JobRepository jobRepo;
-	
+
 	@Autowired
 	private RecruiterRepository recruiterRepo;
 
@@ -83,7 +86,7 @@ public class JobServiceImpl implements JobService {
 		}
 		return byCompany;
 	}
-	
+
 	@Override
 	public List<Job> getByJobType(String jobType) throws JobNotFoundException {
 		List<Job> byJobType = jobRepo.findByJobType(jobType);
@@ -103,7 +106,7 @@ public class JobServiceImpl implements JobService {
 	}
 
 	@Override
-	public Job addJob(String emaiId,Job job) {
+	public Job addJob(String emaiId, Job job) {
 		Recruiter recruiter = recruiterRepo.findById(emaiId).get();
 		job.setCompany(recruiter.getCompany());
 		job.setCity(recruiter.getCity());
@@ -116,20 +119,35 @@ public class JobServiceImpl implements JobService {
 
 	@Override
 	public List<Job> getBySearch(String search) throws JobNotFoundException {
-		List<Job> jobList=new ArrayList<Job>();
+		List<Job> jobList = new ArrayList<Job>();
 		List<Job> byJobCategory = jobRepo.findByJobCategory(search);
-		if(!byJobCategory.isEmpty())
+		if (!byJobCategory.isEmpty())
 			jobList.addAll(byJobCategory);
 		List<Job> byJobType = jobRepo.findByJobType(search);
-		if(!byJobType.isEmpty())
+		if (!byJobType.isEmpty())
 			jobList.addAll(byJobType);
-		List<Job> byJobSkills = jobRepo.findAll().stream().filter(f->f.getRequiredSkills().contains(search)).collect(Collectors.toList());
-		if(!byJobSkills.isEmpty())
+		List<Job> byJobSkills = jobRepo.findAll().stream().filter(f -> f.getRequiredSkills().contains(search))
+				.collect(Collectors.toList());
+		if (!byJobSkills.isEmpty())
 			jobList.addAll(byJobSkills);
 		List<Job> byJobTitle = jobRepo.findByJobTitle(search);
-		if(!byJobTitle.isEmpty())
+		if (!byJobTitle.isEmpty())
 			jobList.addAll(byJobTitle);
 		return jobList;
 	}
 
+	@Override
+	public Set<Application> getApplicationByJobId(long jobId)
+			throws JobNotFoundException, ApplicationNotFoundException {
+		Optional<Job> byId = jobRepo.findById(jobId);
+		if (byId.isEmpty()) {
+			throw new JobNotFoundException("Job not found for the salary :" + jobId);
+		}
+		Set<Application> applications = byId.get().getApplications();
+		if (applications.isEmpty()) {
+			throw new ApplicationNotFoundException("Application not found with id: " + jobId);
+	}
+		return applications;
+
+}
 }

@@ -15,6 +15,7 @@ public class JobConstant {
     public static final String GET_JOBS_BY_ID = "/getJobbyid/{jobId}";
     public static final String UPDATE_JOB = "/updateJob";
     public static final String DELETE_JOB = "/deleteJob/{jobId}";
+    public static final String GET_APPLICATION_BY_JOBID="/getapplication/{jobId}";
 
     // HTTP Statuses
     public static final HttpStatus HTTP_STATUS_CREATED = HttpStatus.CREATED;

@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jobservice.controller.ApplicantProxy;
+import com.jobservice.exception.ApplicantNotFoundException;
 import com.jobservice.exception.ApplicationNotFoundException;
 import com.jobservice.model.Application;
 import com.jobservice.model.Job;
@@ -19,6 +21,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 
 	@Autowired
 	private ApplicationRepository repo;
+	
+	@Autowired
+	private ApplicantProxy aproxy;
 
 	@Autowired
 	private JobRepository jrepo;
@@ -68,9 +73,10 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Override
-	public Application addJobApplication(long jobId, String emailId) {
+	public Application addJobApplication(long jobId, String emailId) throws ApplicantNotFoundException {
 		Job job = jrepo.findById(jobId).get();
 		Application a = new Application();
+		a.setName(aproxy.getApplicantByEmailId(emailId).getName());
 		a.setJobTitle(job.getJobTitle());
 		a.setCompany(job.getCompany());
 		a.setStatus("Submitted");

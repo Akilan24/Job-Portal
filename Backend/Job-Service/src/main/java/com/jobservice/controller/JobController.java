@@ -1,6 +1,7 @@
 package com.jobservice.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jobservice.constant.JobConstant;
+import com.jobservice.exception.ApplicationNotFoundException;
 import com.jobservice.exception.JobNotFoundException;
+import com.jobservice.model.Application;
 import com.jobservice.model.Job;
 import com.jobservice.service.JobService;
 
@@ -77,5 +80,12 @@ public class JobController {
     public ResponseEntity<String> deleteJob(@PathVariable long jobId) throws JobNotFoundException {
         String result = jobService.deleteJob(jobId);
         return new ResponseEntity<>(result, JobConstant.HTTP_STATUS_OK);
+    }
+    
+    @GetMapping(JobConstant.GET_APPLICATION_BY_JOBID)
+    public ResponseEntity<Set<Application>> getApplicationByJobId(@PathVariable long jobId)
+			throws JobNotFoundException, ApplicationNotFoundException{
+    	Set<Application> addedapplication = jobService.getApplicationByJobId(jobId);
+    	return new ResponseEntity<>(addedapplication,JobConstant.HTTP_STATUS_OK);
     }
 }

@@ -19,14 +19,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//@Entity
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Applicant {
 
-    //@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   
     private long applicantId;
 
     @Pattern(regexp = "^(?=.*\\d)[a-zA-Z0-9]{6}$", message = ApplicantConstants.USERNAME_PATTERN)

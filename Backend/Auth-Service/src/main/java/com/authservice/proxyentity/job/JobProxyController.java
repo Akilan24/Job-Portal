@@ -1,6 +1,7 @@
 package com.authservice.proxyentity.job;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -80,4 +81,8 @@ public interface JobProxyController {
 
 	@DeleteMapping(PostConstants.DELETE_POST)
 	public ResponseEntity<String> deletePost(@PathVariable int id) throws PostNotFoundException;
+	
+	@GetMapping(JobConstant.GET_APPLICATION_BY_JOBID)
+    public ResponseEntity<Set<Application>> getApplicationByJobId(@PathVariable long jobId)
+			throws JobNotFoundException, ApplicationNotFoundException;
 }

@@ -20,6 +20,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.jobservice.exception.ApplicantNotFoundException;
 import com.jobservice.exception.ApplicationNotFoundException;
 import com.jobservice.model.Application;
 import com.jobservice.repository.ApplicationRepository;
@@ -47,7 +48,7 @@ public class ApplicationServiceImplTest {
     }
 
     @Test
-    public void testAddJobApplication() {
+    public void testAddJobApplication() throws ApplicantNotFoundException {
         when(applicationRepository.save(any(Application.class))).thenReturn(application);
 
         Application result = applicationService.addJobApplication(123456,"user@gmail.com");

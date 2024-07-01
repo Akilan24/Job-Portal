@@ -28,12 +28,14 @@ public class Application {
 
 	@Email(message=ApplicationConstant.EMAIL_VALID)
 	private String applicantEmailId;
+	
+	private String name;
 
 	private String company;
 	
 	private String jobTitle;
 	
-	@Pattern(regexp = "^(Shortlisted|Rejected|In progress|Submitted)$", message = ApplicationConstant.VALID_STATUS_MESSAGE)
+	@Pattern(regexp = "^(Shortlisted|Rejected|Submitted)$", message = ApplicationConstant.VALID_STATUS_MESSAGE)
 	private String status;
 
 	@JsonFormat(pattern = "yyyy-MM-dd")

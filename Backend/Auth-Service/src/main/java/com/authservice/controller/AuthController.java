@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.authservice.exception.ApplicantNotFoundException;
 import com.authservice.proxyentity.user.Applicant;
 import com.authservice.proxyentity.user.Recruiter;
 import com.authservice.request.AuthRequest;
 import com.authservice.request.RefreshTokenRequest;
 import com.authservice.response.JwtResponse;
 import com.authservice.service.UserService;
+
+import jakarta.mail.MessagingException;
 
 @RestController
 @RequestMapping("/JP/Auth")
@@ -42,6 +45,11 @@ public class AuthController {
 
 	}
 
+	@PostMapping("/forgotpassword/{toEmail}")
+	public ResponseEntity<Boolean> forgotpassword(@PathVariable String toEmail) throws MessagingException, ApplicantNotFoundException {
+		return new ResponseEntity<>(userService.forgotpassword(toEmail), HttpStatus.OK);
+	}
+	
 	@PostMapping("/logout/{refreshToken}")
 	public ResponseEntity<String> logout(@RequestBody AuthRequest authRequest, @PathVariable String refreshToken) {
 		return new ResponseEntity<>(userService.logout(authRequest, refreshToken), HttpStatus.OK);

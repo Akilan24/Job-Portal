@@ -1,6 +1,7 @@
 package com.authservice.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -123,6 +124,12 @@ public class JobController {
 		return jobProxy.deleteJob(jobId);
 	}
 
+	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
+	@GetMapping(JobConstant.GET_APPLICATION_BY_JOBID)
+    public ResponseEntity<Set<Application>> getApplicationByJobId(@PathVariable long jobId)
+			throws JobNotFoundException, ApplicationNotFoundException{
+    	return jobProxy.getApplicationByJobId(jobId);
+    }
 	@PreAuthorize("hasAnyAuthority('recruiter','applicant')")
 	@PostMapping(PostConstants.ADD_POST)
 	public ResponseEntity<Post> addPost(@RequestBody @Valid Post post) {

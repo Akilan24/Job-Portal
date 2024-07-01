@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.jobservice.exception.ApplicantNotFoundException;
 import com.jobservice.exception.ApplicationNotFoundException;
 import com.jobservice.model.Application;
 
@@ -11,7 +12,7 @@ import com.jobservice.model.Application;
 public interface ApplicationService {
 
 
-	Application addJobApplication(long jobId,String emailId);
+	Application addJobApplication(long jobId,String emailId) throws ApplicantNotFoundException;
 
 	List<Application> getAllJobApplications(String emailId) throws ApplicationNotFoundException;
 

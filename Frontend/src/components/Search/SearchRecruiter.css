@@ -98,7 +98,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 70%;
+  width: 100%;
   border-radius: 15px;
 }
 
@@ -317,8 +317,88 @@
   background-color: rgb(127, 18, 215);
   font-family: "Times New Roman", Times, serif;
 }
-.searchRecruiter .form-group textarea{
+.searchRecruiter .form-group textarea {
   width: 420px;
   height: 150px;
   border-radius: 10px;
+}
+
+.searchRecruiter .jobStatus {
+  width: 100%;
+  padding: 20px;
+  justify-content: space-around;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: row;
+}
+.searchRecruiter .jobStatus #div1 {
+  width: 60%;
+  height: 450px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+.searchRecruiter .jobStatus #div2 {
+  width: 60%;
+  height: 450px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+.searchRecruiter .jobStatus #div2 p {
+  margin: 0;
+  padding: 0;
+}
+
+.searchRecruiter .job {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 15px;
+  margin-bottom: 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.searchRecruiter .job p {
+  margin: 5px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  text-align: start;
+  padding-left: 50px;
+  width: 100%;
+  color: rgb(127, 18, 215);
+  font-weight: lighter;
+  margin-right: 40px;
+}
+
+.searchRecruiter .job p span {
+  font-weight: normal;
+  color: rgb(0, 0, 0);
+  text-align: start;
+}
+.searchRecruiter .list {
+  border-radius: 10px;
+  width: 90%;
+  margin-bottom: 20px;
+  padding: 15px;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  color: rgb(127, 18, 215);
+  font-weight: lighter;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.searchRecruiter .list span {
+  text-align: center;
+  color: black;
 }
